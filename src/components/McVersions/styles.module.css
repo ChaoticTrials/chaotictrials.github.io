@@ -25,14 +25,6 @@
   background-color: transparent;
 }
 
-.zoomEffect {
-  transition: transform 0.2s ease;
-}
-
-.zoomEffect:hover {
-  transform: scale(1.1);
-}
-
 .customTitle {
   font-family: "Annie Use Your Telescope", sans-serif;
   font-size: 5rem;

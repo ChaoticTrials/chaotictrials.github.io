@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import React from "react";
+import React from 'react';
 
 type VersionItem = {
     title: string;
@@ -52,12 +52,12 @@ const VersionList: VersionItem[] = [
 
 const Version: React.FC<VersionItem> = ({title, description}) => {
     return (
-        <div className={clsx('col col--4', styles.zoomEffect)}>
+        <div className='col col--4 zoomEffect'>
             <a href={`/porting/version/${title}`} className={styles.noLinkStyle}>
-                <div className="text--center">
+                <div className='text--center'>
                     <div className={styles.customTitle}>{title}</div>
                 </div>
-                <div className="text--center">
+                <div className='text--center'>
                     <p>{description}</p>
                 </div>
             </a>
@@ -68,7 +68,7 @@ const Version: React.FC<VersionItem> = ({title, description}) => {
 export default function McVersions(): React.JSX.Element {
     return (
         <section className={styles.versions}>
-            <div className="container">
+            <div className='container'>
                 <div className={clsx('row', styles.centeredRow)}>
                     {VersionList.map((props, idx) => (
                         <Version key={idx} {...props} />

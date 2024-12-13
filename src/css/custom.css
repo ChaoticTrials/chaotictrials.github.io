@@ -82,3 +82,12 @@ img.zoom:hover {
         padding-left: 10px;
     }
 }
+
+.zoomEffect {
+    transition: transform 0.2s ease;
+    display: block;
+}
+
+.zoomEffect:hover {
+    transform: scale(1.1);
+}
