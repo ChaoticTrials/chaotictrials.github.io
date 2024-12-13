@@ -1,12 +1,9 @@
----
-description: A lightweight excavation mod for modern Minecraft versions
----
-
 # Excavar
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
+import ToggleImage from "@site/src/components/ToggleImage";
 
-<ProjectHeader slug="excavar" mcVersion="1.17" />
+<ProjectHeader slug="excavar" mcVersion="1.18" />
 
 Mining in batches is possible and handy in some cases. This mod allows it!
 
@@ -23,7 +20,7 @@ The key is called `Multimine` in the category `Excavar`.
 As shown in this image, you'll see a preview of targeted blocks. This highlighting may be incorrect if you have an
 enchantment like Unbreaking on your tool.
 
-<img src="/img/projects/excavar/highlighting.png" width="50%"/>
+<ToggleImage src="/img/projects/excavar/highlighting.png" />
 
 Additionally, you see the "Selected shape" is set to "Shapeless". Shapes can be added by other mods. Built-in the mod,
 there are two different shapes:
@@ -67,7 +64,7 @@ world (maybe for modpacks), put that file with changed values in `.minecraft/def
     - `ORES` - only ores (blocks with tag `#forge:ores`) can be mined with Excavar
     - `LOGS` - only logs (blocks with tag `#minecraft:logs`) can be mined with Excavar
     - `ORES_AND_LOGS` - `ORES` and `LOGS` combined
-- You can define a list of tools that cannot be used with Excavar - `deniedTools`. For this, you can use `*` as a
+- You can define a list of tools that cannot be used with Excavar - `forbiddenItems`. For this, you can use `*` as a
   wildcard, for example `"minecraft:*_pickaxe"` would disable all vanilla pickaxes.
 
 ## Showcase
