@@ -37,9 +37,7 @@ A sample configuration file might look like this:
   "items": [
     {
       "item": "minecraft:diamond_pickaxe",
-      "nbt": {
-        "Unbreakable": true
-      }
+      "nbt": "{Unbreakable:1b}"
     },
     {
       "item": "minecraft:bread",

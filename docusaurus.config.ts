@@ -39,6 +39,11 @@ const config: Config = {
                     sidebarPath: './sidebars.ts',
                     editUrl: 'https://github.com/ChaoticTrials/chaotictrials.github.io/tree/main/',
                     includeCurrentVersion: isDev,
+                    versions: {
+                        '1.16.x': {
+                            banner: 'unmaintained'
+                        }
+                    }
                 },
                 blog: {
                     showReadingTime: true,

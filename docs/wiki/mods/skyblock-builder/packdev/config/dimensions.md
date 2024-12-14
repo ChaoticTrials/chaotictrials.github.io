@@ -6,7 +6,7 @@ description: Configure vanilla dimensions
 ## Overworld
 You can configure whether the Overworld should generate as in a normal world. This setting will disregard
 configured [structures](structures.md#generating-structures) and [features](structures.md#generating-features). This is
-especially useful when your [starting dimension](spawn.md#dimension) is not the Overworld.
+especially useful when your [starting dimension](spawn.mdx#dimension) is not the Overworld.
 
 ## The Nether
 You have the option to set the Nether to generate as in a normal world. Similar to the Overworld, this will ignore the

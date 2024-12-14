@@ -6,7 +6,7 @@ description: Example Download for Seablock map
 # Seablock
 
 ![Starting template](/img/projects/skyblock-builder/examples/seablock/start_template.png)
-_[Download](/img/projects/skyblock-builder/examples/downloads/1.17.x/seablock.zip)_
+_[Download](/img/projects/skyblock-builder/examples/downloads/1.18.x/seablock.zip)_
 
 To create a Seablock-like modpack, simply set the surface settings as shown in the config below:
 
@@ -15,7 +15,7 @@ To create a Seablock-like modpack, simply set the surface settings as shown in t
   "World": {
     "surface": true,
     "surfaceSettings": {
-      "minecraft:overworld": "minecraft:bedrock,100*minecraft:sandstone,4*minecraft:sand,23*minecraft:water",
+      "minecraft:overworld": "minecraft:bedrock,100*minecraft:sandstone,4*minecraft:sand,87*minecraft:water",
       "minecraft:the_nether": "",
       "minecraft:the_end": ""
     }

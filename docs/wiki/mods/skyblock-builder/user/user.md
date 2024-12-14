@@ -21,7 +21,9 @@ When adding spawns, ensure you are within the range specified in the configurati
 :::
 
 ## Teleporting Back to Home Island
-If the home command is enabled in the config, you can teleport back to your team's island using `/skyblock home`.
+If the home command is enabled in the config, you can teleport back to your team's island using `/skyblock home`. This 
+command may have a cooldown, depending on the settings.
 
 ## Teleporting to Spawn Island
-If teleporting to spawn is enabled in the config, you can teleport to the spawn island with `/skyblock spawn`.
+If teleporting to spawn is enabled in the config, you can teleport to the spawn island with `/skyblock spawn`. This
+command may have a cooldown, depending on the settings.

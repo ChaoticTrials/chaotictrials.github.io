@@ -5,7 +5,7 @@ description: Example Download for Stoneblock map
 
 # Stoneblock
 ![Starting template](/img/projects/skyblock-builder/examples/stoneblock/start_template.png)
-[Download](/img/projects/skyblock-builder/examples/downloads/1.17.x/stoneblock.zip)
+[Download](/img/projects/skyblock-builder/examples/downloads/1.18.x/stoneblock.zip)
 
 To create a Stoneblock-like modpack, you can simply set the surface settings as shown in the configuration below.
 
@@ -14,7 +14,7 @@ To create a Stoneblock-like modpack, you can simply set the surface settings as 
   "World": {
     "surface": true,
     "surfaceSettings": {
-      "minecraft:overworld": "minecraft:bedrock,254*minecraft:stone,minecraft:bedrock",
+      "minecraft:overworld": "minecraft:bedrock,382*minecraft:stone,minecraft:bedrock",
       "minecraft:the_nether": "",
       "minecraft:the_end": ""
     }
@@ -30,18 +30,7 @@ dimension. There is only one spawn point, and a starting inventory is included, 
   "items": [
     {
       "item": "minecraft:wooden_pickaxe",
-      "nbt": {
-        "Unbreakable": true,
-        "Enchantments": [
-          {
-            "lvl": 2,
-            "id": "minecraft:efficiency"
-          }
-        ],
-        "display": {
-          "Name": "{\"text\":\"Infinite Pickaxe\"}"
-        }
-      }
+      "nbt": "{Damage:0,Enchantments:[{id:\"minecraft:efficiency\",lvl:2}],Unbreakable:1b,display:{Name:'{\"text\":\"Infinite Pickaxe\"}'}}"
     }
   ]
 }

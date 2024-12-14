@@ -28,7 +28,18 @@ Defines the distance from the island center within which players can add spawns.
 Allows the player to [visit other islands](../../user/visiting.md).
 
 ### Home
-Allows the player to [teleport back home](../../user/user.md#teleporting-back-to-home-island).
+Allows the player to [teleport back home](../../user/user.md#teleporting-back-to-home-island). Each player has a cooldown before they can use this again.
 
 ### Spawn
-Allows the player to [teleport to the spawn island](../../user/user.md#teleporting-to-spawn-island).
+Allows the player to [teleport to the spawn island](../../user/user.md#teleporting-to-spawn-island). Each player has a cooldown before they can use this again.
+
+### Cross-Dimension Teleportation
+Allows players to teleport between dimensions. For example, they can teleport from the Nether back to the spawn island, their home, or even to another player's island.  
+If this option is disabled, players must be in the main dimension (e.g., the Overworld) to teleport.
+
+### Dimension Teleportation Restrictions
+You can control where players are allowed to teleport using this setting.
+- **Block certain dimensions:** Add dimensions to a list where teleportation commands are not allowed.
+- **Allow only specific dimensions:** Turn on `allow_list` to restrict commands so they work *only* in the dimensions in the list.
+
+This setting uses a resource list. Learn more about resource lists [here 🔗](https://moddingx.org/libx/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs).

@@ -5,7 +5,7 @@ description: Example Download for Hellblock Map
 
 # Hellblock
 ![Starting Template](/img/projects/skyblock-builder/examples/hellblock/start_template.png)
-_[Download](/img/projects/skyblock-builder/examples/downloads/1.17.x/hellblock.zip)_
+_[Download](/img/projects/skyblock-builder/examples/downloads/1.18.x/hellblock.zip)_
 
 To create a Hellblock-like modpack, you can simply set the spawn dimension to `the_nether` as shown in the config below:
 
