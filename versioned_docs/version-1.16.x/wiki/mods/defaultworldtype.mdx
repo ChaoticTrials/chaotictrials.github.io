@@ -1,0 +1,22 @@
+---
+description: Change the default world type for creating a new world in Create World screen.
+---
+
+# Default World Type
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+
+<ProjectHeader slug="defaultworldtype" mcVersion="1.16"/>
+
+A client-side mod that allows modpack creators to pre-define default world presets for streamlined world creation.
+
+---
+
+When you launch the game and open the world creation screen, the mod will automatically generate a file at:
+`<instance>/config/defaultworldtype/world-types.txt`.
+
+This file lists all possible values for the configuration. To set a default world preset, choose a value from the file
+and update the configuration. The selected preset will automatically be applied when players access the world creation screen.
+
+This mod is primarily intended for modpack creators. Regular players who only want to combine a few mods usually don't
+need it—unless they frequently create worlds with a specific world preset.
