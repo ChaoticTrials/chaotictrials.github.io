@@ -6,39 +6,39 @@ description: A library mod for a few of my mods
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="morevanillalib" mcVersion="1.18" />
+<ProjectHeader slug="morevanillalib" mcVersion="1.19" />
 
-MoreVanillaLib serves as the core for my other vanilla-themed mods:
+MoreVanillaLib adds more features to the following mods:
 - [MoreVanillaTools](https://modrinth.com/mod/morevanillatools)
-- [Vanilla Hammers](https://modrinth.com/mod/vanilla-hammers)
-- [Vanilla Excavators](https://modrinth.com/mod/vanilla-excavators)
+- [Simply Tools](https://modrinth.com/mod/simply-tools)
+- [Vanilla AIOTs](https://modrinth.com/mod/vanilla-aiots)
 
 ---
 
 ## Materials
 
-| Material       | **Durability** | **Mining Speed** | **Harvest Level** | **[Double Drop](#double-drop) Chance** | **Special Ability**                                         |
-|----------------|----------------|------------------|-------------------|----------------------------------------|-------------------------------------------------------------|
-| **Bone**       | 176            | 3.9              | 0                 | ❌                                      | [Extra Damage](#extra-damage)<br/>[Head Drop](#head-drop)   |
-| **Coal**       | 145            | 3.9              | 0                 | 20%                                    |                                                             |
-| **Emerald**    | 1859           | 8.2              | 3                 | 0.1%                                   |                                                             |
-| **Ender**      | 666            | 3.7              | 2                 | ❌                                      | [Extra Damage](#extra-damage)                               |
-| **Fiery**      | 127            | 4.0              | 1                 | ❌                                      | [Auto Smelt](#auto-smelt)<br/>[Extra Damage](#extra-damage) |
-| **Glowstone**  | 123            | 3.0              | 1                 | ❌                                      | [Glowstone Drop](#glowstone-drop)                           |
-| **Lapis**      | 173            | 6.2              | 2                 | 20%                                    |                                                             |
-| **Nether**     | 188            | 3.9              | 1                 | ❌                                      |                                                             |
-| **Obsidian**   | 1337           | 4.7              | 3                 | ❌                                      |                                                             |
-| **Paper**      | 13             | 1.8              | 0                 | ❌                                      | [Paper Damage](#paper-damage)                               |
-| **Prismarine** | 225            | 6.0              | 2                 | ❌                                      | [Extra Damage](#extra-damage)                               |
-| **Quartz**     | 117            | 3.9              | 1                 | 20%                                    |                                                             |
-| **Redstone**   | 173            | 6.2              | 2                 | 20%                                    |                                                             |
-| **Slime**      | 123            | 5.2              | 1                 | ❌                                      | [Extra Damage](#extra-damage)<br/>[Knockback](#knockback)   |
-| **Wood**       | -              | 2.0              | 0                 | ❌                                      |                                                             |
-| **Stone**      | -              | 4.0              | 1                 | ❌                                      |                                                             |
-| **Iron**       | -              | 6.0              | 2                 | ❌                                      |                                                             |
-| **Gold**       | -              | 12.0             | 0                 | ❌                                      |                                                             |
-| **Diamond**    | -              | 8.0              | 3                 | 0.1%                                   |                                                             |
-| **Netherite**  | -              | 9.0              | 4                 | ❌                                      |                                                             |
+| Material       |  **[Double Drop](#double-drop) Chance** | **Special Ability**                                         |
+|----------------|-----------------------------------------|-------------------------------------------------------------|
+| **Bone**       |  ❌                                      | [Extra Damage](#extra-damage)<br/>[Head Drop](#head-drop)   |
+| **Coal**       |  20%                                    |                                                             |
+| **Emerald**    |  0.1%                                   |                                                             |
+| **Ender**      |  ❌                                      | [Extra Damage](#extra-damage)                               |
+| **Fiery**      |  ❌                                      | [Auto Smelt](#auto-smelt)<br/>[Extra Damage](#extra-damage) |
+| **Glowstone**  |  ❌                                      | [Glowstone Drop](#glowstone-drop)                           |
+| **Lapis**      |  20%                                    |                                                             |
+| **Nether**     |  ❌                                      |                                                             |
+| **Obsidian**   |  ❌                                      |                                                             |
+| **Paper**      |  ❌                                      | [Paper Damage](#paper-damage)                               |
+| **Prismarine** |  ❌                                      | [Extra Damage](#extra-damage)                               |
+| **Quartz**     |  20%                                    |                                                             |
+| **Redstone**   |  20%                                    |                                                             |
+| **Slime**      |  ❌                                      | [Extra Damage](#extra-damage)<br/>[Knockback](#knockback)   |
+| **Wood**       |  ❌                                      |                                                             |
+| **Stone**      |  ❌                                      |                                                             |
+| **Iron**       |  ❌                                      |                                                             |
+| **Gold**       |  ❌                                      |                                                             |
+| **Diamond**    |  0.1%                                   |                                                             |
+| **Netherite**  |  ❌                                      |                                                             |
 
 ## Abilities
 ### Auto Smelt
@@ -97,39 +97,9 @@ can occur during tasks such as using items, destroying blocks, or hitting entiti
 
 The default chance is 10% per activity, configurable in the [features config](#features).
 
-## Enchantments
-### Luck of Cheap Repairing
-**Luck of Cheap Repairing** is an enchantment that removes the repair cost in an anvil. This enchantment can be applied
-to all breakable items.
-
-### Power of the Depth
-**Power of the Depth** increases the mining depth of [hammers](vanilla-hammers.mdx)
-and [excavators](vanilla-excavators.mdx), one level for each enchantment level.
-Enchantments can be disabled in the [features config](#features).
-
-Enchantments can be disabled in [features config](#features).
-
-## Config
-### Tool Values
-You can customize nearly everything about the tools. For each tool type, you can adjust:
-- Durability
-- Speed
-- Attack Damage Bonus
-- Attack Speed
-- Harvest Level
-- Enchantment Value
-
-This config is divided into three main categories:
-- Normal Tools: Used for [MoreVanillaTools](morevanillatools.mdx)
-- Ranged Tools: Used for [Vanilla Hammers](vanilla-hammers.mdx) and [Vanilla Excavators](vanilla-excavators.mdx)
-
-### Features
-In the features config, you can adjust the abilities of the [materials](#materials), or disable non-vanilla materials
-(used for [Vanilla Hammers](vanilla-hammers.mdx) and [Vanilla Excavators](vanilla-excavators.mdx) only).
+## Features Config
+In the features config, you can adjust the abilities of the [materials](#materials).
 
 ## Tooltips
 When pressing Shift while hovering over an item, it will reveal more details about durability, harvest level, and repair
 items.
-
-## Block Highlighting
-When using a Hammer or Excavator, the affected blocks will be highlighted.

@@ -6,7 +6,7 @@ description: A mod that applies a random curse to an enchantable item in the pla
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="curse-of-curses" mcVersion="1.18" />
+<ProjectHeader slug="curse-of-curses" mcVersion="1.19" />
 
 **Curse of Curses** introduces a new layer of challenge and unpredictability to your gameplay. Every night, the mod
 randomly curses an item in your inventory, adding excitement and danger. You can adjust the chance of curses via the
@@ -33,8 +33,15 @@ To add further challenge, Curse of Curses can apply curses while the player is s
 default. If you wish to only curse players who sleep multiple times, you can configure a row count to apply curses after
 a specific number of sleeps.
 
-## Blacklisted Curses
-If there are certain curses you do not want applied by this mod, you can use the `blacklistedCurses` option in the
+## Cooldown Setting
+`cooldownSetting` defines the type of nights in which curses are applied. Possible values are:
+
+- `EVERY_NIGHT`: Curses are applied every night.
+- `FULL_MOON`: Curses are only applied during a full moon.
+- `NEW_MOON`: Curses are only applied during a new moon.
+
+## Denylisted Curses
+If there are certain curses you do not want applied by this mod, you can use the `denylistCurses` option in the
 config file. Add the curses you wish to ignore to the deny list. For example:
 - `"minecraft:*"` -> Ignores all curses added by Minecraft
 - `"minecraft:binding_curse"` -> Ignores the Curse of Binding
