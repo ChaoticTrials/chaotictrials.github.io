@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './styles.module.css';
 import {ProjectMetadata} from "@site/src/components/LoadProjectData";
+import {useAllDocsData} from "@docusaurus/plugin-content-docs/client";
 
 interface ModTableProps {
     data?: ProjectMetadata;
@@ -9,6 +10,7 @@ interface ModTableProps {
 const ModTable: React.FC<ModTableProps> = ({data}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [showVersions, setShowVersions] = useState(false);
+    const allDocsData = useAllDocsData();
 
     if (!data) {
         return <div>Loading...</div>;
@@ -21,8 +23,41 @@ const ModTable: React.FC<ModTableProps> = ({data}) => {
         projects,
     } = data;
 
+    const slugPathMap = new Map<string, string>();
+
+    if (allDocsData) {
+        Object.values(allDocsData).forEach((docData) => {
+            const sortedVersions = [...docData.versions].sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+
+            for (let i = sortedVersions.length - 1; i >= 0; i--) {
+                const version = sortedVersions[i];
+
+                version.docs.forEach((doc) => {
+                    // Extract the slug from `id`
+                    const originalSlug = doc.id.startsWith('wiki/mods/')
+                        ? doc.id.replace('wiki/mods/', '')
+                        : null;
+
+                    if (originalSlug) {
+                        // Handle cases where the docs are in directories
+                        const slug = originalSlug.endsWith('/index')
+                            ? originalSlug.replace('/index', '')
+                            : originalSlug;
+
+                        if (!slugPathMap.has(slug)) {
+                            slugPathMap.set(slug, doc.path);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     return (
         <div className={styles.tableDiv}>
+            <h1>Mod Table</h1>
             <div style={{float: 'left', display: 'flex', justifyContent: 'center'}}>
                 <form onSubmit={(e) => e.preventDefault()}>
                     <input
@@ -82,14 +117,20 @@ const ModTable: React.FC<ModTableProps> = ({data}) => {
                                 return (
                                     <tr key={project.name}>
                                         <td>
-                                            <a
-                                                href={
-                                                    project.wiki_url ||
-                                                    `docs/wiki/mods/${typeof project.slug === 'string' ? project.slug : project.slug.mr}`
+                                            {(() => {
+                                                const slug = typeof project.slug === 'string' ? project.slug : project.slug.mr;
+                                                const wikiUrl = project.wiki_url || slugPathMap.get(slug);
+
+                                                if (wikiUrl) {
+                                                    return (
+                                                        <a href={wikiUrl}>
+                                                            {project.name}
+                                                        </a>
+                                                    );
                                                 }
-                                            >
-                                                {project.name}
-                                            </a>
+
+                                                return <span>{project.name}</span>;
+                                            })()}
                                         </td>
                                         <td>
                                             <a href={cfUrl}>
