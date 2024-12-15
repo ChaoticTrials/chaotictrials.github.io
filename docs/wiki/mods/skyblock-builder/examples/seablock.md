@@ -6,7 +6,7 @@ description: Example Download for Seablock map
 # Seablock
 
 ![Starting template](/img/projects/skyblock-builder/examples/seablock/start_template.png)
-_[Download](/img/projects/skyblock-builder/examples/downloads/1.18.x/seablock.zip)_
+_[Download](/img/projects/skyblock-builder/examples/downloads/1.19.x/seablock.zip)_
 
 To create a Seablock-like modpack, simply set the surface settings as shown in the config below:
 

@@ -5,7 +5,7 @@ description: Example Download for Stoneblock map
 
 # Stoneblock
 ![Starting template](/img/projects/skyblock-builder/examples/stoneblock/start_template.png)
-[Download](/img/projects/skyblock-builder/examples/downloads/1.18.x/stoneblock.zip)
+[Download](/img/projects/skyblock-builder/examples/downloads/1.19.x/stoneblock.zip)
 
 To create a Stoneblock-like modpack, you can simply set the surface settings as shown in the configuration below.
 

@@ -4,13 +4,7 @@ description: Important information for pack developers
 
 # Main Setup
 ## Setting World Type on Single Player as Default
-To set the world type to `skyblockbuilder:skyblock` when playing single player, start the game once and it will
-generate a config file named `forge-common.toml`. Update the only value in the file as follows:
-
-```toml title="config/forge-common.toml"
-[general]
-   defaultWorldType = "skyblockbuilder:skyblock"
-```
+See [Default World Type](../../defaultworldtype). Use `skyblockbuilder:skyblock` as config value.
 
 Alternatively, you can manually create the `forge-common.toml` file in the config directory with the above content.
 
@@ -48,10 +42,11 @@ the [next chapter](#configuring-templates). **IMPORTANT**: Do not name any schem
 overwriting the default schematic.
 
 ## Configuring Templates
-To configure templates and set spawn points, edit `config/skyblockbuilder/templates.json5` as detailed
-in [Creating a Custom Skyblock Island](#creating-a-custom-skyblock-island). The `spawns` option holds multiple spawn
-point sets:
+To set up templates and spawn points, you’ll need to edit the `config/skyblockbuilder/templates.json5` file. This guide 
+helps you configure it step by step.
 
+### Spawns
+The `spawns` section specifies spawn point sets. For example:
 ```json
 {
    "spawns": {
@@ -62,27 +57,63 @@ point sets:
 }
 ```
 
-Each object key (e.g., `default`) is referenced by the `templates` section:
+Here, `"default"` is the key, and it contains a list of coordinates (`[x, y, z]`) that define spawn points. You can 
+configure multiple spawn sets, but each key must be unique.
 
+### Surrounding Blocks
+The `surroundingBlocks` section determines the blocks that will surround the template. For example:
 ```json
 {
-  "templates": [
-     {
-        "name": "default",
-        "desc": "Default template",
-        "file": "default.nbt",
-        "spawns": "default",
-        "direction": "south"
-     }
-  ]
+  "surroundingBlocks": {
+    "default": [
+      "minecraft:stone",
+      "minecraft:bedrock"
+    ]
+  }
 }
 ```
 
-- `name`: The name displayed on the `Customize` screen.
-- `desc`: A description shown on the `Customize` screen when choosing the world type.
-- `file`: The filename of the template.
-- `spawns`: The spawn configuration name, taken from the `spawns` option.
-- `direction`: The direction the user should face for this template. Defaults to `south` if not specified.
+- The key (e.g., `"default"`) must be unique and is linked to the `templates` option in the next section.
+- The value is a list of block identifiers (resource locations). These blocks will randomly surround the template.
+- Thickness of this surrounding area is determined by `surroundingMargin` (explained below).
+
+### Templates
+The `templates` section defines the actual templates, connecting them with spawn points and block settings. Here's an 
+example:
+
+```json
+{
+   "templates": [
+      {
+         "name": "default",
+         "desc": "Default template",
+         "file": "default.nbt",
+         "spawns": "default",
+         "direction": "south",
+         "offset": [ 0, 0 ],
+         "offsetY": 0,
+         "surroundingBlocks": "default",
+         "surroundingMargin": 0
+      }
+   ]
+}
+```
+
+| **Key**             | **Default Value**   | **Description**                                                                                   |
+|---------------------|---------------------|---------------------------------------------------------------------------------------------------|
+| `name`              | ❌                   | The name displayed on the `Customize` screen.                                                     |
+| `desc`              | ❌                   | A description shown on the `Customize` screen when selecting the world preset.                    |
+| `file`              | ❌                   | The filename of the template.                                                                     |
+| `spawns`            | ❌                   | The name of the spawn configuration, taken from the `spawns` option.                              |
+| `direction`         | `south`             | The direction the user will face when using this template.                                        |
+| `offset`            | `[ 0, 0 ]`          | The positional offset for this template. Learn more about offsets [here](config/world.md#offset). |
+| `offsetY`           | `0`                 | Vertical (Y-axis) offset for this template. From version 1.20, this will merge with `offset`.     |
+| `surroundingBlocks` | `""` (empty string) | The configuration name for surrounding blocks, taken from the `surroundingBlocks` option.         |
+| `surroundingMargin` | `0`                 | The thickness of the border around the template.                                                  |
+
+:::info
+Settings with default values are optional.
+:::
 
 You can differentiate multiple configurations with the same `file` and `spawns` using unique names. Additionally, you 
 can set an icon for each template by placing it in `config/skyblockbuilder/templates/icon/<name>.png`, where `<name>` 
@@ -103,3 +134,10 @@ To add a loot chest to an island, set the NBT data to the chest with the command
 :::warning
 Do not open the chest after merging this data.
 :::
+
+## Converting `.nbt` Templates to `.snbt`
+To convert your existing `.nbt` templates to `.snbt`, use the command:  
+`/skyblock templates_to_snbt`.
+
+This command will convert all templates located in the `config/skyblockbuilder/templates/` folder into `.snbt` files. 
+The original `.nbt` files will remain unchanged.

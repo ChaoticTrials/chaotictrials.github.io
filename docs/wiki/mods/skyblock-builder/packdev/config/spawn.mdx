@@ -13,6 +13,21 @@ This is default set to 0, so nothing is protected. Look at the image here to see
 
 <ToggleImage src="/img/projects/skyblock-builder/config/spawn_protection_radius.png" alt="Spawn Protection Radius" />
 
+## Spawn Protection Events
+A list of event types which will be prevented.
+
+|         Name          |                                    Description                                    |
+|:---------------------:|:---------------------------------------------------------------------------------:|
+|  `interact_entities`  |                   Interacting with entities, e.g. riding a pig                    |
+|   `interact_blocks`   |  Interacting with blocks, e.g. activating buttons, placing, or destroying blocks  |
+|    `mob_griefing`     |                             Mobs destroying the world                             |
+|     `explosions`      |                         TNT, creeper, or other explosions                         |
+|      `crop_grow`      |                       Crops increasing their growth status                        |
+|     `mobs_spawn`      |                                   Mobs spawning                                   |
+|   `mobs_spawn_egg`    |                       Mobs being summoned using a spawn egg                       |
+|       `damage`        |                       Attacking others, or getting attacked                       |
+|       `healing`       |                       Getting healed and saturated on spawn                       |
+
 ## Dimension
 Defines the dimension where you will spawn, and the island will be generated.  
 You can pick any dimension listed in the `config/skyblockbuilder/data/dimensions.txt` file.
