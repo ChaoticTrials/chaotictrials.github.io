@@ -1,0 +1,82 @@
+---
+description: A simple mod to create scheduled backups
+---
+
+# Simple Backups
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+
+<ProjectHeader slug="simple-backups" mcVersion="1.19"/>
+
+This mod is designed to create and manage backups for your Minecraft server. You can specify the number of backups to
+keep and set a maximum storage limit. Older backups are automatically deleted to free up space.
+
+---
+
+## Automatic Backup Creation
+
+The mod automatically creates backups during server operation under the following conditions:
+1. **Backup Trigger:** A backup is created if:
+ - There is at least one player online.
+ - No players are online, but someone has just logged out.
+2. **Player Logouts:** If the last player logs out, a backup will be made when the server next checks.
+
+This ensures that your world is backed up regularly and reliably, even during player logouts. The backup timer is based
+on real-time, so a lagging server will not extend the interval.
+
+## Commands
+### Manual Backup
+The `/simplebackups backup start <quiet (true/false)>` command starts a backup manually. Optionally, you can use the
+`quiet` parameter to suppress in-game chat messages.
+
+### Pause Backups
+The `/simplebackups backup pause` and `/simplebackups backup unpause` commands allow you to temporarily pause and
+resume automatic backups.
+
+There's a small `Paused` indicator on the screen while backups are paused.
+
+- `/simplebackups backup pause`: Stops automatic backups temporarily until resumed.
+
+:::caution
+Automatic backups will remain disabled until you explicitly re-enable them.
+:::
+
+- `/simplebackups backup unpause`: Resumes paused automatic backups.
+
+This command restores automatic backups to their normal schedule.
+
+These commands are useful for temporarily suspending backups during server maintenance, events, or other situations
+where backups need to be halted.
+
+### Merge Incremental Backups
+The `/simplebackups mergeBackups` command merges all incremental backups located in the output directory, which is
+defined by the `outputPath` configuration setting. By default, this is the `simplebackups` directory, but it can be
+changed according to user preference.
+
+## Compatibility
+### [Mc2Discord](https://modrinth.com/mod/mc2discord)
+If enabled in the configuration `simplebackups-common.toml`, all backup notifications will also be sent to Discord.
+
+## Configuration
+### Common Config
+
+| **Configuration**  | **Description**                                                                                                                                       | **Default**     | **Note/Examples**                                                                                     |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------------------------------------|
+| `enabled`          | Enables or disables backups. If set to `false`, no backups will be created.                                                                           | `true`          | Backups are paused if disabled.                                                                       |
+| `onlyModified`     | Whether to back up only changed files.                                                                                                                | `false`         | Useful for large worlds, but requires old backups for a complete restoration.                         |
+| `fullBackupTimer`  | Interval (in minutes) between mandatory full backups, even if incremental backups (`onlyModified`) are enabled.                                       | `525960`        | Example: If set to `1440`, a full backup will be created daily.                                       |
+| `backupsToKeep`    | Maximum number of backup files to retain.                                                                                                             | `10`            | ❌                                                                                                     |
+| `timer`            | Interval between two backups (in minutes).                                                                                                            | `120`           | `5` for every 5 minutes, `60` for every hour, `1440` for daily backups.                               |
+| `compressionLevel` | Determines how much the backup is compressed. `0` = no compression (low CPU, large file size), `9` = maximum compression (high CPU, small file size). | `-1`            | `-1` is a good balance between speed and compression.                                                 |
+| `sendMessages`     | Whether to send messages when a backup is performed.                                                                                                  | `true`          | ❌                                                                                                     |
+| `maxDiskSize`      | Maximum disk space available for backups. Old files are deleted when exceeded.                                                                        | `25 GB`         | Accepts formats like `10 MB`, `50 GB`.                                                                |
+| `outputPath`       | Directory path where backups are stored.                                                                                                              | `simplebackups` | ❌                                                                                                     |
+| `createSubDirs`    | Whether to create separate subdirectories for each world.                                                                                             | `false`         | Example: For a world named `New World`, backups will be saved in `<outputPath>/New World/backup.zip`. |
+| `mc2discord`       | Whether to send backup notifications to Discord using the Mc2Discord mod.                                                                             | `true`          | ❌                                                                                                     |
+
+### Server Config
+
+| **Configuration**        | **Description**                                                                                                  | **Default** | **Notes/Examples**                                                                  |
+|--------------------------|------------------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------|
+| `commandsCheatsDisabled` | Allows backup commands to work even when cheats are disabled. Recommended for single-player mode.                | `false`     | If enabled (`true`), users on servers can trigger commands without enabling cheats. |
+| `messagesForEveryone`    | Sends backup messages to all users. Disable if only users with permission level 2 or higher should receive them. | `true`      | Example: Set to `false` to notify admins/operators only.                            |

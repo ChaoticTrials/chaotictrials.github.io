@@ -1,0 +1,67 @@
+---
+description: SpookyJam 2022 mod, dealing with Curses
+---
+
+# Maledicta
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+import ToggleImage from "@site/src/components/ToggleImage";
+
+<ProjectHeader slug="maledicta" mcVersion="1.19" />
+
+This mod introduces a variety of new mechanics, enchantments, and blocks to enhance your Minecraft experience. Dive
+into a world of curses, energies, and lightning-powered effects.
+
+---
+
+## Features
+### Maledictus Aufero
+This block has the unique ability to attract lightning strikes and interact with nearby items in fascinating ways.
+It can reduce the [negative energy](#negative-energy) surrounding items, while also possessing the chance to apply
+curses to them.
+
+<ToggleImage src="/img/projects/maledicta/lightning.png" alt="Lightning" />
+
+### Enchantments
+The mod adds several new enchantments, each imbued with unique curses that provide intriguing gameplay challenges:
+
+**Curse of Karma**
+- The attacker will take the same amount of damage dealt to the victim. This curse serves as a form of karmic retribution
+and requires careful consideration during battles.
+
+**Curse of Kindness**
+- Instead of inflicting damage, the attacker will end up healing the target. This benevolent curse twists violence into
+acts of unintended kindness.
+
+**Curse of Randomness**
+- Whenever the item loses durability, its enchantments are shuffled unpredictably, though curses remain unaffected. This
+curse introduces a chaotic and thrilling element to enchanted gear.
+
+### Negative Energy
+:::info
+**Negative Energy** can be disabled in the config file
+:::
+
+A hidden attribute called Negative Energy affects items, making them susceptible to corruption and curses over time.
+This energy builds up under specific conditions, including:
+
+- Being in the Nether, where merely holding items adds to their negative energy.
+- Hurting undead mobs, which gradually transfers negative energy to the attacking item.
+
+To combat the effects of Negative Energy, the Maledictus Aufero can purify items and reduce their accumulated energy.
+Effective management of this energy is crucial to prevent items from succumbing to curses.
+
+## Configurations
+You can adjust various settings in the mod via its configuration file. Below is the configuration table:
+
+| **Key**                         | **Default Value** | **Description**                                                              |
+|---------------------------------|-------------------|------------------------------------------------------------------------------|
+| `safeLightnings`                | `true`            | Ensures lightning is purely visual, preventing item burning during a strike. |
+| `karmaChance`                   | `0.2` (20%)       | Probability of the Curse of Karma activating.                                |
+| `kindnessChance`                | `0.4` (40%)       | Probability of the Curse of Kindness activating.                             |
+| `minCurseDelay`                 | `6000`            | Minimum time (ticks) before an item can be cursed again.                     |
+| `maxCurseDelay`                 | `12000`           | Maximum time (ticks) before an item can be cursed again.                     |
+| `onlyTransferCurses`            | `false`           | Ensures curses are only transferred, not just removed from the item.         |
+| `NegativeEnergy.enabled`        | `true`            | Enables or disables the Negative Energy system.                              |
+| `NegativeEnergy.netherAddition` | `0.00001`         | Rate of negative energy accumulation in the Nether (per second).             |
+| `NegativeEnergy.hurtAddition`   | `0.0001`          | Negative energy added when hurting undead mobs (per hit).                    |
