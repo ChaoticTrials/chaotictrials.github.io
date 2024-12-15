@@ -3,7 +3,7 @@
 import ProjectHeader from '@site/src/components/ProjectHeader';
 import ToggleImage from "@site/src/components/ToggleImage";
 
-<ProjectHeader slug="excavar" mcVersion="1.19" />
+<ProjectHeader slug="excavar" mcVersion="1.20" />
 
 Mining in batches is possible and handy in some cases. This mod allows it!
 
@@ -46,31 +46,33 @@ The server config file is stored in each world separately. You can find it after
 `.minecraft/saves/<world name>/serverconfig/excavar-server.toml`. If you want to provide a default config for each
 world (maybe for modpacks), put that file with changed values in `.minecraft/defaultconfigs/`.
 
-- You can set the block limit for how many blocks should be mined at once - `blockLimit` (default: `16`).
-- You can decide if the player needs a tool that affects block drops - `requiresCorrectTool` (default: `true`). The
-  player will still be able to mine logs by hand, but stone will need a pickaxe (or other valid tool).
-- You can decide if diagonal blocks (when using shapeless) are ignored - `disableDiagonals` (default: `false`). Below,
-  you can see an example. Imagine the bedrock is the block you're targeting. The magenta glass would be the blocks which
-  will be found additionally for that one specific block.
+| Key                   | Default Value | Description                                                                                                                                                                                       |
+|-----------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `blockLimit`          | `16`          | You can set the block limit for how many blocks should be mined at once.                                                                                                                          |
+| `xpUsage`             | `0`           | Defines how many XP points are used for one block or executed action (see `xpUsageType`).                                                                                                         |
+| `xpUsageType`         | `PER_ACTION`  | Defines how XP points are deducted, e.g., per block or per action.<br/>Allowed values: `PER_ACTION` and `PER_BLOCK`                                                                               |
+| `hungerUsage`         | `0.005`       | Specifies how much food exhaustion is caused by mining one block. Default value is the vanilla amount.                                                                                            |
+| `requiresCorrectTool` | `true`        | Determines if the player needs a tool that affects block drops. Players can mine logs by hand, but stone will require a pickaxe (or another valid tool).                                          |
+| `disableDiagonals`    | `false`       | Decides if diagonal blocks (when using shapeless) are ignored. Example: Blocks like magenta glass around the targeted block may be included.                                                      |
+| `allowShapeSelection` | `true`        | Determines if the player is allowed to change the shape described in [How to Use](#how-to-use).                                                                                                   |
+| `fistForbidden`       | `false`       | If set to true, when the player holds no item, multi-mining is disabled.                                                                                                                          |
+| `invertForbiddenTag`  | `false`       | Inverts the block tag `excavar:forbidden_blocks` to allow only specific blocks.                                                                                                                   |
+| `allowedBlocks`       | `ALL`         | Selects the allowed blocks for mining. Values: `ALL` (all blocks), `ORES` (blocks with tag `#forge:ores`), `LOGS` (blocks with tag `#minecraft:logs`), and `ORES_AND_LOGS` (combination of both). |
+| `forbiddenItems`      | —             | Defines a list of tools that cannot be used with Excavar. You can use `*` as a wildcard (e.g., `"minecraft:*_pickaxe"` disables all vanilla pickaxes).                                            |
 
-| Enabled (default)                        | Disabled                                      |
+| Diagonals Enabled (default)              | Diagonals Disabled                            |
 |------------------------------------------|-----------------------------------------------|
 | ![](/img/projects/excavar/shapeless.png) | ![](/img/projects/excavar/easy_shapeless.png) |
 
-- You can decide if the player is even able to change the shape described in [How to Use](#how-to-use) -
-  `allowShapeSelection` (default: `true`).
-- You can select the allowed blocks for mining - `allowedBlocks` (default: `ALL`). Allowed values include:
-    - `ALL` - all blocks can be mined with Excavar
-    - `ORES` - only ores (blocks with tag `#forge:ores`) can be mined with Excavar
-    - `LOGS` - only logs (blocks with tag `#minecraft:logs`) can be mined with Excavar
-    - `ORES_AND_LOGS` - `ORES` and `LOGS` combined
-- You can define a list of tools that cannot be used with Excavar - `forbiddenItems`. For this, you can use `*` as a
-  wildcard, for example `"minecraft:*_pickaxe"` would disable all vanilla pickaxes.
+### Forbidden Blocks
+The `excavar:forbidden_blocks` tag is used to specify blocks that Excavar will ignore. This means players cannot multi-mine blocks with this tag.
+
+If the `invertForbiddenTag` option is enabled, only the blocks with this tag will be mineable.
 
 ## Showcase
 <iframe
-width="451"
-height="801"
-src="https://www.youtube.com/embed/zww2hy1g2vU"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowFullScreen></iframe>
+    width="451"
+    height="801"
+    src="https://www.youtube.com/embed/zww2hy1g2vU"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen></iframe>

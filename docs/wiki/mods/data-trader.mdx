@@ -6,12 +6,13 @@ description: A villager-like entity that can be used as a trader. Customizable w
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="data-trader" mcVersion="1.19" />
+<ProjectHeader slug="data-trader" mcVersion="1.20" />
 
-## Defining Trades
-### File Structure
-The trader can use an ID to identify merchant offers' "recipes". This is a list of individual `merchant offer`s. An
-example file might look like this:
+## Defining the trades
+### File structure
+The trader can receive an ID for a merchant offers "recipe". This is a list of single `merchant offer`s. An example
+file could look like this:
+
 ```json title="data/modid/merchant_offers/example.json"
 {
   "Recipes": [
@@ -25,7 +26,7 @@ example file might look like this:
       },
       "sell": {
         "item": "minecraft:diamond_pickaxe",
-        "nbt": "{Damage:0,Enchantments:[{id:\"minecraft:efficiency\",lvl:2},{id:\"minecraft:unbreaking\",lvl:10}]}"
+        "nbt": "{Damage:0,Enchantments:[{id:\"minecraft:efficiency\",lvl:2},{id:\"minecraft:unbreaking\", lvl:10}]}"
       },
       "uses": 10,
       "maxUses": 50,
@@ -39,38 +40,24 @@ example file might look like this:
 }
 ```
 
-This example includes only one merchant offer. The trader will sell the item specified in `sell`. The player needs to
-provide the items in `buy` and `buyB` to receive the sold item.
+| Name              | Default value | Description                                                        |
+|-------------------|---------------|--------------------------------------------------------------------|
+| **`buy`**         | ❌             | The item(s) player trades to receive `sell`.                       |
+| `buyB`            | Air           | The optional second item in a trade offer.                         |
+| **`sell`**        | ❌             | The item(s) the trader provides in return.                         |
+| `uses`            | 0             | The current usage count of the trade.                              |
+| `maxUses`         | 4             | Maximum times the trade can be used before restocking is required. |
+| `rewardExp`       | false         | Whether the player earns 3–6 XP per trade.                         |
+| `xp`              | 0             | XP amount the trader earns (not used).                             |
+| `priceMultiplier` | 0.0           | Price modifier affecting the trade cost.                           |
+| `specialPrice`    | 0             | Additional price modifier (positive or negative).                  |
+| `demand`          | 0             | Dynamic demand modifier affecting price.                           |
 
-- **`maxUses`**: The number of times the trade can be used before the trader needs to restock.
-- **`rewardExp`**: If true, the player will receive 3 to 6 XP points for each trade.
-- **`xp`**: The amount of XP the trader receives. This is unused here since the trader doesn't level up.
-- **`priceMultiplier`**: Used to calculate the price for the item count in `buy`.
-- **`specialPrice`**: May increase or decrease the price.
-- **`demand`**: Also influences the price for the item count in `buy`.
+### Where to put it in?
+You use a data pack to provide these files. These are located at `<modid>/merchant_offers/`. An example can be found
+[here](src/main/resources/data/datatrader/merchant_offers/).
 
-#### Required Values:
-- `buy`
-- `sell`
-
-#### Default Values:
-|       Name        | Default Value |
-|:-----------------:|:-------------:|
-|      `buyB`       |      Air      |
-|      `uses`       |       0       |
-|     `maxUses`     |       4       |
-|    `rewardExp`    |     false     |
-|       `xp`        |       0       |
-| `priceMultiplier` |      0.0      |
-|  `specialPrice`   |       0       |
-|     `demand`      |       0       |
-
-### Where to Put It
-You need to use a data pack to provide these files. They should be placed at `<modid>/merchant_offers/`. An example can
-be found 
-[here](https://github.com/ChaoticTrials/DataTrader/tree/1.18.x/src/main/resources/data/datatrader/merchant_offers).
-
-### How to Use
-You can spawn the trader using the `/summon` command or by using a spawn egg. After spawning, you can set the recipe
-with the command `/datatrader setOffer @e <modid>:<path>`. This can also be done through data packs. For a normal
-trader, it is recommended to set `NoAI` to `true`.
+### How to use?
+You spawn the trader using the `/summon` command, or by using the spawn egg. After this, you use the command
+`/datatrader setOffer @e <modid>:<path>` to set the recipe. This can also be done by datapacks.
+    For a normal trader, I recommend setting `NoAI` to `true`.
