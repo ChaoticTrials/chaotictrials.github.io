@@ -1,5 +1,6 @@
 ---
 description: Important information for pack developers
+sidebar_position: 1
 ---
 
 # Main Setup
@@ -18,7 +19,10 @@ in [single player](#setting-world-type-on-single-player-as-default).
 2. Use the custom item `Structure Saver` from the vanilla Tools tab in the creative inventory. The output directory for
    this will be `<minecraft>/skyblock_exports/<name>.nbt`. Alternatively, use the vanilla Structure Block, noting it can
    only save islands up to 48x48x48 blocks. The output for this will be in
-   `<minecraft>/saves/<world>/generated/minecraft/structures/<name>.nbt`.
+   `<minecraft>/saves/<world>/generated/minecraft/structures/<name>.nbt`. If you set a Spawn Block, you'll also get an 
+   additional file with all the spawn points where the spawn blocks were. They are not present in the exported file. If 
+   you click the option to export everything into the config, the template will be generated into the correct directory.
+   If you used spawn blocks, spawns will also be added to `config/skyblockbuilder/templates.json5`.
 3. Copy the generated file to `config/skyblockbuilder/templates/<name>.nbt`.
 4. [Configure the template with a readable name and spawns](#configuring-templates) in
    `config/skyblockbuilder/templates.json5`. Multiple spawns can be defined as arrays with `[x, y, z]` coordinates
@@ -47,22 +51,71 @@ helps you configure it step by step.
 
 ### Spawns
 The `spawns` section specifies spawn point sets. For example:
-```json
+```json title="config/skyblockbuilder/templates.json5"
 {
    "spawns": {
-      "default": [
-         [ 6, 3, 5 ]
-      ]
+      "default": {
+         "east": [],
+         "west": [],
+         "north": [],
+         "south": [
+            [ 6, 3, 5 ]
+         ]
+      }
    }
 }
 ```
 
-Here, `"default"` is the key, and it contains a list of coordinates (`[x, y, z]`) that define spawn points. You can 
-configure multiple spawn sets, but each key must be unique.
+Here, `"default"` is the key, and it contains four directional keys (e.g., `"north"`, `"south"`, etc.). Each directional
+key holds a list of coordinate arrays (`[x, y, z]`) that define spawn positions. You can configure multiple entries, but
+each top-level key (like `"default"`) must be unique.
+
+### Spreads
+The `spreads` section defines islands that surround the main island. For example:
+```json title="config/skyblockbuilder/templates.json5"
+{
+  "spreads": {
+    "default": [
+      {
+        "file": "default.nbt",
+        "minOffset": [ -6, 3, 5 ],
+        "maxOffset": [ 4, 10, 3 ],
+        "origin": "center"
+      },
+      {
+        "file": "default2.nbt",
+        "offset": [0, 64, 0]
+      }
+    ]
+  }
+}
+```
+This section is similar to the previously explained `spawns`. It allows you to define multiple keys (like `"default"`) holding arrays of objects. **Each key must be unique.**
+
+Each object in the arrays specifies the following:
+
+- **`file`**: The name of the file (located in `config/skyblockbuilder/templates/spreads`) with a `.nbt` or `.snbt` extension.
+- **Offsets**:
+    - Use `minOffset` and `maxOffset` to define a random range for the object's position relative to `[0, 0, 0]` (main island).
+    - Alternatively, use `offset` for a fixed position relative to the main island.
+- **Origin (Optional)**: Determines how offsets are calculated. Possible values:
+    - `zero` (default) starts offset from the origin coordinates.
+    - `center` starts offset from the center of the object.
+
+Here’s a visual representation of the `origin` options:  
+![](/img/projects/skyblock-builder/config/origin.png)
+
+:::info
+To debug spreads, use the `/locate` command with the `spread` option:
+```shell
+/locate spread <team> <spread>
+```  
+This provides all the positions related to the specified spread type.
+:::
 
 ### Surrounding Blocks
 The `surroundingBlocks` section determines the blocks that will surround the template. For example:
-```json
+```json title="config/skyblockbuilder/templates.json5"
 {
   "surroundingBlocks": {
     "default": [
@@ -89,9 +142,7 @@ example:
          "desc": "Default template",
          "file": "default.nbt",
          "spawns": "default",
-         "direction": "south",
-         "offset": [ 0, 0 ],
-         "offsetY": 0,
+         "offset": [ 0, 0, 0 ],
          "surroundingBlocks": "default",
          "surroundingMargin": 0
       }
@@ -99,17 +150,16 @@ example:
 }
 ```
 
-| **Key**             | **Default Value**   | **Description**                                                                                   |
-|---------------------|---------------------|---------------------------------------------------------------------------------------------------|
-| `name`              | ❌                   | The name displayed on the `Customize` screen.                                                     |
-| `desc`              | ❌                   | A description shown on the `Customize` screen when selecting the world preset.                    |
-| `file`              | ❌                   | The filename of the template.                                                                     |
-| `spawns`            | ❌                   | The name of the spawn configuration, taken from the `spawns` option.                              |
-| `direction`         | `south`             | The direction the user will face when using this template.                                        |
-| `offset`            | `[ 0, 0 ]`          | The positional offset for this template. Learn more about offsets [here](config/world.md#offset). |
-| `offsetY`           | `0`                 | Vertical (Y-axis) offset for this template. From version 1.20, this will merge with `offset`.     |
-| `surroundingBlocks` | `""` (empty string) | The configuration name for surrounding blocks, taken from the `surroundingBlocks` option.         |
-| `surroundingMargin` | `0`                 | The thickness of the border around the template.                                                  |
+| **Key**             | **Default Value**   | **Description**                                                                                                                       |
+|---------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `name`              | ❌                   | The name displayed on the `Customize` screen. Use `{` at the start and `}` at the end for lang keys.                                  |
+| `desc`              | `""` (empty string) | A description shown on the `Customize` screen when selecting the world preset. Use `{` at the start and `}` at the end for lang keys. |
+| `file`              | ❌                   | The filename of the template.                                                                                                         |
+| `spawns`            | ❌                   | The name of the spawn configuration, taken from the `spawns` option.                                                                  |
+| `direction`         | `south`             | The direction the user will face when using this template. If not specified, defaults to `south`.                                     |
+| `offset`            | `[ 0, 0, 0 ]`       | The positional offset for this template. Learn more about offsets [here](config/world.md#offset).                                     |
+| `surroundingBlocks` | `""` (empty string) | The configuration name for surrounding blocks, taken from the `surroundingBlocks` option.                                             |
+| `surroundingMargin` | `0`                 | The thickness of the border around the template.                                                                                      |
 
 :::info
 Settings with default values are optional.

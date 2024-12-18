@@ -2,7 +2,9 @@
 description: Manage various permissions
 ---
 
-# Utility
+# Permissions
+*The settings on this page can be configured in `config/skyblockbuilder/permissions.json5`.*
+
 ## Create Own Team
 Allows players to [create their own team](../../user/user.md#creating-your-own-island).
 
@@ -25,7 +27,7 @@ Defines the distance from the island center within which players can add spawns.
 
 ## Teleports
 ### Visits
-Allows the player to [visit other islands](../../user/visiting.md).
+Allows the player to [visit other islands](../../user/visiting.md). Each player has a cooldown before they can use this again.
 
 ### Home
 Allows the player to [teleport back home](../../user/user.md#teleporting-back-to-home-island). Each player has a cooldown before they can use this again.

@@ -1,15 +1,40 @@
 ---
 title: Existing Mod Compatibility
 description: All mods that are already compatible
+sidebar_position: 1
 ---
 
 import ToggleImage from "@site/src/components/ToggleImage";
 
 # Compatibility with Other Mods
+## Cadmus
+This mod works seamlessly with [Cadmus 🔗](https://modrinth.com/mod/cadmus).
+
+If Cadmus is installed, the game will register a new [configuration file](cadmus.md). The key feature is
+protecting spawn chunks by default. Additionally, the command `/cadmus skyblockbuilder protectSpawn` allows claiming
+spawn chunks after world creation.
+
+This is especially useful for modpacks where spawn protection is disabled by default, but the server owner wants to
+enforce it.
+
 ## Curios
 This mod is compatible with [Curios 🔗](https://modrinth.com/mod/curios). This means that items from the Curios inventory
 will be dropped when leaving a team, provided that the [config](../packdev/config/inventory.md#dropping-inventory) is
 also enabled.
+
+## Heracles
+This mod is fully compatible with [Heracles 🔗](https://modrinth.com/mod/heracles).
+
+A new task type for [spreads](../packdev/packdev.md#configuring-templates) will be added when Heracles is installed.
+Additionally, a new [configuration file](heracles.md) is registered. You can combine multiple spreads in
+the GUI using the `|` separator.
+
+For example, if you want to combine multiple spreads, you could use the following as input for the GUI:
+
+`water_cave|water_cave_birch|water_cave_dark_oak|water_cave_desert|water_cave_jungle|water_cave_spruce|water_cave_swamp`
+
+Here’s how it appears in the configuration:
+![Heracles Compatibility](/img/projects/skyblock-builder/compat/heracles.png)
 
 ## MineMention
 This mod is compatible with [MineMention 🔗](https://modrinth.com/mod/minemention). To write in the team's chat, you can

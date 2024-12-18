@@ -2,7 +2,7 @@
   "label": "Configs",
   "position": 1,
   "link": {
-    "type": "generated-index",
-    "description": "An overview over all the config values"
+    "type": "doc",
+    "id": "index"
   }
 }

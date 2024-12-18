@@ -3,6 +3,8 @@ description: Define structures and features in the world
 ---
 
 # Structures
+*The settings on this page can be configured in `config/skyblockbuilder/structures.json5`.*
+
 ## Generating Structures
 This section provides a list of all [structures](https://minecraft.fandom.com/wiki/Generated_structures) that should be
 generated. The complete list of possible structures can be found in `config/skyblockbuilder/data/structures.txt`. Some

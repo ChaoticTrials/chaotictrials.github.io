@@ -5,6 +5,8 @@ description: Define the main settings for islands
 import ToggleImage from "@site/src/components/ToggleImage";
 
 # Spawn
+*The settings on this page can be configured in `config/skyblockbuilder/spawn.json5`.*
+
 ## Spawn Protection Radius
 This sets the radius around the spawn which should be protected and only op players can interact with.
 This prevents (tool) interactions, mob griefing, explosions, breaking blocks, farmland trampling, growing crops, and
@@ -23,10 +25,15 @@ A list of event types which will be prevented.
 |    `mob_griefing`     |                             Mobs destroying the world                             |
 |     `explosions`      |                         TNT, creeper, or other explosions                         |
 |      `crop_grow`      |                       Crops increasing their growth status                        |
+|   `apply_bonemeal`    |                           Applying bone meal to plants                            |
 |     `mobs_spawn`      |                                   Mobs spawning                                   |
 |   `mobs_spawn_egg`    |                       Mobs being summoned using a spawn egg                       |
 |       `damage`        |                       Attacking others, or getting attacked                       |
 |       `healing`       |                       Getting healed and saturated on spawn                       |
+
+## Spawn Protection Filters
+Spawn protection includes three filters that let you control which entities, blocks, or items can be interacted with.
+By default, these filters are pre-filled with the most common gravestone mods.
 
 ## Dimension
 Defines the dimension where you will spawn, and the island will be generated.  

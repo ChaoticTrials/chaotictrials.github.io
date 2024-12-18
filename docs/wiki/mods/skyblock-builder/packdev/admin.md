@@ -1,5 +1,6 @@
 ---
 description: Important information for admins
+sidebar_position: 2
 ---
 
 # Managing teams

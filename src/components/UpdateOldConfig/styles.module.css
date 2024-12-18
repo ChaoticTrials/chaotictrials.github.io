@@ -1,0 +1,33 @@
+.dropArea {
+    width: 250px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    padding: 25px;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.downloadButton {
+    width: 165px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 6px;
+    margin: 0px 50px;
+    cursor: pointer;
+}
+
+.downloadButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.myContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
