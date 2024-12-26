@@ -1,0 +1,130 @@
+---
+description: Explore a mod packed with useful features for your modpacks, offering essential blocks, items, and customizations.
+---
+
+# Pack Essentials
+import ProjectHeader from '@site/src/components/ProjectHeader';
+
+<ProjectHeader slug="pack-essentials" mcVersion="1.20"/>
+
+**Pack Essentials** is a lightweight mod designed specifically for my modpacks. It includes selective features and
+customizations I need without the bulk and complexity of larger mods. By consolidating these enhancements into one mod,
+it saves time and simplifies maintenance across multiple modpacks.
+
+:::warning
+Do not edit the mod's configuration files. Modpacks using this mod may break, especially if the `modpack`
+entry is modified.
+:::
+
+---
+
+## Blocks
+### Compressed and Double-Compressed Blocks
+You can compress and double-compress the following blocks:
+- Andesite
+- Cobbled Deepslate
+- Cobblestone
+- Diorite
+- Granite
+- Gravel
+- Netherrack
+- Sand
+- Tuff
+
+### Infested Blocks
+Similar to [Infested Blocks](https://minecraft.wiki/w/Infested_Block) in vanilla, these block variants can randomly
+spawn Silverfish:
+- Cobbled Deepslate
+- Deepslate Bricks
+- Deepslate Tiles
+- Nether Bricks
+
+### Snad
+**Snad** looks like regular Sand but accelerates plant growth when fertilized. To fertilize it and further boost growth,
+use [Snad Fertilizer](#snad-fertilizer).
+
+## Items
+### Ancient Brush
+The **Ancient Brush** is an alternative to the vanilla [Brush](https://minecraft.wiki/w/Brush). It can be used to clean
+suspicious sand and gravel but is half as fast and durable as the vanilla Brush.
+
+### Buried Mobs
+Certain mobs can spawn as buried variants. Here’s the full list:
+- Allay, Axolotl, Camel, Cat, Chicken, Cod, Cow, Donkey, Dolphin, Fox, Glow Squid, Goat, Horse, Llama, Mooshroom, Mule,
+Ocelot, Panda, Parrot, Pig, Polar Bear, Pufferfish, Rabbit, Salmon, Sheep, Squid, Strider, Tadpole, Tropical Fish, Wolf.
+
+Buried mobs are categorized as:
+- **Common**
+- **Uncommon**
+- **Rare**
+- **Epic**
+
+These categories are defined using tags like `#packessentials:buried_mobs/common`. While they do not come with
+predefined chance values, loot tables can assign them specific chances.
+
+### Snad Fertilizer
+**Snad Fertilizer** is a versatile item for enhancing plant growth on Snad. It can:
+1. **Convert Sand into Snad**: Use it on normal or red Sand to create Snad blocks, which enhance plant growth.
+2. **Fertilize Snad**: Boost the fertilization level of existing Snad blocks (normal or red) to improve growth further.
+
+Each use of the fertilizer consumes it.
+
+## Features
+### Composter Mechanics
+Crops near full composters can benefit from configurable spreading mechanics, promoting automated farming operations.
+
+### Loot Context Enhancements
+A **Custom Loot Context Parameter** (`packessentials:located_gift`) has been added, modifying the vanilla
+`minecraft:gift` parameter. For instance, sniffers now use this to generate custom loot based on environmental
+conditions.
+
+### Title Screen Scaling
+Adjust the title screen’s GUI scale via the [configuration](#common). This is useful for modpacks that include custom
+menus.
+
+### Toast Notifications
+Control in-game notifications (like advancements, recipes, and tutorials) through the configuration, reducing unwanted
+distractions during gameplay.
+
+### Fridge Interactions
+:::info
+Requires [Cooking for Blockheads](https://modrinth.com/mod/cooking-for-blockheads).
+:::
+When left open, fridges from the **Cooking for Blockheads** mod can create nearby snow layers. This adds environmental
+immersion, and the chance is configurable.
+
+### Jade Integration
+:::info
+Requires [Jade 🔍](https://modrinth.com/mod/jade).
+:::
+Enhanced block tooltips are available with the Jade mod. For instance, Snad blocks display fertilization levels directly
+in the tooltip.
+
+## Config
+### Common Settings
+| Key                    | Description                                                                    | Default Value  | Allowed Values     |
+|------------------------|--------------------------------------------------------------------------------|----------------|--------------------|
+| **modpack**            | The active modpack. Do not edit this for existing modpacks.                    | `CAVESTONE`    | `CAVESTONE`, `GOG` |
+| **composterSpreading** | Chance of crop spreading near a full composter.                                | `0.05` (5%)    | `0.0` - `1.0`      |
+| **snowChance**         | Chance of snow generation near open fridges (Requires Cooking for Blockheads). | `0.001` (0.1%) | `0.0` - `1.0`      |
+| **titleScreenScale**   | GUI scale for the title screen. `0` uses the default value from `options.txt`. | `0`            | `0` - `4`          |
+
+### Toast Notification Settings
+| Key                          | Description                                | Default Value | Allowed Values  |
+|------------------------------|--------------------------------------------|---------------|-----------------|
+| **disableAdvancementToasts** | Disable advancement toasts.                | `false`       | `true`, `false` |
+| **disableRecipeToasts**      | Disable recipe toasts.                     | `false`       | `true`, `false` |
+| **disableSystemToasts**      | Disable system toasts.                     | `false`       | `true`, `false` |
+| **disableTutorialToasts**    | Disable tutorial toasts.                   | `true`        | `true`, `false` |
+
+### Snad Settings
+| Key                             | Description                                                                           | Default Value | Allowed Values |
+|---------------------------------|---------------------------------------------------------------------------------------|---------------|----------------|
+| **growthBooster**               | Extra random ticks per tick to boost Snad growth.                                     | `1`           | `1` - `50`     |
+| **decreaseFertilizationChance** | Chance for fertilization to decrease over time.                                       | `0.05` (5%)   | `0.0` - `1.0`  |
+
+### Buried Mobs Settings
+| Key           | Description                              | Default Value | Allowed Values |
+|---------------|------------------------------------------|---------------|----------------|
+| **minChance** | Minimum chance for buried mobs to spawn. | `0.05` (5%)   | `0.0` - `1.0`  |
+| **maxChance** | Maximum chance for buried mobs to spawn. | `0.1` (10%)   | `0.0` - `1.0`  |
