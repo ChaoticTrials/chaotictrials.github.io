@@ -5,6 +5,7 @@ type VersionItem = {
     image: string;
     description: React.JSX.Element;
     link: string;
+    mcVersion?: string;
 };
 
 const VersionList: VersionItem[] = [
@@ -46,7 +47,11 @@ const VersionList: VersionItem[] = [
     },
 ];
 
-const Version: React.FC<VersionItem> = ({image, description, link}) => {
+const Version: React.FC<VersionItem> = ({image, description, link, mcVersion}) => {
+    if (mcVersion) {
+        image = `${mcVersion}/${image}`;
+    }
+
     return (
         <div className='zoomEffect'>
             <a href={link} className={styles.noLinkStyle}>
@@ -61,13 +66,13 @@ const Version: React.FC<VersionItem> = ({image, description, link}) => {
     );
 };
 
-export default function GuiLinks(): React.JSX.Element {
+export default function GuiLinks({version}): React.JSX.Element {
     return (
         <section className={styles.versions}>
             <div className='container'>
                 {VersionList.map((props, idx) => (
                     <div key={idx} className={styles.versionItem}>
-                        <Version {...props} />
+                        <Version {...props} mcVersion={version} />
                     </div>
                 ))}
             </div>
