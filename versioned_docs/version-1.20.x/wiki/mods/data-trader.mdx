@@ -1,0 +1,63 @@
+---
+description: A villager-like entity that can be used as a trader. Customizable with data packs.
+---
+
+# Data Trader
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+
+<ProjectHeader slug="data-trader" mcVersion="1.20" />
+
+## Defining the trades
+### File structure
+The trader can receive an ID for a merchant offers "recipe". This is a list of single `merchant offer`s. An example
+file could look like this:
+
+```json title="data/modid/merchant_offers/example.json"
+{
+  "Recipes": [
+    {
+      "buy": {
+        "item": "minecraft:diamond",
+        "count": 3
+      },
+      "buyB": {
+        "item": "minecraft:wooden_pickaxe"
+      },
+      "sell": {
+        "item": "minecraft:diamond_pickaxe",
+        "nbt": "{Damage:0,Enchantments:[{id:\"minecraft:efficiency\",lvl:2},{id:\"minecraft:unbreaking\", lvl:10}]}"
+      },
+      "uses": 10,
+      "maxUses": 50,
+      "rewardExp": false,
+      "xp": 0,
+      "priceMultiplier": 0.0,
+      "specialPrice": 0,
+      "demand": 0
+    }
+  ]
+}
+```
+
+| Name              | Default value | Description                                                        |
+|-------------------|---------------|--------------------------------------------------------------------|
+| **`buy`**         | ❌             | The item(s) player trades to receive `sell`.                       |
+| `buyB`            | Air           | The optional second item in a trade offer.                         |
+| **`sell`**        | ❌             | The item(s) the trader provides in return.                         |
+| `uses`            | 0             | The current usage count of the trade.                              |
+| `maxUses`         | 4             | Maximum times the trade can be used before restocking is required. |
+| `rewardExp`       | false         | Whether the player earns 3–6 XP per trade.                         |
+| `xp`              | 0             | XP amount the trader earns (not used).                             |
+| `priceMultiplier` | 0.0           | Price modifier affecting the trade cost.                           |
+| `specialPrice`    | 0             | Additional price modifier (positive or negative).                  |
+| `demand`          | 0             | Dynamic demand modifier affecting price.                           |
+
+### Where to put it in?
+You use a data pack to provide these files. These are located at `<modid>/merchant_offers/`. An example can be found
+[here](src/main/resources/data/datatrader/merchant_offers/).
+
+### How to use?
+You spawn the trader using the `/summon` command, or by using the spawn egg. After this, you use the command
+`/datatrader setOffer @e <modid>:<path>` to set the recipe. This can also be done by datapacks.
+    For a normal trader, I recommend setting `NoAI` to `true`.
