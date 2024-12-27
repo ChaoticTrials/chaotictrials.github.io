@@ -29,6 +29,19 @@ const config: Config = {
 
     plugins: [
         require.resolve('docusaurus-lunr-search'),
+        async function simpleWikiLink(context, options) {
+            return {
+                name: "simple-wiki-link-plugin",
+                async contentLoaded({actions}) {
+                    const {addRoute} = actions;
+                    addRoute({
+                        path: "/swl/:slug",
+                        component: "@site/src/components/SimpleWikiLink",
+                        exact: true,
+                    });
+                },
+            };
+        },
     ],
 
     presets: [
@@ -41,8 +54,23 @@ const config: Config = {
                     includeCurrentVersion: isDev,
                     versions: {
                         '1.16.x': {
-                            banner: 'unmaintained'
-                        }
+                            banner: 'none'
+                        },
+                        '1.17.x': {
+                            banner: 'none'
+                        },
+                        '1.18.x': {
+                            banner: 'none'
+                        },
+                        '1.19.x': {
+                            banner: 'none'
+                        },
+                        '1.20.x': {
+                            banner: 'none'
+                        },
+                        '1.21.x': {
+                            banner: 'none'
+                        },
                     }
                 },
                 blog: {
