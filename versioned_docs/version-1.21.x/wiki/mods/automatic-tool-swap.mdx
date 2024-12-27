@@ -1,0 +1,87 @@
+---
+description: Swaps the tools to the effective one if it's in hotbar
+---
+
+# Automatic Tool Swap
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+import ResponsiveIframe from '@site/src/components/ResponsiveIframe';
+
+<ProjectHeader slug="automatic-tool-swap" mcVersion="1.21" />
+
+<br />
+Switches to the most effective mining tool in your hotbar.
+
+---
+
+## Config
+
+### sneak_to_prevent
+- **Default:** `true`
+- **Description:** If enabled, sneaking prevents tool swapping.
+
+```properties
+sneak_to_prevent=true
+```
+
+### sorttype
+- **Default:** `LEVEL`
+- **Description:** Sets the mode for tool selection:
+    - `LEVEL`: Sorted by harvest level, lowest first
+    - `LEVEL_INVERTED`: Sorted by harvest level, highest first
+    - `LEFT_TO_RIGHT`: Sorted from left to right
+    - `RIGHT_TO_LEFT`: Sorted from right to left
+    - `ENCHANTED_FIRST`: Sorted by harvest level, highest enchanted item first
+    - `ENCHANTED_LAST`: Sorted by harvest level, highest unenchanted item first
+
+Allowed Values: `LEVEL`, `LEVEL_INVERTED`, `LEFT_TO_RIGHT`, `RIGHT_TO_LEFT`, `ENCHANTED_FIRST`, `ENCHANTED_LAST`
+
+```properties
+sorttype="LEVEL"
+```
+
+### save
+- **Default:** `true`
+- **Description:** If enabled, tools with 1 durability left will be saved. This only applies to breaking a block and
+  does not affect actions like stripping, flattening, or tilling.
+
+```properties
+save=true
+```
+
+### min_durability
+- **Default:** `1`
+- **Range:** `> 1`
+- **Description:** Minimum durability an item must have to be saved.
+
+```properties
+min_durability=1
+```
+
+### ignore_harvest_level
+- **Default:** `true`
+- **Description:** If enabled, the harvest level of tools will be ignored when breaking blocks. Otherwise, it will
+  always use the lowest possible tool.
+
+```properties
+ignore_harvest_level=false
+```
+
+### ignore_empty_hand
+- **Default:** `ALWAYS`
+- **Description:** Choose the mode when swapping is allowed:
+  - `ALWAYS`: Always swap, ignore the item in hand.
+  - `EMPTY_HAND`: Only swap if your hand is empty.
+  - `ITEMS`: Only swap if you're holding any item.
+  - `TOOLS`: Only swap if you're holding any tool (items with tag `minecraft:tools`).
+  - `NO_TOOLS`: Only swap if you're holding an item other than a tool (items with tag `minecraft:tools`).
+
+Allowed Values: `ALWAYS`, `EMPTY_HAND`, `ITEMS`, `TOOLS`, `NO_TOOLS`
+
+```properties
+ignore_empty_hand="ALWAYS"
+```
+
+## Showcase
+
+<ResponsiveIframe videoId="NYH2w773S84" />

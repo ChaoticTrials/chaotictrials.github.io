@@ -6,7 +6,7 @@ description: A simple mod to create scheduled backups
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="simple-backups" mcVersion="1.20"/>
+<ProjectHeader slug="simple-backups" mcVersion="1.21"/>
 
 This mod is designed to create and manage backups for your Minecraft server. You can specify the number of backups to
 keep and set a maximum storage limit. Older backups are automatically deleted to free up space.
@@ -73,6 +73,7 @@ If enabled in the configuration `simplebackups-common.toml`, all backup notifica
 | `outputPath`       | Directory path where backups are stored.                                                                                                                                                  | `simplebackups` | ❌                                                                                                                                                                                                                  |
 | `noPlayerBackups`  | Allows backups even if no players are online.                                                                                                                                             | `false`         | Set to `true` to disable waiting for online players.                                                                                                                                                               |
 | `createSubDirs`    | Whether to create separate subdirectories for each world.                                                                                                                                 | `false`         | Example: For a world named `New World`, backups will be saved in `<outputPath>/New World/backup.zip`.                                                                                                              |
+| `useTickCounter`   | Uses internal server ticks instead of real-world time to schedule backups. Note: Laggy servers will cause increased time between backups (e.g., 10 FPS doubles the time between backups). | `false`         | Backup schedules depend on server performance.                                                                                                                                                                     |
 | `mc2discord`       | Whether to send backup notifications to Discord using the Mc2Discord mod.                                                                                                                 | `true`          | ❌                                                                                                                                                                                                                  |
 
 ### Server Config
