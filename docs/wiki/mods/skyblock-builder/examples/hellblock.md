@@ -19,6 +19,6 @@ This world will have a default overworld and a default end. The Nether is the "s
 lava. Some structures have also been added to the Nether. Since the overworld is default, we don't need to worry about
 its structures, and they will be generated as normal.
 
-Thanks to [benbenlaw 🔗](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
-his well-known modpack [Infernopolis 🔗](https://www.curseforge.com/minecraft/modpacks/infernopolis) for this example. I
+Thanks to [benbenlaw](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
+his well-known modpack [Infernopolis](https://www.curseforge.com/minecraft/modpacks/infernopolis) for this example. I
 tweaked it a bit to avoid using mod blocks.

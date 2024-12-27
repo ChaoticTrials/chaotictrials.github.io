@@ -4,7 +4,7 @@ description: Information about the Cadmus compat
 
 # Cadmus
 *The configuration settings described here are located in `config/skyblockbuilder/cadmus.json5` when you have 
-[Cadmus 🔗](https://modrinth.com/mod/cadmus) installed.*
+[Cadmus](https://modrinth.com/mod/cadmus) installed.*
 
 ## Display Name
 This setting defines the display name of the owner for the claimed chunks at spawn. You can configure it like this:

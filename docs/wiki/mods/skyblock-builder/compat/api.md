@@ -8,7 +8,7 @@ sidebar_position: 2
 ## Disable team management
 You can use the API to disable team management without needing to change the configuration. Additionally, you can
 prevent players from being teleported to spawn when joining the world. For more information, visit
-the [SkyblockBuilder API documentation 🔗](https://github.com/ChaoticTrials/SkyblockBuilder/blob/1.20.x/src/main/java/de/melanx/skyblockbuilder/api/SkyblockBuilderAPI.java).
+the [SkyblockBuilder API documentation](https://github.com/ChaoticTrials/SkyblockBuilder/blob/1.20.x/src/main/java/de/melanx/skyblockbuilder/api/SkyblockBuilderAPI.java).
 This can be called in the main constructor of your mod.
 
 ## Custom Forge Events

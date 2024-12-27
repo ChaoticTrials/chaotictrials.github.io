@@ -91,3 +91,9 @@ img.zoom:hover {
 .zoomEffect:hover {
     transform: scale(1.1);
 }
+
+a[href^="http"]:not([href*="chaotictrials.de"]):not([href*="modrinth.com"]):not([href*="github.com"]):not([href*="curseforge.com"])::after {
+    content: " 🔗";
+    color: inherit;
+    margin-left: 4px;
+}

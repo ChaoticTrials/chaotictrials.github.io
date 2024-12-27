@@ -20,12 +20,12 @@ spawn heights for entities like squids.
 
 ## Surface
 Configures the block settings for generating surfaces across different dimensions. Follows a format similar
-to [flat world generation settings 🔗](https://minecraft.fandom.com/wiki/Superflat#Preset_code_format), but ignores the
+to [flat world generation settings](https://minecraft.fandom.com/wiki/Superflat#Preset_code_format), but ignores the
 biome setting. These settings can be applied to each dimension. To generate a completely void space, set the dimension
 to an empty string instead of removing it from the list. If surface generation is disabled, these settings are ignored.
 
 ## Biomes
-This is a map that provides [ResourceLists 🔗](https://moddingx.org/libx/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs).
+This is a map that provides [ResourceLists](https://moddingx.org/libx/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs).
 
 By default, all biomes are allowed. You can block specific biomes by adding them to the list. To only allow biomes from the list, set `allow_list` to `true`.
 

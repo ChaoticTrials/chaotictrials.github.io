@@ -44,4 +44,4 @@ You can control where players are allowed to teleport using this setting.
 - **Block certain dimensions:** Add dimensions to a list where teleportation commands are not allowed.
 - **Allow only specific dimensions:** Turn on `allow_list` to restrict commands so they work *only* in the dimensions in the list.
 
-This setting uses a resource list. Learn more about resource lists [here 🔗](https://moddingx.org/libx/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs).
+This setting uses a resource list. Learn more about resource lists [here](https://moddingx.org/libx/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs).

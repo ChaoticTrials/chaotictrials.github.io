@@ -4,7 +4,7 @@ description: Information about the Heracles compat
 
 # Heracles
 *Configuration settings on this page are found in the file: `config/skyblockbuilder/heracles.json5` when the
-[Heracles 🔗](https://modrinth.com/mod/heracles) mod is installed.*
+[Heracles](https://modrinth.com/mod/heracles) mod is installed.*
 
 ## Reset Quest Progress
 When enabled, this setting resets a player's quest progress if they leave a team, whether by being kicked or leaving 

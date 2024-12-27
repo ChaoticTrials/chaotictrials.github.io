@@ -74,5 +74,5 @@ correctly.
 }
 ```
 
-Thanks to [benbenlaw 🔗](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
-his well-known modpack [Seaopolis 🔗](https://www.curseforge.com/minecraft/modpacks/seaopolis) for this example.
+Thanks to [benbenlaw](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
+his well-known modpack [Seaopolis](https://www.curseforge.com/minecraft/modpacks/seaopolis) for this example.
