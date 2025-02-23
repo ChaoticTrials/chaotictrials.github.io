@@ -25,6 +25,14 @@ function HomepageHeader() {
                         Discover all the mod wikis 📖
                     </Link>
                 </div>
+                <br/>
+                <div className={styles.buttons} >
+                    <Link
+                        className="button button--secondary button--lg"
+                        to="https://discord.chaotictrials.de/">
+                        Join the Discord
+                    </Link>
+                </div>
             </div>
         </header>
     );
