@@ -80,7 +80,7 @@ The `spreads` section defines islands that surround the main island. For example
         "file": "default.nbt",
         "minOffset": [ -6, 3, 5 ],
         "maxOffset": [ 4, 10, 3 ],
-        "origin": "center"
+        "origin": "CENTER"
       },
       {
         "file": "default2.nbt",
@@ -99,8 +99,8 @@ Each object in the arrays specifies the following:
     - Use `minOffset` and `maxOffset` to define a random range for the object's position relative to `[0, 0, 0]` (main island).
     - Alternatively, use `offset` for a fixed position relative to the main island.
 - **Origin (Optional)**: Determines how offsets are calculated. Possible values:
-    - `zero` (default) starts offset from the origin coordinates.
-    - `center` starts offset from the center of the object.
+    - `ZERO` (default) starts offset from the origin coordinates.
+    - `CENTER` starts offset from the center of the object.
 
 Here’s a visual representation of the `origin` options:  
 ![](/img/projects/skyblock-builder/config/origin.png)
