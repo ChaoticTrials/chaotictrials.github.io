@@ -52,6 +52,9 @@ td {
 .no-border {
     width: 50%;
     border-color: transparent;
+}
+
+.no-table-line-colors {
     --ifm-table-stripe-background: transparent;
 }
 
