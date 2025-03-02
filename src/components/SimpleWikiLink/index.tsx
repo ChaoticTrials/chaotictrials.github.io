@@ -28,8 +28,8 @@ const SimpleWikiLink = () => {
             for (let i = sortedVersions.length - 1; i >= 0; i--) {
                 const version = sortedVersions[i];
                 const matchingDoc = version.docs.find((doc) => {
-                    const originalSlug = doc.id.startsWith("wiki/mods/")
-                        ? doc.id.replace("wiki/mods/", "")
+                    const originalSlug = doc.id.startsWith("wiki/")
+                        ? doc.id.replace("wiki/", "")
                         : null;
 
                     if (!originalSlug) return false;

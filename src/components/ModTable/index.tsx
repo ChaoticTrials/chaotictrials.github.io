@@ -36,8 +36,8 @@ const ModTable: React.FC<ModTableProps> = ({data}) => {
 
                 version.docs.forEach((doc) => {
                     // Extract the slug from `id`
-                    const originalSlug = doc.id.startsWith('wiki/mods/')
-                        ? doc.id.replace('wiki/mods/', '')
+                    const originalSlug = doc.id.startsWith('wiki/')
+                        ? doc.id.replace('wiki/', '')
                         : null;
 
                     if (originalSlug) {
