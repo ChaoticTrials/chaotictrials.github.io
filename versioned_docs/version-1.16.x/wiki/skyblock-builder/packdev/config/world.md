@@ -28,7 +28,7 @@ spawn heights for entities like squids.
 ## Structure Modifier
 Adjusts the spacing and separation of structures through a multiplier. Values for spacing and separation can be defined
 via a data pack. For more details, refer to
-the [biome_source.structures.structures documentation 🔗](https://minecraft.fandom.com/wiki/Custom#Generator_types).
+the [biome_source.structures.structures documentation 🔗](https://minecraft.wiki/w/Custom#Generator_types).
 
 - Minimal spacing is set to 1 if the modifier reduces it below this value.
 - Minimal separation is set to 0 if the modifier reduces it below this value.
@@ -39,7 +39,7 @@ This configuration option requires a full restart if you have already joined a w
 
 ## Surface
 Settings for generating the overworld surface blocks. This follows the same format as
-the [flat world generation settings 🔗](https://minecraft.fandom.com/wiki/Superflat#Preset_code_format) but will ignore
+the [flat world generation settings 🔗](https://minecraft.wiki/w/Superflat#Preset_code_format) but will ignore
 the biome configuration. This can only be set for the overworld. If the surface generation is disabled, this setting
 will be ignored.
 

@@ -20,7 +20,7 @@ spawn heights for entities like squids.
 
 ## Surface
 Configures the block settings for generating surfaces across different dimensions. Follows a format similar
-to [flat world generation settings 🔗](https://minecraft.fandom.com/wiki/Superflat#Preset_code_format), but ignores the
+to [flat world generation settings 🔗](https://minecraft.wiki/w/Superflat#Preset_code_format), but ignores the
 biome setting. These settings can be applied to each dimension. To generate a completely void space, set the dimension
 to an empty string instead of removing it from the list. If surface generation is disabled, these settings are ignored.
 

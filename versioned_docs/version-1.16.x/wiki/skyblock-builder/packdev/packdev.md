@@ -53,7 +53,7 @@ exported spawn points will be saved in `skyblock_exports/spawns.json`. Copy this
 overwrite the existing one to apply your new spawns.
 
 If you spawn inside a block, consider adding that block to
-the [block tag 🔗](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_data_pack#Tags)
+the [block tag 🔗](https://minecraft.wiki/w/Tutorials/Creating_a_data_pack#Tags)
 `#skyblockbuilder:additional_valid_spawns`.
 
 ## Loot Chests on Island

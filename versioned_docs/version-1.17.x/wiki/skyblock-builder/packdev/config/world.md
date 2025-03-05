@@ -28,7 +28,7 @@ spawn heights for entities like squids.
 ## Structure Modifier
 Adjusts the spacing and separation of structures through a multiplier. Values for spacing and separation can be defined
 via a data pack. For more details, refer to
-the [biome_source.structures.structures documentation 🔗](https://minecraft.fandom.com/wiki/Custom#Generator_types).
+the [biome_source.structures.structures documentation 🔗](https://minecraft.wiki/w/Custom#Generator_types).
 
 - Minimal spacing is set to 1 if the modifier reduces it below this value.
 - Minimal separation is set to 0 if the modifier reduces it below this value.
@@ -39,7 +39,7 @@ This configuration option requires a full restart if you have already joined a w
 
 ## Surface
 Configures the block settings for generating surfaces across different dimensions. Follows a format similar
-to [flat world generation settings 🔗](https://minecraft.fandom.com/wiki/Superflat#Preset_code_format), but ignores the
+to [flat world generation settings 🔗](https://minecraft.wiki/w/Superflat#Preset_code_format), but ignores the
 biome setting. These settings can be applied to each dimension. To generate a completely void space, set the dimension
 to an empty string instead of removing it from the list. If surface generation is disabled, these settings are ignored.
 
