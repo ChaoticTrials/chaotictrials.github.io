@@ -45,7 +45,7 @@ to an empty string instead of removing it from the list. If surface generation i
 
 ## Single Biome
 ### Biome
-Specifies the biome for an entire dimension. A list of all available structures can be found in
+Specifies the biome for an entire dimension. A list of all available biomes can be found in
 `config/skyblockbuilder/data/biomes.txt`. You can define the desired dimension, and if set to `null`,
 the [start dimension](spawn.md#dimension) will be used.
 

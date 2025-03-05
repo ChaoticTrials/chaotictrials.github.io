@@ -11,7 +11,7 @@ type VersionItem = {
 const VersionList: VersionItem[] = [
     {
         image: 'overview.png',
-        description: (
+        path: (
             <>
                 The main GUI by Sky GUIs.
             </>
@@ -20,7 +20,7 @@ const VersionList: VersionItem[] = [
     },
     {
         image: 'other_team.png',
-        description: (
+        path: (
             <>
                 The view for other teams.
             </>
@@ -29,7 +29,7 @@ const VersionList: VersionItem[] = [
     },
     {
         image: 'create_team.png',
-        description: (
+        path: (
             <>
                 The view for creating a team.
             </>
@@ -38,7 +38,7 @@ const VersionList: VersionItem[] = [
     },
     {
         image: 'own_team.png',
-        description: (
+        path: (
             <>
                 The view for your own team.
             </>

@@ -33,7 +33,8 @@ A list of event types which will be prevented.
 
 ## Spawn Protection Filters
 Spawn protection includes three filters that let you control which entities, blocks, or items can be interacted with.
-By default, these filters are pre-filled with the most common gravestone mods.
+By default, these filters are pre-filled with the most common gravestone mods. To learn more about how to use them, read
+about resource lists in the [Common Config Types](index.mdx#common-config-types).
 
 ## Dimension
 Defines the dimension where you will spawn, and the island will be generated.  
@@ -42,6 +43,11 @@ You can pick any dimension listed in the `config/skyblockbuilder/data/dimensions
 :::info
 The `dimensions.txt` file is only created after you join a Skyblock world.
 :::
+
+## Skip Center Island Creation
+Determines whether the first island is generated at the center coordinates `0 ~ 0` or starts with the next available position.
+
+This setting is useful when using dimensions like the End for spawns.
 
 ## Height
 ### Range
@@ -64,14 +70,14 @@ Defines how the spawn height is determined. Choose one of the following options:
 
 #### Valid Spawns
 A valid spawn location has two empty air blocks above a solid block.  
-The solid block can be a normal block, a slab, or any block included in the [valid spawn block tag](https://minecraft.wiki/w/Tutorials/Creating_a_data_pack#Tags) `#skyblockbuilder:additional_valid_spawns`.
+The solid block can be a normal block, a slab, or any block included in the [valid spawn block tag](https://minecraft.wiki/w/Tutorial:Creating_a_data_pack#Tags) `#skyblockbuilder:additional_valid_spawns`.
 
 ### Offset
 When using a `range` type spawn, an offset can slightly adjust the spawn height:
 - Positive values move the spawn position **up**.
 - Negative values move it **down**.
 
-## Radius
+## Radius to Find Valid Spawn
 Specifies the radius within which to find a valid spawn point if the original spawn point is invalid.
 
 Minimum: 0

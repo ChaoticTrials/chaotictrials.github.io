@@ -187,7 +187,7 @@ const config: Config = {
         prism: {
             theme: prismThemes.github,
             darkTheme: prismThemes.nightOwl,
-            additionalLanguages: ['json', 'json5', 'groovy', 'properties', 'bash']
+            additionalLanguages: ['json', 'json5', 'groovy', 'properties', 'bash', 'diff']
         },
     } satisfies Preset.ThemeConfig,
 };

@@ -1,0 +1,78 @@
+# Creating Templates
+
+
+import ToggleImage from "@site/src/components/ToggleImage";
+
+:::info
+Templates are that part of the mod which require the most effort to set up. They are part of the config file
+`templates.json5`.
+:::
+
+## Build Island
+1. First of all, you need to build an island. It could also be a cave or something else, whatever you want!
+2. After this, you need to add at least one **Spawn Block**. This block will be replaced with air in the final structure.
+3. Next, you want to use the **Structure Saver** tool select the area of your structure. For this, you need to
+Shift-Left click the first corner, and second the opposite corner as well. If that was air, just place some support
+blocks and destroy them after selecting the area.
+
+Your result would look like this ⬇️
+
+<ToggleImage src="/img/projects/skyblock-builder/setup/structure_saver_preview.png"/>
+
+:::tip
+Using you numpad keys, you can move the selection area the following:
+* 8 ➡️ Forward
+* 2 ➡️ Backwards
+* 4 ➡️ Left
+* 6 ➡️ Right
+* 9 ➡️ Up
+* 3 ➡️ Down
+:::
+
+## Export Island
+
+<ToggleImage src="/img/projects/skyblock-builder/setup/structure_saver_screen.png"/>
+
+As you can see in the image above, you have multiple options when exporting a structure to a template file.
+1. The textbox is for the name. If no name is provided, it uses the name `template`. If the specified name is taken,
+it will append `_1` counting upwards for each time, you want to export this name.
+2. You can save the structure and all the other information directly to the config file. That way, you don't have to
+move any file and copy exported settings to the config. However, you can change the config at any time.
+3. You can say that the air blocks should be ignored. This may be a good thing for large islands with a lot of air.
+That way, it may speed up the generation for players.
+4. If you want, you may export the structure to a `.snbt` file. This is a format which can be opened in a normal text
+editor. Otherwise, you will have a `.nbt` file which can be opened using a tool such as
+[NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases) or [VS Code](https://code.visualstudio.com/) with the
+extension [NBT Viewer](https://marketplace.visualstudio.com/items?itemName=Misodee.vscode-nbt). Use both tools at your
+own risk.
+5. Lastly, you can keep the positions active which you selected before in [Build Island](#build-island). That way, the
+area you selected will be preserved, and you could simply modify your structure for the next export without the need to
+re-select your area.
+
+:::warning
+If you want to edit your template, keep in mind that `.snbt` and `.nbt` files have a slightly different structure. More
+about that in the [Palettes](add-palette.mdx) section.
+:::
+
+There's also a button to go directly in the [export folder](../directory-structure.md#exports),
+and a button to delete your current selection to start over. On top are some buttons for different template types. This
+will be explained at another section in the wiki.
+
+Once saved, it will look like this, either in the config file, or in the [export folder](../directory-structure.md#exports):
+```json title="templateList entry"
+{
+  "name": "test",
+  "file": "test.nbt",
+  "spawns": {
+    "south": [
+      [ 6, 3, 5 ]
+    ],
+    "west": [],
+    "north": [],
+    "east": []
+  }
+}
+```
+
+And that's it. That's the basic configuration you need to start your own modpack using Skyblock Builder. On the next
+page, we look at more advanced settings for the structures.

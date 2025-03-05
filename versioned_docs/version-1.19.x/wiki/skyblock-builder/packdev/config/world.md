@@ -31,7 +31,7 @@ By default, all biomes are allowed. You can block specific biomes by adding them
 Each dimension must have at least one valid biome!
 :::
 
-You can find a complete list of all possible structures in `config/skyblockbuilder/data/biomes.txt`.
+You can find a complete list of all possible biomes in `config/skyblockbuilder/data/biomes.txt`.
 
 :::warning
 Some structures require specific biomes to generate (e.g., Mansions require Dark Oak Forest). These

@@ -1,0 +1,223 @@
+---
+description: All about spreads
+sidebar_position: 2
+---
+
+import ToggleImage from "@site/src/components/ToggleImage";
+
+# Spread Definitions
+
+Spread definitions allow you to control how multiple structures are positioned relative to each other. This is particularly
+useful when you want to create complex island layouts or spread multiple structures in a specific pattern.
+
+## Basic Spread Entry
+
+The simplest form of a spread entry looks like this:
+
+```json title="Simple Spread"
+{
+  "file": "default.nbt",
+  "offset": [ 0, 0, 0 ],
+  "origin": "CENTER"
+}
+```
+
+:::info
+Spread templates are located in `config/skyblockbuilder/templates/spreads/`.
+:::
+
+## Single Spread Entry Properties
+
+|   Key    |                                                      Description                                                      | Default Value |
+|:--------:|:---------------------------------------------------------------------------------------------------------------------:|:-------------:|
+|  `file`  |                                 The name of the structure file to use for this spread                                 |       ❌       |
+| `offset` | Can be either a single position `[x, y, z]` or a range with `min` and `max` coordinates for random position selection |  `[0, 0, 0]`  |
+| `origin` |                            The reference point for offset calculations (`CENTER`, `ZERO`)                             |   `CENTER`    |
+
+:::info
+Here’s a visual representation of the `origin` options:
+<ToggleImage src="/img/projects/skyblock-builder/config/origin.png"/>
+:::
+
+## Advanced Offset Configuration
+For more complex positioning, you can specify a range of possible positions. When using min and max offsets, the system
+will randomly choose a position between these two points for each structure:
+
+```json title="Advanced offset"
+{
+  "file": "default.nbt",
+  "offset": {
+    "min": [ -6, 3, 5 ],
+    "max": [ 4, 10, 3 ]
+  },
+  "origin": "CENTER"
+}
+```
+
+In this example:
+- X position will be randomly chosen between -6 and 4
+- Y position will be randomly chosen between 3 and 10
+- Z position will be randomly chosen between 3 and 5
+
+This feature is particularly useful when you want to add some variation to structure placement while still maintaining
+control over the possible positions. Each coordinate is chosen independently, allowing for any position within the
+three-dimensional space defined by the min and max points.
+
+For cases where you need exact positioning, you can either use a single position array or set the same values for both
+min and max:
+
+```json5 title="Simple Offset"
+{
+  "file": "default.nbt",
+  "offset": [ 5, 0, 5 ]  // Exact position
+}
+```
+
+This is equivalent to:
+
+```json title="Overcomplicated Offset"
+{
+  "file": "default.nbt",
+  "offset": {
+    "min": [ 5, 0, 5 ],
+    "max": [ 5, 0, 5 ]
+  }
+}
+```
+
+
+## Group Weighted Spreads
+
+For more complex arrangements, you can use group weighted spreads. These allow you to define multiple structures with
+weights and automatic spreading patterns:
+
+```json title="Spread Group"
+{
+  "entries": [
+    {
+      "spread": {
+        "file": "island1.nbt",
+        "offset": [ 0, 0, 0 ]
+      },
+      "weight": 2
+    },
+    {
+      "spread": "island2.nbt",
+      "weight": 1
+    }
+  ],
+  "amount": 3,
+  "auto_spread": {
+    "shape": "CIRCLE",
+    "radius": 100
+  }
+}
+```
+
+## Group Weighted Spread Properties
+
+|      Key      |                                    Description                                     |     Default Value     |
+|:-------------:|:----------------------------------------------------------------------------------:|:---------------------:|
+|   `entries`   |               Array of spread entries with their individual weights                |         `[]`          |
+|   `weight`    | The weight of this entire group when used in template selection (currently unused) |          `1`          |
+|   `amount`    |   Number of entries to select from the group (must not exceed available entries)   | Size of `entries` array |
+| `auto_spread` |                 Configuration for automatic structure positioning                  |        `null`         |
+
+## Auto-Spread Configuration
+
+The `auto_spread` feature allows automatic positioning of structures in various patterns:
+
+```json title="Auto Spread"
+{
+  "auto_spread": {
+    "shape": "CIRCLE",
+    "radius": 100
+  }
+}
+```
+
+:::info
+Available shapes:
+- `CIRCLE`: Arranges structures in a circular pattern
+- `SQUARE`: Arranges structures in a square pattern
+- `HEXAGON`: Arranges structures in a hexagonal pattern
+:::
+
+## Complete Example
+
+Here's a complete example showing different spread configurations:
+
+```json title="Spread References Configuration"
+{
+  "spreadReferences": {
+    "default": [
+      {
+        "file": "main_island.nbt",
+        "offset": {
+          "min": [-6, 20, 5],
+          "max": [4, 40, 3]
+        }
+      },
+      {
+        "entries": [
+          {
+            "spread": {
+              "file": "resource_island_basic.nbt"
+            },
+            "weight": 20
+          },
+          {
+            "spread": "resource_island_ore.nbt",
+            "weight": 5
+          },
+          {
+            "spread": "resource_island_farm.nbt",
+            "weight": 20
+          }
+        ],
+        "amount": 2,
+        "weight": 2,
+        "auto_spread": {
+          "shape": "HEXAGON",
+          "radius": 120
+        }
+      }
+    ],
+    "floating_crystals": [
+      {
+        "file": "crystal_formation.nbt"
+      }
+    ]
+  }
+}
+```
+
+You can then reference these spreads in your template list:
+
+```json title="Template Configuration"
+{
+  "templateList": [
+    {
+      "name": "Resource Islands",
+      "file": "base.nbt",
+      "spreads": "default"
+    },
+    {
+      "name": "Crystal Formation",
+      "file": "crystal_base.nbt",
+      "spreads": "floating_crystals"
+    }
+  ]
+}
+```
+
+Each spread reference (like `"default"` or `"floating_crystals"`) contains an array of spread entries. These entries can be either:
+- Single spread entries (direct structure placement)
+- Group weighted spreads (multiple structures with weights and auto-spread)
+
+This allows for complex combinations like:
+1. A fixed main structure with specific offset ranges
+2. Multiple variations of secondary structures arranged in patterns
+3. Special decorative structures placed individually
+
+Each template can reference one of these spread configurations, determining how additional structures are placed relative to the main template structure.

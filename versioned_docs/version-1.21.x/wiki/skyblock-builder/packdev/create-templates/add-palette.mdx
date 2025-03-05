@@ -1,0 +1,105 @@
+---
+description: How to add alternative palettes to a template
+sidebar_position: 3
+---
+
+import ToggleImage from "@site/src/components/ToggleImage";
+
+# Add Alternative Block Palettes
+
+Using block palettes, it's possible to have random blocks or a happy player which can decide whether to choose palette
+1 or 2 (or even more).
+
+## SNBT Structure
+```snbt
+{
+    DataVersion: 3955,
+    size: [2, 2, 2],
+    data: [
+        {pos: [0, 0, 0], state: "minecraft:dirt"},
+        {pos: [0, 0, 1], state: "minecraft:dirt"},
+        {pos: [1, 0, 0], state: "minecraft:dirt"},
+        {pos: [1, 0, 1], state: "minecraft:dirt"},
+        {pos: [0, 1, 0], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [0, 1, 1], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [1, 1, 0], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [1, 1, 1], state: "minecraft:grass_block{snowy:false}"}
+    ],
+    entities: [],
+    palette: [
+        "minecraft:dirt",
+        "minecraft:grass_block{snowy:false}"
+    ]
+}
+```
+
+This structure is a 2x2x2 cube with one layer dirt and one layer grass. To add more layers, you want to add this:
+```snbt
+palettes: [
+    {
+        "minecraft:dirt": "minecraft:dirt",
+        "minecraft:grass_block{snowy:false}": "minecraft:grass_block{snowy:false}"
+    },
+    {
+        "minecraft:dirt": "minecraft:rooted_dirt",
+        "minecraft:grass_block{snowy:false}": "minecraft:mycelium{snowy:false}"
+    }
+]
+```
+
+The `palettes` is an array of objects. In the first object, the key and the value are identical. The keys are always the
+exact values from `palette` above. In the next object, you can start switching the values to have other blocks.
+
+The complete file would look like this:
+```snbt
+{
+    DataVersion: 3955,
+    size: [2, 2, 2],
+    data: [
+        {pos: [0, 0, 0], state: "minecraft:dirt"},
+        {pos: [0, 0, 1], state: "minecraft:dirt"},
+        {pos: [1, 0, 0], state: "minecraft:dirt"},
+        {pos: [1, 0, 1], state: "minecraft:dirt"},
+        {pos: [0, 1, 0], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [0, 1, 1], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [1, 1, 0], state: "minecraft:grass_block{snowy:false}"},
+        {pos: [1, 1, 1], state: "minecraft:grass_block{snowy:false}"}
+    ],
+    entities: [],
+    palette: [
+        "minecraft:dirt",
+        "minecraft:grass_block{snowy:false}"
+    ],
+    palettes: [
+        {
+            "minecraft:dirt": "minecraft:dirt",
+            "minecraft:grass_block{snowy:false}": "minecraft:grass_block{snowy:false}"
+        },
+        {
+            "minecraft:dirt": "minecraft:rooted_dirt",
+            "minecraft:grass_block{snowy:false}": "minecraft:mycelium{snowy:false}"
+        }
+    ]
+}
+```
+
+## NBT Structure
+Since a NBT file cannot be viewed in a normal editor, it's hard to describe here. For that, I added two screenshots:
+One without the palette, and one with the palettes. So basically the exact structure with the exact configuration as
+in the SNBT section.
+
+<div className="two-columns-base">
+    <div className="two-columns-left">
+
+        ### Simple NBT Structure
+
+        <ToggleImage src="/img/projects/skyblock-builder/setup/simple_nbt.png"/>
+
+    </div>
+    <div className="two-columns-right">
+
+        ### Complex NBT Structure
+
+        <ToggleImage src="/img/projects/skyblock-builder/setup/complex_nbt.png"/>
+    </div>
+</div>

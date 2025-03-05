@@ -10,7 +10,7 @@ type VersionItem = {
 const VersionList: VersionItem[] = [
     {
         title: '1.17',
-        description: (
+        path: (
             <>
                 Most mods will be skipped in this version.
             </>
@@ -18,7 +18,7 @@ const VersionList: VersionItem[] = [
     },
     {
         title: '1.18',
-        description: (
+        path: (
             <>
                 Many "bad" mods were dropped in this version.
             </>
@@ -26,7 +26,7 @@ const VersionList: VersionItem[] = [
     },
     {
         title: '1.19',
-        description: (
+        path: (
             <>
                 Nearly everything will be ported or transformed into new mods.
             </>
@@ -34,7 +34,7 @@ const VersionList: VersionItem[] = [
     },
     {
         title: '1.20',
-        description: (
+        path: (
             <>
                 No mods are planned to be dropped.
             </>
@@ -42,7 +42,7 @@ const VersionList: VersionItem[] = [
     },
     {
         title: '1.21',
-        description: (
+        path: (
             <>
                 The transition from Forge to NeoForge is causing delays.
             </>

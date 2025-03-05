@@ -171,7 +171,7 @@ must be in lowercase.
 
 :::note
 If spawning inside a block, add the block to the
-`#skyblockbuilder:additional_valid_spawns` [block tag](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_data_pack#Tags).
+`#skyblockbuilder:additional_valid_spawns` [block tag](https://minecraft.wiki/w/Tutorials/Creating_a_data_pack#Tags).
 :::
 
 ## Loot Chests on Island
