@@ -6,10 +6,10 @@ description: Configure vanilla dimensions
 *The settings on this page can be configured in `config/skyblockbuilder/dimensions.json5`.*
 
 ## Overworld
-The Overworld can be configured to either use custom void generation or vanilla world generation. When using custom 
-generation (`"isCustom": true`), the world will generate as void, ignoring vanilla 
-[structures](structures.md#generating-structures) and [features](structures.md#generating-features) as configured. If
-you decide against it, a normal overworld will be generated. This may be useful when your 
+The Overworld can be configured to either use custom void generation or vanilla world generation. When using custom
+generation (`"isCustom": true`), the world will generate as void, ignoring vanilla
+[structures](structures.md#structures-to-generate) and [features](structures.md#features-to-generate) as configured. If
+you decide against it, a normal overworld will be generated. This may be useful when your
 [starting dimension](spawn.mdx#dimension) is not the Overworld.
 
 You can configure biome rings around islands using [centered biomes](#centered-biomes).
@@ -17,7 +17,7 @@ You can configure biome rings around islands using [centered biomes](#centered-b
 ## The Nether
 The Nether can be configured to either use custom void generation or vanilla world generation. When using custom
 generation (`"isCustom": true`), the world will generate as void, ignoring vanilla
-[structures](structures.md#generating-structures) and [features](structures.md#generating-features) as configured. If
+[structures](structures.md#structures-to-generate) and [features](structures.md#features-to-generate) as configured. If
 you decide against it, a normal nether will be generated.
 
 You can configure biome rings around islands using [centered biomes](#centered-biomes).
@@ -25,7 +25,7 @@ You can configure biome rings around islands using [centered biomes](#centered-b
 ## The End
 The Nether can be configured to either use custom void generation or vanilla world generation. When using custom
 generation (`"isCustom": true`), the world will generate as void, ignoring vanilla
-[structures](structures.md#generating-structures) and [features](structures.md#generating-features) as configured. If
+[structures](structures.md#structures-to-generate) and [features](structures.md#features-to-generate) as configured. If
 you decide against it, a normal nether will be generated.
 Additionally, you can decide whether the main island, which includes the Ender Dragon, should be kept or not.
 

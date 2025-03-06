@@ -10,6 +10,6 @@ This is the default island provided by the mod. There's no need to adjust any co
 as it is.
 
 If you'd like a different starting island, simply replace the `config/skyblockbuilder/templates/islands/default.nbt` 
-file and adjust the [spawns](../packdev/create-templates/index.mdx#creating-templates) accordingly.
+file and adjust the [spawns](../packdev/create-templates/index.mdx) accordingly.
 
 _The following examples will include downloads with all the relevant changes._
