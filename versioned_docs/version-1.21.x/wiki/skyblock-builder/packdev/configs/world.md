@@ -1,5 +1,5 @@
 ---
-description: Shape the world
+description: Configure island placement and world generation features
 ---
 
 # World

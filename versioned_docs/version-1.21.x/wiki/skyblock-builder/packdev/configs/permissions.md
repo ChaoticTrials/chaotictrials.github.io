@@ -1,5 +1,5 @@
 ---
-description: Configure permissions and command access
+description: Configure permission levels and restricted actions
 ---
 
 # Permissions

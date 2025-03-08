@@ -1,3 +1,8 @@
+---
+description: Information on creating custom nether portal structures
+sidebar_position: 4
+---
+
 # Custom Nether Entry
 
 Using the **Structure Saver**, you can click on the red item tab. This allows to export exactly one structure called

@@ -1,5 +1,5 @@
 ---
-description: Defining a default start inventory
+description: Control inventory clearing and dropping behavior
 ---
 
 # Inventory

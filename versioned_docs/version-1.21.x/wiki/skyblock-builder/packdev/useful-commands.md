@@ -1,3 +1,8 @@
+---
+description: A collection of useful commands
+sidebar_position: 5
+---
+
 # Useful Commands
 
 ## Convert

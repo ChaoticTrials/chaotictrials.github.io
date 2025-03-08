@@ -1,3 +1,8 @@
+---
+description: Directory Structure
+sidebar_position: 4
+---
+
 # Directories
 Here, you have a quick overview over all the directories added by Skyblock Builder.
 ```text

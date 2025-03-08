@@ -277,7 +277,8 @@ const UpdateConfigSky20To21 = () => {
         <div>
             <h2>Update Configs</h2>
             <p>
-                Drag and drop your zipped config file below to update your configuration files.
+                You already have an old config folder from 1.20.1 and want to convert it to the new format? Use this converter!
+                Just drag and drop your zipped config file below to update your configuration files.
                 It needs to be a zip file containing all the files from the <code>config/skyblockbuilder</code> folder
                 of your Skyblock 1.20.1 configs ending with <code>.json5</code>.
             </p>

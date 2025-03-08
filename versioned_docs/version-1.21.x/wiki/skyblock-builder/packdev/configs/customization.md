@@ -1,3 +1,7 @@
+---
+description: Configure team behavior and display features
+---
+
 # Customization
 *The settings on this page can be configured in `config/skyblockbuilder/customization.json5`.*
 

@@ -1,5 +1,5 @@
 ---
-description: Configure vanilla dimensions
+description: Configure vanilla dimensions and biome generation
 ---
 
 # Dimensions

@@ -1,5 +1,5 @@
 ---
-description: Define structures and features in the world
+description: Control structure and feature generation in the world
 ---
 
 # Structures

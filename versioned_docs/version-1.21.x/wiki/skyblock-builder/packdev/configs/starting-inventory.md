@@ -1,3 +1,7 @@
+---
+description: Configure items players receive when joining a team
+---
+
 # Starting Inventory
 *The settings on this page can be configured in `config/skyblockbuilder/starter_inventory.json5`.*
 
