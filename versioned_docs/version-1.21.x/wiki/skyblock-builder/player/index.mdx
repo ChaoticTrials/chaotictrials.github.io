@@ -106,3 +106,24 @@ You can only join one team. Ensure you don’t already belong to another before 
 To decline an invitation, use `/sky decline <team_name>`
 
 Declining an invitation simply removes the pending invite from your list.
+
+## Cheatsheet
+| Command                                      | Description                                                     |
+|----------------------------------------------|-----------------------------------------------------------------|
+| `/sky create <name>`                         | Creates and joins a new team with optional name                 |
+| `/sky leave`                                 | Leaves your current team (may lose inventory items)             |
+| `/sky team rename <new_name>`                | Renames your current team                                       |
+| `/sky home`                                  | Teleports to your team's island                                 |
+| `/sky spawn`                                 | Teleports to the spawn hub                                      |
+| `/sky visit <name>`                          | Visits another team's island (if allowed)                       |
+| `/sky team addSpawn <pos>`                   | Adds a spawn position (uses current location if unspecified)    |
+| `/sky team removeSpawn <pos>`                | Removes a spawn position (uses current location if unspecified) |
+| `/sky team resetSpawns`                      | Resets all spawn positions to default (irreversible)            |
+| `/sky team toggleAllowVisit [true\|false]`   | Toggles whether other players can visit your island             |
+| `/sky team toggleAllowRequest [true\|false]` | Toggles whether players can request to join your team           |
+| `/sky join <team_name>`                      | Sends a request to join a team                                  |
+| `/sky team accept <player>`                  | Accepts a player's request to join your team                    |
+| `/sky team deny <player>`                    | Denies a player's request to join your team                     |
+| `/sky invite <player>`                       | Invites a player to join your team                              |
+| `/sky accept <team_name>`                    | Accepts an invitation to join a team                            |
+| `/sky decline <team_name>`                   | Declines an invitation to join a team                           |

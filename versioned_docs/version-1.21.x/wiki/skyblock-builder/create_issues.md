@@ -25,7 +25,7 @@ If the issue happens only in a modpack, include:
 Need to share sensitive information privately? Join the [Discord server 🔗](https://discord.chaotictrials.de) and send a direct message to `@MelanX`.
 
 ### Dump Report
-Using the command `/skyblock dump`, making bug reports is easier. Running it opens a screen where you can customize what
+Using the command `/skydev dump`, making bug reports is easier. Running it opens a screen where you can customize what
 data to include in the dump file.
 ![Dump Screen](/img/projects/skyblock-builder/dump_screen.png)  
 *(The red outlined option is only visible to operators)*

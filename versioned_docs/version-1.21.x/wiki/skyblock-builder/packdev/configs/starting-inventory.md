@@ -9,7 +9,7 @@ You can set a starting inventory by customizing the `config/skyblockbuilder/star
 will be given to the player only when joining a team. If a player already was part of a team and re-joins it, no items
 will be provided to prevent abusing. You can also assign items to specific slots using the `Slot` key.
 
-You can export your inventory by using the command `/skyblock inventory export`, which will create a new file in the
+You can export your inventory by using the command `/skydev inventory export`, which will create a new file in the
 [exports](../directory-structure.md#exports) directory containing the current inventory and the corresponding slots. 
 This is the easiest way to do, and the only documented way.
 

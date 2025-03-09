@@ -18,7 +18,7 @@ The simplest form of a spread entry looks like this:
 {
   "file": "default.nbt",
   "offset": [ 0, 0, 0 ],
-  "origin": "CENTER"
+  "origin": "center"
 }
 ```
 
@@ -32,7 +32,7 @@ Spread templates are located in `config/skyblockbuilder/templates/spreads/`.
 |:--------:|:---------------------------------------------------------------------------------------------------------------------:|:-------------:|
 |  `file`  |                                 The name of the structure file to use for this spread                                 |       ❌       |
 | `offset` | Can be either a single position `[x, y, z]` or a range with `min` and `max` coordinates for random position selection |  `[0, 0, 0]`  |
-| `origin` |                            The reference point for offset calculations (`CENTER`, `ZERO`)                             |   `CENTER`    |
+| `origin` |                            The reference point for offset calculations (`center`, `zero`)                             |   `center`    |
 
 :::info
 Here’s a visual representation of the `origin` options:
@@ -50,7 +50,7 @@ will randomly choose a position between these two points for each structure:
     "min": [ -6, 3, 5 ],
     "max": [ 4, 10, 3 ]
   },
-  "origin": "CENTER"
+  "origin": "center"
 }
 ```
 
