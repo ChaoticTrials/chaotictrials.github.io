@@ -1,0 +1,129 @@
+---
+description: Information for players to interact with skyblock teams and islands
+sidebar_position: 3
+---
+
+# Player
+This section provides instructions for players on managing their teams, teleportation, and invitations.
+
+## Create Team
+You can create your own team by using `/sky create <name>` command. If you don't provide a name, a random one will be
+generated.
+
+:::info
+After creating a team, you will automatically join it. You cannot belong to more than one team.
+:::
+
+## Teleportation
+There are cooldowns for all three types of teleportation. It's not one cooldown for all types, but one for each.
+
+### Home
+You can teleport to your team’s island using `/sky home`.
+
+### Spawn
+To teleport back to the spawn hub, use `/sky spawn`.
+
+### Visit
+You can visit other teams’ islands by using `/sky visit <name>` where `name` is the team name you want to visit.
+
+:::info
+Island visits are only possible if the team allows visitors.
+:::
+
+## Manage Team
+The commands below let you manage your team effectively, including spawn positions, invites, and team settings.
+
+### Leave Team
+If you wish to leave your team, you can use `/sky leave`.
+
+:::warning
+When you leave, you may lose all your inventory items, depending on the server's configuration. You will also be
+teleported to spawn. If you are the last remaining member, the team may be forever gone.
+:::
+
+### Rename Team
+You can rename your team by running `/sky team rename <new_name>` where `new_name` the desired new name for your team
+is.
+
+```console title="Example"
+/sky team rename "Awesome Team"
+```
+
+This renames your team to "Awesome Team".
+
+### Edit Spawn Positions
+Spawn positions can be managed to define specific locations for teleporting or team member respawn points.
+
+You can use `/sky team addSpawn <pos>` to add a position as valid spawn position. If you don't provide a position, your
+current location will be used.
+
+`/sky team removeSpawn <pos>` will try to remove the position from the valid spawn positions. If none is provided, your
+current location will be used.
+
+:::info
+If you or someone else totally messed up, use `/sky team resetSpawns` to restore the original spawn positions.
+
+**This cannot be reverted**
+:::
+
+### Team Settings
+You can toggle specific settings for your team to allow or restrict specific interactions.
+
+```console title="Toggle Visitors"
+/sky team toggleAllowVisit [true|false]
+```
+
+```console title="Toggle Join Requests"
+/sky team toggleAllowRequest [true|false]
+```
+
+## Join Requests
+If a team allows players to send join requests, you can use `/sky join <team_name>` to send such a join request.
+
+The team can manually accept or deny these requests.
+
+:::info
+`/sky team accept <player>` accepts a join request by that player.
+
+`/sky team deny <player>` rejects a join request on the other hand.
+:::
+
+## Invitations
+### Sending Invitations
+If you are part of a team and want to invite a player to join, use `/sky invite <player>`.
+
+The invited player will receive a message with instructions to accept or decline the invitation. The invitation remains
+until the player responds.
+
+### Accept Invitation
+If you’ve been invited to a team, you can accept the invitation by using `/sky accept <team_name>`.
+
+:::warning
+You can only join one team. Ensure you don’t already belong to another before accepting.
+:::
+
+### Decline Invitation
+To decline an invitation, use `/sky decline <team_name>`
+
+Declining an invitation simply removes the pending invite from your list.
+
+## Cheatsheet
+| Command                                      | Description                                                     |
+|----------------------------------------------|-----------------------------------------------------------------|
+| `/sky create <name>`                         | Creates and joins a new team with optional name                 |
+| `/sky leave`                                 | Leaves your current team (may lose inventory items)             |
+| `/sky team rename <new_name>`                | Renames your current team                                       |
+| `/sky home`                                  | Teleports to your team's island                                 |
+| `/sky spawn`                                 | Teleports to the spawn hub                                      |
+| `/sky visit <name>`                          | Visits another team's island (if allowed)                       |
+| `/sky team addSpawn <pos>`                   | Adds a spawn position (uses current location if unspecified)    |
+| `/sky team removeSpawn <pos>`                | Removes a spawn position (uses current location if unspecified) |
+| `/sky team resetSpawns`                      | Resets all spawn positions to default (irreversible)            |
+| `/sky team toggleAllowVisit [true\|false]`   | Toggles whether other players can visit your island             |
+| `/sky team toggleAllowRequest [true\|false]` | Toggles whether players can request to join your team           |
+| `/sky join <team_name>`                      | Sends a request to join a team                                  |
+| `/sky team accept <player>`                  | Accepts a player's request to join your team                    |
+| `/sky team deny <player>`                    | Denies a player's request to join your team                     |
+| `/sky invite <player>`                       | Invites a player to join your team                              |
+| `/sky accept <team_name>`                    | Accepts an invitation to join a team                            |
+| `/sky decline <team_name>`                   | Declines an invitation to join a team                           |

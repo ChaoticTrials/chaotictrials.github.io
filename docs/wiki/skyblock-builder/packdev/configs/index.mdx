@@ -1,0 +1,211 @@
+---
+description: Information for modpack developers to create packs
+sidebar_position: 2
+---
+
+# Configs
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Before going deeper into the configuration of the different files, let's explain some config types you might stumble
+across, and some basic configuration help.
+
+## Troubleshooting
+First of all, troubleshooting. You may encounter issues where you change a config value on nothing happens in game.
+There are multiple reasons why this happens, but the three most common issues:
+
+1. [You didn't save.](#save-your-file)
+2. [Config wasn't reloaded.](#reload-your-config)
+3. [Config file is incorrect.](#check-for-malformed-file)
+
+In each case, you can try fixing your problem by yourself, but especially in the third option, it might be easier for
+beginners to contact me on GitHub or Discord.
+
+### Save your file
+If you use a standard editor, just use [Ctrl] + [S] to save the file, or navigate to something like "Save". That's it,
+maybe it works now.
+
+### Reload your config
+We're getting in the more advanced solutions. Reloading a config is required when you changed the file, but didn't
+restart the game. There are multiple ways to reload.
+
+1. Restart your game.
+2. Use the reload command.
+
+The reload command is added by LibX. To use it, you need to specify what should be reloaded. For all the Skyblock
+Builder configs, you may use the command `/libx reload common`. If the setting still isn't applied, you might need to
+restart the game, or in same cases you even need to generate a new world. This is the case for [centered biomes](dimensions.md#centered-biomes),
+[surface settings](world.md#surface), [structures and features](structures.md), or
+[spawn dimension](spawn.mdx#dimension).
+
+### Check for Malformed File
+The easiest way to check this is to open the [`latest.log`](https://git.io/mclogs) file, press [Ctrl] + [F] to search
+for a keyword and search for `MalformedJsonException`. If you find something like this, you need to read further:
+```
+[10:04:21] [modloading-worker-0/ERROR] [libx/]: Failed to load config 'skyblockbuilder:templates' (class: class de.melanx.skyblockbuilder.config.common.TemplatesConfig)
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated object at line 17 column 21 path $.defaultOffset
+```
+
+Let's break these lines down.
+
+- `Failed to load config 'skyblockbuilder:templates'` ➡️ The problem occurs in the config file `templates.json5`
+- `Unterminated object at line 17 column 21 path $.defaultOffset` ➡️ The problem is the config value `defaultOffset`
+
+Now we know, the issue is `defaultOffset` in `templates.json5`. When looking at it, it could be everything. Missing the
+value, forgot a comma, didn't add `"<value>"` (not in this case since `defaultOffset` just wants a number).
+
+## Common Config Types
+
+### Resource List
+In Skyblock Builder, the config often uses resource lists, which are explained in the
+[JavaDocs of LibX](https://moddingx.github.io/LibX/org/moddingx/libx/util/data/ResourceList.html#use_resource_lists_in_configs),
+but this requires some more thinking, so we're working with examples here.
+
+#### Example 1
+```json title="Normal Allow List"
+{
+  "allow_list": true,
+  "elements": [
+    "minecraft:*ocean*"
+  ]
+}
+```
+
+In this example, there's the value `allow_list` set to `true`. That means that only the elements in `elements` are
+valid for this list. Here, the elements contain only `minecraft:*ocean*`. The asterisks mean that no matter what's at
+this position, it's fine. It's a wildcard. That means, these biomes would all be valid:
+
+```text title="Valid Biomes"
+minecraft:cold_ocean
+minecraft:deep_cold_ocean
+minecraft:deep_frozen_ocean
+minecraft:deep_lukewarm_ocean
+minecraft:deep_ocean
+minecraft:frozen_ocean
+minecraft:lukewarm_ocean
+minecraft:ocean
+minecraft:warm_ocean
+```
+
+#### Example 2
+```json title="Allowed and Denied Entries in Allow List"
+{
+  "allow_list": true,
+  "elements": [
+    "minecraft:*ocean*",
+    "+minecraft:dark_forest",
+    "-minecraft:frozen_ocean"
+  ]
+}
+```
+
+Here, we only added two more lines. The `+` in front of the `minecraft:dark_forest` means that it's allowed, ignoring
+the value `allow_list`. In this example, it doesn't matter, but if `allow_list` is `false`, this would still be allowed
+using the `+`. Same for the `-`. We allowed all Ocean biomes, but by adding `-` in front of the Frozen Ocean, we said
+that this is denied. That results in a new list of valid biomes:
+
+<Tabs>
+    <TabItem value="list" label="List">
+```diff title="Valid Biomes"
+minecraft:cold_ocean
+minecraft:deep_cold_ocean
+minecraft:deep_frozen_ocean
+minecraft:deep_lukewarm_ocean
+minecraft:deep_ocean
+minecraft:lukewarm_ocean
+minecraft:ocean
+minecraft:warm_ocean
+```
+    </TabItem>
+    <TabItem value="diff" label="Diff">
+```diff title="Valid Biomes"
+minecraft:cold_ocean
++ minecraft:dark_forest
+minecraft:deep_cold_ocean
+minecraft:deep_frozen_ocean
+minecraft:deep_lukewarm_ocean
+minecraft:deep_ocean
+- minecraft:frozen_ocean
+minecraft:lukewarm_ocean
+minecraft:ocean
+minecraft:warm_ocean
+```
+    </TabItem>
+</Tabs>
+
+#### Example 3
+```json title="Deny List"
+{
+  "allow_list": false,
+  "elements": [
+    "minecraft:*ocean*"
+  ]
+}
+```
+
+:::warning
+Only because biomes like `minecraft:the_void` are in the `Valid Biomes` list, doesn't mean that they would actually
+generate. Only the biomes in the corresponding dimensions are checked against this list. That means, no
+`minecraft:end_barrens` in the overworld.
+:::
+
+Here, we have a deny list. That means that all the biomes from [Example 1](#example-1) are the only biomes which are not
+valid. This results in a way too long list of valid biomes:
+```text title="Valid Biomes"
+minecraft:badlands
+minecraft:bamboo_jungle
+minecraft:basalt_deltas
+minecraft:beach
+minecraft:birch_forest
+minecraft:cherry_grove
+minecraft:crimson_forest
+minecraft:dark_forest
+minecraft:deep_dark
+minecraft:desert
+minecraft:dripstone_caves
+minecraft:end_barrens
+minecraft:end_highlands
+minecraft:end_midlands
+minecraft:eroded_badlands
+minecraft:flower_forest
+minecraft:forest
+minecraft:frozen_peaks
+minecraft:frozen_river
+minecraft:grove
+minecraft:ice_spikes
+minecraft:jagged_peaks
+minecraft:jungle
+minecraft:lush_caves
+minecraft:mangrove_swamp
+minecraft:meadow
+minecraft:mushroom_fields
+minecraft:nether_wastes
+minecraft:old_growth_birch_forest
+minecraft:old_growth_pine_taiga
+minecraft:old_growth_spruce_taiga
+minecraft:plains
+minecraft:river
+minecraft:savanna
+minecraft:savanna_plateau
+minecraft:small_end_islands
+minecraft:snowy_beach
+minecraft:snowy_plains
+minecraft:snowy_slopes
+minecraft:snowy_taiga
+minecraft:soul_sand_valley
+minecraft:sparse_jungle
+minecraft:stony_peaks
+minecraft:stony_shore
+minecraft:sunflower_plains
+minecraft:swamp
+minecraft:taiga
+minecraft:the_end
+minecraft:the_void
+minecraft:warped_forest
+minecraft:windswept_forest
+minecraft:windswept_gravelly_hills
+minecraft:windswept_hills
+minecraft:windswept_savanna
+minecraft:wooded_badlands
+```

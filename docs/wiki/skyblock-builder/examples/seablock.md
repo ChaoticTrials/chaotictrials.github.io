@@ -6,18 +6,42 @@ description: Example Download for Seablock map
 # Seablock
 
 ![Starting template](/img/projects/skyblock-builder/examples/seablock/start_template.png)
-_[Download](/img/projects/skyblock-builder/examples/downloads/1.20.x/seablock.zip)_
+_[Download](/img/projects/skyblock-builder/examples/downloads/1.21.x/seablock.zip)_
 
-To create a Seablock-like modpack, simply set the surface settings as shown in the config below:
+To create a Seablock-like modpack, simply set the surface settings as shown in the config below. This will also generate
+some gravel and cobblestone randomly instead of sand.
 
 ```json title="config/skyblockbuilder/world.json5"
 {
-  "surface": true,
-  "surfaceSettings": {
-    "minecraft:overworld": "minecraft:bedrock,100*minecraft:sandstone,4*minecraft:sand,87*minecraft:water",
-    "minecraft:the_nether": "",
-    "minecraft:the_end": ""
-  }
+  "minecraft:overworld": [
+    {
+      "block": "minecraft:bedrock"
+    },
+    {
+      "block": "minecraft:sandstone",
+      "height": 132
+    },
+    {
+      "block": "minecraft:sand",
+      "height": 4,
+      "extras": {
+        "blocks": [
+          {
+            "block": "minecraft:gravel",
+            "weight": 99
+          },
+          {
+            "block": "minecraft:cobblestone"
+          }
+        ],
+        "chance": 0.01
+      }
+    },
+    {
+      "block": "minecraft:water",
+      "height": 55
+    }
+  ]
 }
 ```
 
@@ -29,7 +53,13 @@ correctly.
 
 ```json title="config/skyblockbuilder/templates.json5"
 {
-  "templates": [
+  "templateList": [
+    {
+      "name": "Random Color",
+      "file": "seablock_random.nbt",
+      "spawns": "seablock",
+      "allowPaletteSelection": false
+    },
     {
       "name": "Blue",
       "file": "seablock_blue.nbt",
@@ -74,5 +104,5 @@ correctly.
 }
 ```
 
-Thanks to [benbenlaw](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
-his well-known modpack [Seaopolis](https://www.curseforge.com/minecraft/modpacks/seaopolis) for this example.
+Thanks to [benbenlaw 🔗](https://www.curseforge.com/members/benbenlaw/projects) for permitting the use of templates from
+his well-known modpack [Seaopolis 🔗](https://www.curseforge.com/minecraft/modpacks/seaopolis) for this example.
