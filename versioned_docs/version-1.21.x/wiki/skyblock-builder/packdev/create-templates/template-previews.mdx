@@ -1,0 +1,21 @@
+# Template Previews
+
+In the `Customize` screen, there are previews of each island. These previews are typically generated using the existing
+structures located in the `templates/islands` directory. However, you can also set a custom preview template or image by
+putting it in `templates/icons`. For more information about directory structure, look [here](../directory-structure.md).
+
+If you want an image to be used for a preview, you simply need a square image. The name is based on the name in the
+[template list](advanced-settings.mdx#templatelist-entry-options). The name will be lowercased with special characters
+being replaced by `_`. Characters which will not be replaced are `_`, `-`, `/`, and `.`. Letters and numbers aren't
+replaced, too. If you're still not sure about the file name, look at the log file. You'll find a line with the required
+file name.
+
+Valid file types are `.png`, `.nbt`, and `.snbt`. If there are multiple possible files, because they have the same name,
+it will choose the first it finds in the following order:
+1. `.png`
+2. `.nbt`
+3. `.snbt`
+
+Using a template may sound useless in first place, but considering that there may be large islands with thousands of
+blocks, it may be good to have a lightweight preview template with much fewer blocks. Or you want to hide a hidden
+secret?
