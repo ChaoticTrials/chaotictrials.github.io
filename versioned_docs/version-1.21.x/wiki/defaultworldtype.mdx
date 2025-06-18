@@ -18,5 +18,12 @@ When you join a world, the mod will automatically generate a file at:
 This file lists all possible values for the configuration. To set a default world preset, choose a value from the file
 and update the configuration. The selected preset will automatically be applied when players access the world creation screen.
 
+In the config file, you can also choose to disable the preset selection button. This way, no other world type can be
+chosen.
+
+If you also want to allow specific world types, you can use the `allowed-world-types` config by adding all world
+types to this list that should be selectable. However, all other presets will still be available when the user presses
+the `Alt` key, as in vanilla.
+
 This mod is primarily intended for modpack creators. Regular players who only want to combine a few mods usually don't
 need it—unless they frequently create worlds with a specific world preset.
