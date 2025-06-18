@@ -29,6 +29,25 @@ on real-time, so a lagging server will not extend the interval.
 The `/simplebackups backup start <quiet (true/false)>` command starts a backup manually. Optionally, you can use the
 `quiet` parameter to suppress in-game chat messages.
 
+### Pause Backups
+The `/simplebackups backup pause` and `/simplebackups backup unpause` commands allow you to temporarily pause and
+resume automatic backups.
+
+There's a small `Paused` indicator on the screen while backups are paused.
+
+- `/simplebackups backup pause`: Stops automatic backups temporarily until resumed.
+
+:::caution
+Automatic backups will remain disabled until you explicitly re-enable them.
+:::
+
+- `/simplebackups backup unpause`: Resumes paused automatic backups.
+
+This command restores automatic backups to their normal schedule.
+
+These commands are useful for temporarily suspending backups during server maintenance, events, or other situations
+where backups need to be halted.
+
 ### Merge Incremental Backups
 The `/simplebackups mergeBackups` command merges all incremental backups located in the output directory, which is
 defined by the `outputPath` configuration setting. By default, this is the `simplebackups` directory, but it can be
@@ -40,12 +59,24 @@ If enabled in the configuration `simplebackups-common.toml`, all backup notifica
 
 ## Configuration
 
-| **Configuration** | **Description**                                                                | **Default**     | **Note/Examples**                                                             |
-|-------------------|--------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------------|
-| `onlyModified`    | Whether to back up only changed files.                                         | `false`         | Useful for large worlds, but requires old backups for a complete restoration. |
-| `backupsToKeep`   | Maximum number of backup files to retain.                                      | `10`            | ❌                                                                             |
-| `timer`           | Interval between two backups (in minutes).                                     | `120`           | `5` for every 5 minutes, `60` for every hour, `1440` for daily backups.       |
-| `sendMessages`    | Whether to send messages when a backup is performed.                           | `true`          | ❌                                                                             |
-| `maxDiskSize`     | Maximum disk space available for backups. Old files are deleted when exceeded. | `25 GB`         | Accepts formats like `10 MB`, `50 GB`.                                        |
-| `outputPath`      | Directory path where backups are stored.                                       | `simplebackups` | ❌                                                                             |
-| `mc2discord`      | Whether to send backup notifications to Discord using the Mc2Discord mod.      | `true`          | ❌                                                                             |
+| **Configuration**  | **Description**                                                                                                                                       | **Default**     | **Note/Examples**                                                                                     |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------------------------------------|
+| `enabled`          | Enables or disables backups. If set to `false`, no backups will be created.                                                                           | `true`          | Backups are paused if disabled.                                                                       |
+| `onlyModified`     | Whether to back up only changed files.                                                                                                                | `false`         | Useful for large worlds, but requires old backups for a complete restoration.                         |
+| `saveAll`          | Enables or disables a save-all call before backing up.                                                                                                | `true`          | E.g. player inventories may be not synced correctly if disabled.                                      |
+| `fullBackupTimer`  | Interval (in minutes) between mandatory full backups, even if incremental backups (`onlyModified`) are enabled.                                       | `525960`        | Example: If set to `1440`, a full backup will be created daily.                                       |
+| `backupsToKeep`    | Maximum number of backup files to retain.                                                                                                             | `10`            | ❌                                                                                                     |
+| `timer`            | Interval between two backups (in minutes).                                                                                                            | `120`           | `5` for every 5 minutes, `60` for every hour, `1440` for daily backups.                               |
+| `compressionLevel` | Determines how much the backup is compressed. `0` = no compression (low CPU, large file size), `9` = maximum compression (high CPU, small file size). | `-1`            | `-1` is a good balance between speed and compression.                                                 |
+| `sendMessages`     | Whether to send messages when a backup is performed.                                                                                                  | `true`          | ❌                                                                                                     |
+| `maxDiskSize`      | Maximum disk space available for backups. Old files are deleted when exceeded.                                                                        | `25 GB`         | Accepts formats like `10 MB`, `50 GB`.                                                                |
+| `outputPath`       | Directory path where backups are stored.                                                                                                              | `simplebackups` | ❌                                                                                                     |
+| `createSubDirs`    | Whether to create separate subdirectories for each world.                                                                                             | `false`         | Example: For a world named `New World`, backups will be saved in `<outputPath>/New World/backup.zip`. |
+| `mc2discord`       | Whether to send backup notifications to Discord using the Mc2Discord mod.                                                                             | `true`          | ❌                                                                                                     |
+
+### Server Config
+
+| **Configuration**        | **Description**                                                                                                  | **Default** | **Notes/Examples**                                                                  |
+|--------------------------|------------------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------|
+| `commandsCheatsDisabled` | Allows backup commands to work even when cheats are disabled. Recommended for single-player mode.                | `false`     | If enabled (`true`), users on servers can trigger commands without enabling cheats. |
+| `messagesForEveryone`    | Sends backup messages to all users. Disable if only users with permission level 2 or higher should receive them. | `true`      | Example: Set to `false` to notify admins/operators only.                            |
