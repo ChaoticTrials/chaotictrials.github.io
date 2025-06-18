@@ -5,9 +5,11 @@ description: Configure items players receive when joining a team
 # Starting Inventory
 *The settings on this page can be configured in `config/skyblockbuilder/starter_inventory.json5`.*
 
-You can set a starting inventory by customizing the `config/skyblockbuilder/starter_inventory.json5` file. These items 
-will be given to the player only when joining a team. If a player already was part of a team and re-joins it, no items
-will be provided to prevent abusing. You can also assign items to specific slots using the `Slot` key.
+You can set a starting inventory by customizing the `config/skyblockbuilder/starter_inventory.json5` file.  
+By default, these items are granted the first time a player joins a team, but this behavior is 
+[configurable](inventory.md#initial-inventory-type).
+Regardless of the configured mode, if a player already received the starting inventory once, they will **not** get it 
+again, which prevents abusing the system. You can also assign items to specific slots using the `Slot` key.
 
 You can export your inventory by using the command `/skydev inventory export`, which will create a new file in the
 [exports](../directory-structure.md#exports) directory containing the current inventory and the corresponding slots. 
