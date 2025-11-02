@@ -12,18 +12,36 @@ A client-side mod that allows modpack creators to pre-define default world prese
 
 ---
 
-When you join a world, the mod will automatically generate a file at:
-`<instance>/config/defaultworldtype/world-types.txt`.
+:::info
+This mod is primarily intended for modpack creators. Regular players who only want to combine a few mods usually don't
+need it—unless they frequently create worlds with a specific world preset.
+:::
 
-This file lists all possible values for the configuration. To set a default world preset, choose a value from the file
-and update the configuration. The selected preset will automatically be applied when players access the world creation screen.
+## Helper Files
+When you join a world, the mod will automatically generate two files:
+- `<instance>/config/defaultworldtype/world-types.txt`
+- `<instance>/config/defaultworldtype/biomes.txt`
 
+These files list all possible values for the configurations.
+
+## World Types
+To set a default world preset, choose a value from the file `world-types.txt` and update the configuration
+`world-preset`. The selected preset will automatically be applied when players access the world creation screen.
+
+:::info
 In the config file, you can also choose to disable the preset selection button. This way, no other world type can be
 chosen.
+:::
 
 If you also want to allow specific world types, you can use the `allowed-world-types` config by adding all world
 types to this list that should be selectable. However, all other presets will still be available when the user presses
 the `Alt` key, as in vanilla.
 
-This mod is primarily intended for modpack creators. Regular players who only want to combine a few mods usually don't
-need it—unless they frequently create worlds with a specific world preset.
+## World Type Specific Settings
+### Flat
+In the `flat-settings`, you may set the generator settings for the flat world type. You can find more information about
+the syntax on the [Official Minecraft Wiki](https://minecraft.wiki/w/Superflat#Preset_code_example) page.
+
+### Single Biome
+You can set the biome for the single biome world type using the `single-biome-biome` config. You find all biomes in
+the `biomes.txt` file.
