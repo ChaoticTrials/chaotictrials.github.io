@@ -24,6 +24,15 @@ The mod automatically creates backups during server operation under the followin
 This ensures that your world is backed up regularly and reliably, even during player logouts. The backup timer is based
 on real-time, so a lagging server will not extend the interval.
 
+:::warning
+The file `biomancy.spatial.db` from the [Biomancy](https://modrinth.com/project/uAAuyU4M) mod is not backed up. For more
+information, see this [GitHub issue](https://github.com/Elenterius/Biomancy/issues/175).
+:::
+
+:::caution
+A backup will be aborted if there is less than 128 MB of free space left on the disk.
+:::
+
 ## Commands
 ### Manual Backup
 The `/simplebackups backup start <quiet (true/false)>` command starts a backup manually. Optionally, you can use the
@@ -57,6 +66,10 @@ changed according to user preference.
 ### [Mc2Discord](https://modrinth.com/mod/mc2discord)
 If enabled in the configuration `simplebackups-common.toml`, all backup notifications will also be sent to Discord.
 
+### [Cherished Worlds](https://modrinth.com/mod/cherished-worlds)
+If enabled in the configuration `simplebackups-common.toml`, backups will only be created for all worlds that are marked
+as favorite.
+
 ## Configuration
 ### Common Config
 
@@ -76,6 +89,7 @@ If enabled in the configuration `simplebackups-common.toml`, all backup notifica
 | `createSubDirs`    | Whether to create separate subdirectories for each world.                                                                                                                                 | `false`         | Example: For a world named `New World`, backups will be saved in `<outputPath>/New World/backup.zip`.                                                                                                              |
 | `useTickCounter`   | Uses internal server ticks instead of real-world time to schedule backups. Note: Laggy servers will cause increased time between backups (e.g., 10 FPS doubles the time between backups). | `false`         | Backup schedules depend on server performance.                                                                                                                                                                     |
 | `mc2discord`       | Whether to send backup notifications to Discord using the Mc2Discord mod.                                                                                                                 | `true`          | ❌                                                                                                                                                                                                                  |
+| `onlyFavorites`    | Whether to only backup worlds that were marked as favorite.                                                                                                                               | `false`         | ❌                                                                                                                                                                                                                  |
 
 #### Ignoring Files & Folders
 
