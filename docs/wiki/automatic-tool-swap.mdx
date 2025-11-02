@@ -7,7 +7,7 @@ description: Swaps the tools to the effective one if it's in hotbar
 import ProjectHeader from '@site/src/components/ProjectHeader';
 import ResponsiveIframe from '@site/src/components/ResponsiveIframe';
 
-<ProjectHeader slug="automatic-tool-swap" mcVersion="1.20" />
+<ProjectHeader slug="automatic-tool-swap" mcVersion="1.21" />
 
 <br />
 Switches to the most effective mining tool in your hotbar.
@@ -82,17 +82,10 @@ Allowed Values: `ALWAYS`, `EMPTY_HAND`, `ITEMS`, `TOOLS`, `NO_TOOLS`
 ignore_empty_hand="ALWAYS"
 ```
 
-### swap_mode
-- **Default:** `TAG`
-- **Description:** Choose the mode for how to detect items:
-  - `TAG`: Default mode, works best with modpacks containing other tool mods.
-  - `VANILLA`: Use this if `TAG` mode doesn't work, especially on vanilla servers.
-
-Allowed Values: `TAG`, `VANILLA`
-
-```properties
-swap_mode="TAG"
-```
+### one_block_mode
+- **Default:** `false`
+- **Description:** Enable this option when playing OneBlock. It continuously searches for the most suitable tool every
+  tick while mining, rather than only when a new block is targeted.
 
 ## Showcase
 

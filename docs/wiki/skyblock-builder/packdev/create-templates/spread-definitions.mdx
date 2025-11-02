@@ -10,6 +10,11 @@ import ToggleImage from "@site/src/components/ToggleImage";
 Spread definitions allow you to control how multiple structures are positioned relative to each other. This is particularly
 useful when you want to create complex island layouts or spread multiple structures in a specific pattern.
 
+:::info
+This site is for the `spreadReferences` in `templates.json5`, as well as the direct `spreads` in the
+[`templateList` entries](advanced-settings.mdx#templatelist-entry-options).
+:::
+
 ## Basic Spread Entry
 
 The simplest form of a spread entry looks like this:
@@ -108,11 +113,16 @@ weights and automatic spreading patterns:
   ],
   "amount": 3,
   "auto_spread": {
-    "shape": "CIRCLE",
+    "shape": "circle",
     "radius": 100
   }
 }
 ```
+
+:::info
+When using the automatic spreading feature, the defined offset will be applied on top of the automatically generated
+offset position.
+:::
 
 ## Group Weighted Spread Properties
 
@@ -130,7 +140,7 @@ The `auto_spread` feature allows automatic positioning of structures in various 
 ```json title="Auto Spread"
 {
   "auto_spread": {
-    "shape": "CIRCLE",
+    "shape": "circle",
     "radius": 100
   }
 }
@@ -138,9 +148,9 @@ The `auto_spread` feature allows automatic positioning of structures in various 
 
 :::info
 Available shapes:
-- `CIRCLE`: Arranges structures in a circular pattern
-- `SQUARE`: Arranges structures in a square pattern
-- `HEXAGON`: Arranges structures in a hexagonal pattern
+- `circle`: Arranges structures in a circular pattern
+- `square`: Arranges structures in a square pattern
+- `hexagon`: Arranges structures in a hexagonal pattern
 :::
 
 ## Complete Example
@@ -162,7 +172,11 @@ Here's a complete example showing different spread configurations:
         "entries": [
           {
             "spread": {
-              "file": "resource_island_basic.nbt"
+              "file": "resource_island_basic.nbt",
+              "offset": {
+                "min": [-15, -15, -15],
+                "max": [15, 15, 15]
+              }
             },
             "weight": 20
           },
@@ -176,9 +190,8 @@ Here's a complete example showing different spread configurations:
           }
         ],
         "amount": 2,
-        "weight": 2,
         "auto_spread": {
-          "shape": "HEXAGON",
+          "shape": "hexagon",
           "radius": 120
         }
       }

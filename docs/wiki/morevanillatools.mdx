@@ -6,7 +6,7 @@ description: Tools made of vanilla material
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="morevanillatools" mcVersion="1.20" />
+<ProjectHeader slug="morevanillatools" mcVersion="1.21" />
 
 Turn basic materials into useful tools! For additional features, check out [MoreVanillaLib](morevanillalib.mdx).
 
@@ -31,6 +31,18 @@ Turn basic materials into useful tools! For additional features, check out [More
 | **Quartz**     | 117            | 3.9              | 1                 |
 | **Redstone**   | 173            | 6.2              | 2                 |
 | **Slime**      | 123            | 5.2              | 1                 |
+
+:::info
+Harvest Levels are just a simplification. The levels are redirected to block tags.
+
+- 0 ➡️ `#minecraft:incorrect_for_wooden_tool`
+- 1 ➡️ `#minecraft:incorrect_for_stone_tool`
+- 2 ➡️ `#minecraft:incorrect_for_iron_tool`
+- 3 ➡️ `#minecraft:incorrect_for_diamond_tool`
+
+You can add a new tag and set the ignore block tag to your tag or just edit the vanilla tags to modify the block
+breaking abilities.
+:::
 
 ## Obsidian Pickaxe
 The **Obsidian Pickaxe** excels at breaking Obsidian blocks more efficiently. If you frequently need to mine Obsidian,
