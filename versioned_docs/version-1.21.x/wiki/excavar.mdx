@@ -25,10 +25,12 @@ enchantment like Unbreaking on your tool.
 Additionally, you see the "Selected shape" is set to "Shapeless". Shapes can be added by other mods. Built-in the mod,
 there are two different shapes:
 
-- Shapeless
+- Shapeless - `excavar:shapeless`
     - Searches for any block around it.
-- Tunnel
+- Tunnel - `excavar:tunnel`
     - Searches only in the direction you're facing the block at.
+- 3x3 Tunnel - `excavar:big_tunnel`
+    - Searches only in the direction you're facing the block at and in all eight blocks around it.
 
 Switching the shape can be done by holding the Multimine button (default: left `Alt`) while sneaking and scrolling.
 
@@ -46,19 +48,22 @@ The server config file is stored in each world separately. You can find it after
 `.minecraft/saves/<world name>/serverconfig/excavar-server.toml`. If you want to provide a default config for each
 world (maybe for modpacks), put that file with changed values in `.minecraft/defaultconfigs/`.
 
-| Key                   | Default Value | Description                                                                                                                                                                                       |
-|-----------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `blockLimit`          | `16`          | You can set the block limit for how many blocks should be mined at once.                                                                                                                          |
-| `xpUsage`             | `0`           | Defines how many XP points are used for one block or executed action (see `xpUsageType`).                                                                                                         |
-| `xpUsageType`         | `PER_ACTION`  | Defines how XP points are deducted, e.g., per block or per action.<br/>Allowed values: `PER_ACTION` and `PER_BLOCK`                                                                               |
-| `hungerUsage`         | `0.005`       | Specifies how much food exhaustion is caused by mining one block. Default value is the vanilla amount.                                                                                            |
-| `requiresCorrectTool` | `true`        | Determines if the player needs a tool that affects block drops. Players can mine logs by hand, but stone will require a pickaxe (or another valid tool).                                          |
-| `disableDiagonals`    | `false`       | Decides if diagonal blocks (when using shapeless) are ignored. Example: Blocks like magenta glass around the targeted block may be included.                                                      |
-| `allowShapeSelection` | `true`        | Determines if the player is allowed to change the shape described in [How to Use](#how-to-use).                                                                                                   |
-| `fistForbidden`       | `false`       | If set to true, when the player holds no item, multi-mining is disabled.                                                                                                                          |
-| `invertForbiddenTag`  | `false`       | Inverts the block tag `excavar:forbidden_blocks` to allow only specific blocks.                                                                                                                   |
-| `allowedBlocks`       | `ALL`         | Selects the allowed blocks for mining. Values: `ALL` (all blocks), `ORES` (blocks with tag `#forge:ores`), `LOGS` (blocks with tag `#minecraft:logs`), and `ORES_AND_LOGS` (combination of both). |
-| `forbiddenItems`      | ❌             | Defines a list of tools that cannot be used with Excavar. You can use `*` as a wildcard (e.g., `"minecraft:*_pickaxe"` disables all vanilla pickaxes).                                            |
+| Key                   | Default Value                               | Description                                                                                                                                                                                                                             |
+|-----------------------|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `blockLimit`          | `16`                                        | You can set the block limit for how many blocks should be mined at once.                                                                                                                                                                |
+| `xpUsage`             | `0`                                         | Defines how many XP points are used for one block or executed action (see `xpUsageType`).                                                                                                                                               |
+| `xpUsageType`         | `PER_ACTION`                                | Defines how XP points are deducted, e.g., per block or per action.<br/>Allowed values: `PER_ACTION` and `PER_BLOCK`                                                                                                                     |
+| `hungerUsage`         | `0.005`                                     | Specifies how much food exhaustion is caused by mining one block. Default value is the vanilla amount.                                                                                                                                  |
+| `requiresCorrectTool` | `true`                                      | Determines if the player needs a tool that affects block drops. Players can mine logs by hand, but stone will require a pickaxe (or another valid tool).                                                                                |
+| `disableDiagonals`    | `false`                                     | Decides if diagonal blocks (when using shapeless) are ignored. Example: Blocks like magenta glass around the targeted block may be included.                                                                                            |
+| `allowShapeSelection` | `true`                                      | Determines if the player is allowed to change the shape described in [How to Use](#how-to-use).                                                                                                                                         |
+| `fistForbidden`       | `false`                                     | If set to true, when the player holds no item, multi-mining is disabled.                                                                                                                                                                |
+| `invertForbiddenTag`  | `false`                                     | Inverts the block tag `excavar:forbidden_blocks` to allow only specific blocks.                                                                                                                                                         |
+| `collectDrops`        | `false`                                     | All the drops of all blocks will be collected and dropped at the location of the block you initially broke.                                                                                                                             |
+| `allowedBlocks`       | `ALL`                                       | Selects the allowed blocks for mining. Values: `ALL` (all blocks), `ORES` (blocks with tag `#forge:ores`), `LOGS` (blocks with tag `#minecraft:logs`), and `ORES_AND_LOGS` (combination of both).                                       |
+| `forbiddenItems`      | `"botania:terra_axe", "botania:terra_pick"` | Defines a list of tools that cannot be used with Excavar. You can use `*` as a wildcard (e.g., `"minecraft:*_pickaxe"` disables all vanilla pickaxes).                                                                                  |
+| `forbiddenShapes`     | `"excavar:big_tunnel"`                      | A list of shapes which aren't allowed. The registered selectable shapes are logged in the `latest.log` file, and the built-in shapes can be found in [Additional Features](#additional-features) above.                                 |
+| `groupedTags`         | ❌                                           | A list of block tags which will be grouped together. You may as `*` as a wildcard (e.g., `"c:ores/*"` would add all different ores to the list. That way, all diamond ore types, coal ore types, and all other would be mined together. |
 
 | Diagonals Enabled (default)              | Diagonals Disabled                            |
 |------------------------------------------|-----------------------------------------------|
