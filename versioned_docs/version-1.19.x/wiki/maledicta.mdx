@@ -16,9 +16,11 @@ into a world of curses, energies, and lightning-powered effects.
 
 ## Features
 ### Maledictus Aufero
-This block has the unique ability to attract lightning strikes and interact with nearby items in fascinating ways.
-It can reduce the [negative energy](#negative-energy) surrounding items, while also possessing the chance to apply
-curses to them.
+On lightning strike the Maledictus Aufero scans enchantable items within three blocks, removes random curse enchantments
+from cursed items, and transfers those curses to compatible nearby items (pairwise if `onlyTransferCurses` is `true`),
+summoning visual-only colored lightning on affected items.
+After transfers, it halves the stored [negative energy](#negative-energy) on items with the EnergyCollector component
+(if enabled), spawning green visual lightning on items that didn’t receive normal transfer lightning.
 
 <ToggleImage src="/img/projects/maledicta/lightning.png" alt="Lightning" />
 
