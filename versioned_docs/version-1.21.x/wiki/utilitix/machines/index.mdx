@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+description: UtilitiX' machines
+---
+
+# Machines
+## Advanced Brewery
+The **Advanced Brewery** is an enhanced brewing mechanism for creating, modifying, and upgrading potions in Minecraft.
+
+### How It Works
+- **Fuel Mechanism**: Uses `Blaze Powder` as fuel, placed in a designated slot. Each unit fuels the brewery for 20
+operations.
+- **Brewing Time**: Takes up to 400 ticks/20 seconds, with special particle effects during the process.
+
+<div class="two-columns-base">
+    <div class="two-columns-left">
+        - **Slots and Ingredients**:
+        - **Ingredient Slot (0)**: Place the primary ingredient required for brewing here.
+        - **Potion Ingredient Slots (1 and 2)**: Place existing potions to transform or upgrade them.
+        - **Output Slot (3)**: The finished potion appears here after brewing.
+        - **Blaze Slot (4)**: Place `Blaze Powder` here to fuel the process.
+    </div>
+    <div class="two-columns-right">
+        ![Advanced Brewery Screen](/img/projects/utilitix/advanced_brewery.png)
+    </div>
+</div>
+
+- **Item Handlers Interaction**:
+  - **Top**: Main ingredient and output interaction.
+  - **Sides**: Potion ingredients and fuel insertion.
+  - **Bottom**: Empty or remove potion ingredient slots.
+
+- **Potion Output**: Depending on the recipe, the brewery yields different potions, placed back into the designated
+slots.
+
+### Modes of Operation
+- **Brewing**: Functions like a regular brewery. Place a potion in the center slot and a special ingredient in the input
+slot. View brewing recipes in [JEI](https://modrinth.com/mod/jei).
+- **Merging**: Combines effects of two potions in the outer slots (1 and 2) into a new potion. The center slot (3) must
+contain a Glass Bottle, and the ingredient slot (0) should be empty. Complex potions may result in
+a [Failed Potion](#failed-potion).
+- **Upgrading**: Enhances potions with a single effect, increasing the amplifier up to III. Place the potion to be
+upgraded in the center slot (3) and a **Popped Chorus Fruit** in the ingredient slot (0).
+- **Cloning**: Duplicates a potion. Place the potion to be cloned in the center slot (3) and two Water Bottles in the
+outer slots. Put **Netherite Scrap** in the ingredient slot (0) to clone the potion.
+
+### Failed Potion
+The **Failed Potion** is the result of a failed potion merge in the [Advanced Brewery](#advanced-brewery).
+Drinking it grants negative effects, so it should be used with caution.
+
+## Crude Furnace
+The **Crude Furnace** offers a faster smelting alternative to the standard Furnace, working at twice the speed but
+yielding only half the experience. It can only process items that cannot be smelted by Smokers or Blast Furnaces.
+
+## Experience Crystal
+The **Experience Crystal** is a block that lets players store and retrieve experience levels. This is particularly
+useful for saving XP for future use or transferring experience between players. The crystal attracts XP orbs within a
+7-block radius and collects them in its internal storage.

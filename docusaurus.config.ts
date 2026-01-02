@@ -83,6 +83,9 @@ const config: Config = {
                     feedOptions: {
                         type: ['rss', 'atom'],
                         xslt: true,
+                        language: 'en',
+                        title: 'Chaotic Trials Blog',
+                        description: 'The official Chaotic Trials Blog'
                     },
                     editUrl: 'https://github.com/ChaoticTrials/chaotictrials.github.io/tree/main/',
                     onInlineTags: 'warn',
@@ -130,7 +133,7 @@ const config: Config = {
                     position: 'left',
                     label: 'Porting Information',
                 },
-                // {to: '/blog', label: 'Blog', position: 'left'},
+                {to: '/blog', label: 'Blog', position: 'left'},
                 {
                     type: 'docsVersionDropdown',
                     position: 'right',
