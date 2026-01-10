@@ -1,0 +1,84 @@
+---
+description: A villager-like entity that can be used as a trader. Customizable with data packs.
+---
+
+# Data Trader
+
+import ProjectHeader from '@site/src/components/ProjectHeader';
+
+<ProjectHeader slug="data-trader" mcVersion="1.21" />
+
+## Defining the trades
+### File structure
+The trader can receive an ID for a trader offers "recipe". This is a list of single `trader offer`s. An example
+file could look like this:
+
+```json
+{
+  "Offers": [
+    {
+      "buy": {
+        "count": 1,
+        "items": {
+          "item": "minecraft:wooden_pickaxe"
+        }
+      },
+      "buyB": {
+        "count": 3,
+        "items": {
+          "tag": "c:gems/diamond"
+        }
+      },
+      "sell": {
+        "components": {
+          "minecraft:enchantments": {
+            "levels": {
+              "minecraft:efficiency": 2,
+              "minecraft:unbreaking": 10
+            }
+          }
+        },
+        "count": 1,
+        "id": "minecraft:diamond_pickaxe"
+      },
+      "rewardExp": false,
+      "xp": 0
+    }
+  ]
+}
+```
+
+This example includes only one trader offer. The trader will sell the diamond pickaxe in `sell` in exchange for the
+items specified in `buy` and `buyB`.
+
+### Offer Configuration
+
+| Name        | Required | Default | Description                                           |
+|-------------|:--------:|:-------:|-------------------------------------------------------|
+| `buy`       |    ✅     |         | The item(s) player must provide for the trade         |
+| `sell`      |    ✅     |         | The item(s) the trader gives to the player            |
+| `buyB`      |    ❌     |   Air   | Optional second item required from player             |
+| `rewardExp` |    ❌     |  false  | Whether the player receives XP from trading           |
+| `xp`        |    ❌     |    0    | Amount of XP points awarded for the trade             |
+
+:::note
+`buy` and `buyB` can be any kind of ingredient. If you want to have a tag with components, you can use the tag type
+`datatrader:tag_with_components` containing the fields `tag` and `components` in the `items` component. As in the
+example above the `buyB` object + `components` field as in `sell`.
+:::
+
+### Where to put it in?
+You use a data pack to provide these files. These are located at `<modid>/trader_offers/`. An example can be found
+[here](https://github.com/ChaoticTrials/DataTrader/blob/1.21.x/src/generated/resources/data/datatrader/trader_offers/internal.json).
+
+### How to use?
+You spawn the trader using the `/summon` command, or by using the spawn egg. After this, you use the command
+`/datatrader setOffer @e <modid>:<path>` to set the recipe. This can also be done by datapacks.
+For a normal trader, I recommend setting `NoAI` to `true`.
+
+You can also summon a trader with a specific trading table by using the
+command `/datatrader summon ~ ~ ~ <offer_id> <NoAI>`
+
+### Setting custom skin overlay
+Just put a texture to `<modid>/textures/entity/trader/<offer_id path>.png`. This texture should be something like the
+profession overlay texture, e.g. `minecraft:textures/entity/villager/profession/cleric.png`.
