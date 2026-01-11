@@ -24,6 +24,10 @@ The mod automatically creates backups during server operation under the followin
 This ensures that your world is backed up regularly and reliably, even during player logouts. The backup timer is based
 on real-time, so a lagging server will not extend the interval.
 
+:::info
+You can use the JVM argument `-Dsimplebackups.disableBackups=true` to disable automatic backups completely.
+:::
+
 :::warning
 The file `biomancy.spatial.db` from the [Biomancy](https://modrinth.com/project/uAAuyU4M) mod is not backed up. For more
 information, see this [GitHub issue](https://github.com/Elenterius/Biomancy/issues/175).
