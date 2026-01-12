@@ -10,7 +10,7 @@ const config: Config = {
     tagline: 'Minecraft Mods created for Forge and NeoForge',
     favicon: 'img/favicon.ico',
 
-    url: 'https://chaotictrials.de/',
+    url: 'https://wiki.chaotictrials.de/',
     baseUrl: '/',
 
     organizationName: 'ChaoticTrials',
