@@ -21,7 +21,8 @@ Basic information for each mana-using machine:
 - Can be powered by Mana Spreaders or Sparks
 - Capacities and mana consumption are configurable via the server config
 - Exact mana values can be disabled in the client config
-  :::
+- Recipe machines automatically push finished items into adjacent inventories (see [Configuration](#configuration))
+:::
 
 ### Alfheim Market
 The **Alfheim Market** is the Portal of Alfheim compacted into one block.
@@ -106,3 +107,10 @@ finished, they will be moved into the output slot automatically.
 The **Mechanical Daisy** is a floating Pure Daisy capable of processing up to eight blocks simultaneously within a
 single compact block. It can handle both solid materials and fluids; fluids can be inserted using pipes or buckets.
 Resulting items can be extracted using hoppers or pipes.
+
+## Configuration
+### Server Config
+
+| **Configuration**   | **Description**                                                                                                                                                               | **Default**                             |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
+| `autoExportAllowed` | A [ResourceList](https://moddingx.github.io/LibX/org/moddingx/libx/util/data/ResourceList.html) controlling which adjacent blocks recipe machines may push output items into. | `ae2:pattern_provider`, `ae2:cable_bus` |

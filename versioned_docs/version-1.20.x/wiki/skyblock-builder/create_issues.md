@@ -25,19 +25,24 @@ If the issue happens only in a modpack, include:
 Need to share sensitive information privately? Join the [Discord server 🔗](https://discord.chaotictrials.de) and send a direct message to `@MelanX`.
 
 ### Dump Report
-In version 1.20.1, a new command `/skyblock dump` was introduced, making bug reports easier. Running this command opens a screen where you can customize what data to include in the dump file.  
+In version 1.20.1, a new command `/skyblock dump` was introduced, making bug reports easier. Running this command opens 
+a screen where you can customize what data to include in the dump file.  
 ![Dump Screen](/img/projects/skyblock-builder/dump_screen.png)  
 *(The red outlined option is only visible to operators)*
 
-|                         |                                                                                                                       |
-|-------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `Configs`               | Includes all Skyblock Builder configuration files.                                                                    |
-| `Templates and Spreads` | Includes files from the `config/skyblockbuilder/templates` directory.                                                 |
-| `level.dat`             | Adds the `level.dat` file of the current world.                                                                       |
-| `latest.log`            | Includes the `latest.log` file, which contains chat messages and may include sensitive information like IP addresses. |
-| `crash-<latest>.txt`    | Includes the most recent crash report (only select this if the crash is related to the issue).                        |
-| `Skyblock Data File`    | Adds `world/data/skyblock_builder.dat`, which stores team metadata, island positions, and more.                       |
-| `Create Dump on Server` | Ensures the dump file is created on the server (useful for server-side issues).                                       |
+Starting with version **1.20.1-5.1.29**, the dump uses manifest v2, which adds mod file hashes (MD5, SHA-1, SHA-512) for
+Skyblock Builder and its dependencies, includes `debug.log` alongside `latest.log`, and automatically redacts IP
+addresses from log files and crash reports.
+
+|                         |                                                                                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Configs`               | Includes all Skyblock Builder configuration files.                                                                                                 |
+| `Templates and Spreads` | Includes files from the `config/skyblockbuilder/templates` directory, including subdirectories.                                                    |
+| `level.dat`             | Adds the `level.dat` file of the current world.                                                                                                    |
+| `latest.log`            | Includes `latest.log` and `debug.log`. IP addresses are automatically redacted.                                                                    |
+| `crash-<latest>.txt`    | Includes the most recent crash report. IP addresses are automatically redacted. Only select this if the crash is related to the issue.             |
+| `Skyblock Data File`    | Adds `world/data/skyblock_builder.dat`, which stores team metadata, island positions, and more.                                                    |
+| `Create Dump on Server` | Ensures the dump file is created on the server (useful for server-side issues).                                                                    |
 
 Click the **"Create Dump"** button to generate a ZIP file, located in `<instance>/skyblockbuilder/dumps`. The generated file name will appear in the chat, and clicking it will open the folder.
 
