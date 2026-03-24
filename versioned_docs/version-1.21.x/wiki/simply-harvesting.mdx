@@ -26,3 +26,9 @@ be harvested and replants new seeds.
 ## Known Limitations
 The mod only supports vanilla crops (other modded crops may not be recognized unless they use the vanilla crop
 mechanics). If requested, additional crop support may require compatibility updates.
+
+## Ignore Harvesting
+There's the block tag `#simplyharvesting:ignore_harvesting` that can be used to ignore harvesting on certain blocks. By
+default, it's filled with the block tag `#c:berry_bushes`. That's filled with some berry bushes I found in other mods.
+If you encounter issues with other bushes, report them on GitHub; I'll add them to the ignore list. Until they are
+added, you can toggle the `disableOnSneaking` option in the server config to disable harvesting while sneaking.
