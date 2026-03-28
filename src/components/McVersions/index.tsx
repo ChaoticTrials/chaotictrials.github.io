@@ -52,7 +52,7 @@ const VersionList: VersionItem[] = [
         title: '26.1',
         description: (
             <>
-                Switching
+                Switching to supporting older versions as well.
             </>
         ),
     },

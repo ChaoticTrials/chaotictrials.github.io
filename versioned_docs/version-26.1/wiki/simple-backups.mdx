@@ -6,7 +6,7 @@ description: A simple mod to create scheduled backups
 
 import ProjectHeader from '@site/src/components/ProjectHeader';
 
-<ProjectHeader slug="simple-backups" mcVersion="1.21"/>
+<ProjectHeader slug="simple-backups" mcVersion="26.1"/>
 
 This mod is designed to create and manage backups for your Minecraft server. You can specify the number of backups to
 keep and set a maximum storage limit. Older backups are automatically deleted to free up space.
@@ -17,8 +17,8 @@ keep and set a maximum storage limit. Older backups are automatically deleted to
 
 The mod automatically creates backups during server operation under the following conditions:
 1. **Backup Trigger:** A backup is created if:
-   - There is at least one player online.
-   - No players are online, but someone has just logged out.
+- There is at least one player online.
+- No players are online, but someone has just logged out.
 2. **Player Logouts:** If the last player logs out, a backup will be made when the server next checks.
 3. **When no players are online:** Up to `noPlayerBackupCount` backups (default: `1`) are created using `noPlayerBackupTimer` as the interval (`0` = use `timer`). Once that limit is reached, no further backups are created until a player joins (unless `noPlayerBackups` is `true`; see **Configuration**).
 4. **Player joins reset the count:** Any join resets the no-player counter. If the regular `timer` has already elapsed, a backup is triggered immediately upon joining.

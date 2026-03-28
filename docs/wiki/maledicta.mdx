@@ -7,7 +7,7 @@ description: SpookyJam 2022 mod, dealing with Curses
 import ProjectHeader from '@site/src/components/ProjectHeader';
 import ToggleImage from "@site/src/components/ToggleImage";
 
-<ProjectHeader slug="maledicta" mcVersion="1.20" />
+<ProjectHeader slug="maledicta" mcVersion="1.21" />
 
 This mod introduces a variety of new mechanics, enchantments, and blocks to enhance your Minecraft experience. Dive
 into a world of curses, energies, and lightning-powered effects.
@@ -16,9 +16,11 @@ into a world of curses, energies, and lightning-powered effects.
 
 ## Features
 ### Maledictus Aufero
-This block has the unique ability to attract lightning strikes and interact with nearby items in fascinating ways.
-It can reduce the [negative energy](#negative-energy) surrounding items, while also possessing the chance to apply
-curses to them.
+On lightning strike the Maledictus Aufero scans enchantable items within three blocks, removes random curse enchantments
+from cursed items, and transfers those curses to compatible nearby items (pairwise if `onlyTransferCurses` is `true`),
+summoning visual-only colored lightning on affected items.
+After transfers, it halves the stored [negative energy](#negative-energy) on items with the EnergyCollector component
+(if enabled), spawning green visual lightning on items that didn’t receive normal transfer lightning.
 
 <ToggleImage src="/img/projects/maledicta/lightning.png" alt="Lightning" />
 
@@ -36,6 +38,10 @@ acts of unintended kindness.
 **Curse of Randomness**
 - Whenever the item loses durability, its enchantments are shuffled unpredictably, though curses remain unaffected. This
 curse introduces a chaotic and thrilling element to enchanted gear.
+
+**Curse of Fleeting Riches**
+- For each dropped item, there is a 20% chance for it to be unobtainable. You may not pick it up and it will disappear
+after 1.5 s.
 
 ### Negative Energy
 :::info
