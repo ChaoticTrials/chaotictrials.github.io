@@ -22,7 +22,7 @@ This update will try to modify your `level.dat` file. If you experience any issu
 [issue tracker](https://github.com/ChaoticTrials/SkyblockBuilder/issues).
 
 ## What went wrong?
-When updating to Minecraft 1.21.1, I made the first mistake. For the centered biomes feature, I need a custom biome
+When updating to Minecraft 1.21.1, I made the first mistake. For the [centered biomes feature](/docs/1.21.x/wiki/skyblock-builder/packdev/configs/dimensions#centered-biomes), I need a custom biome
 source. This source is registered properly, it works as intended. However, I made the mistake to explicitly use
 `MultiNoiseBiomeSource` as parent instead of a generic `BiomeSource`. Because of this, it didn't save the type of the
 biome source because it's always a `MultiNoiseBiomeSource`, what's wrong with that? Well, when implementing new
