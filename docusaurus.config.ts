@@ -76,6 +76,9 @@ const config: Config = {
                         '1.21.x': {
                             banner: 'none'
                         },
+                        '26.1': {
+                            banner: 'none'
+                        },
                     }
                 },
                 blog: {
@@ -112,7 +115,7 @@ const config: Config = {
         },
         announcementBar: {
             backgroundColor: 'rgba(0,196,96,0.73)',
-            content: `🚀 <b><a target="_blank" href="/porting/version/1.21">1.21</a> Porting Information</b> 🌟`,
+            content: `🚀 <b><a target="_blank" href="/porting/version/26.1">26.1</a> Porting Information</b> 🌟`,
         },
         navbar: {
             title: 'Chaotic Trials',
