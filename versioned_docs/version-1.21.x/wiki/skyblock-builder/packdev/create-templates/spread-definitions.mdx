@@ -13,7 +13,8 @@ useful when you want to create complex island layouts or spread multiple structu
 
 :::info
 This site is for the `spreadReferences` in `templates.json5`, as well as the direct `spreads` in the
-[`templateList` entries](advanced-settings.mdx#templatelist-entry-options).
+[`templateList` entries](advanced-settings.mdx#templatelist-entry-options), and the [`netherSpreads`](#nether-spreads)
+field.
 :::
 
 ## Basic Spread Entry
@@ -181,6 +182,34 @@ Available shapes:
 - `square`: Arranges structures in a square pattern
 - `hexagon`: Arranges structures in a hexagonal pattern
 :::
+
+## Nether Spreads
+
+The `netherSpreads` field accepts the same inline array format as a direct `spreads`
+definition. Entries are placed around the nether portal **once per team** on their first visit to the
+nether. Subsequent portal generations (e.g. after a portal is broken and rebuilt) will not re-place them.
+
+:::info
+Requires a [Custom Nether Entry](custom-nether-entry.md) to be defined.
+Spread templates are still loaded from `config/skyblockbuilder/templates/spreads/`.
+:::
+
+```json title="Nether Spreads"
+{
+  "netherSpreads": [
+    {
+      "file": "nether_island.nbt",
+      "offset": {
+        "min": [ -10, 0, -10 ],
+        "max": [ 10, 0, 10 ]
+      },
+      "origin": "center"
+    }
+  ]
+}
+```
+
+The offset is applied relative to the nether portal block position.
 
 ## Complete Example
 

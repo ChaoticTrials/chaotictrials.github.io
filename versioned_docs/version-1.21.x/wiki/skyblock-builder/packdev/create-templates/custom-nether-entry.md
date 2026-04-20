@@ -10,6 +10,8 @@ Using the **Structure Saver**, you can click on the red item tab. This allows to
 into the folder `config/skyblockbuilder/templates/portals`. 
 
 :::warning
-Don't provide too many resources. If the nether portal block will be destroyed, the structure will re-generate next time
-entering the nether.
+Don't provide too many resources in the portal itself. If the nether portal block will be destroyed, the structure will 
+re-generate next time entering the nether.
+
+You may use the [Nether Spreads](spread-definitions.mdx#nether-spreads) for providing additional resources.
 :::
