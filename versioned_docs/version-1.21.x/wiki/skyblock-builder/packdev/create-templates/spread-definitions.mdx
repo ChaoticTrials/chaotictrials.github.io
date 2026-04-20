@@ -3,6 +3,7 @@ description: Documentation on how to position multiple structures relative to ea
 sidebar_position: 2
 ---
 
+
 import ToggleImage from "@site/src/components/ToggleImage";
 
 # Spread Definitions
@@ -41,7 +42,7 @@ Spread templates are located in `config/skyblockbuilder/templates/spreads/`.
 
 :::info
 Here’s a visual representation of the `origin` options:
-<ToggleImage src="/img/projects/skyblock-builder/config/origin.png"/>
+<ToggleImage src="/img/projects/skyblock-builder/config/origin.png" />
 :::
 
 ## Advanced Offset Configuration
@@ -126,12 +127,40 @@ offset position.
 
 ## Group Weighted Spread Properties
 
-|      Key      |                                    Description                                     |     Default Value     |
-|:-------------:|:----------------------------------------------------------------------------------:|:---------------------:|
-|   `entries`   |               Array of spread entries with their individual weights                |         `[]`          |
-|   `weight`    | The weight of this entire group when used in template selection (currently unused) |          `1`          |
-|   `amount`    |   Number of entries to select from the group (must not exceed available entries)   | Size of `entries` array |
-| `auto_spread` |                 Configuration for automatic structure positioning                  |        `null`         |
+|      Key      |                                  Description                                   |      Default Value      |
+|:-------------:|:------------------------------------------------------------------------------:|:-----------------------:|
+|   `entries`   |             Array of spread entries with their individual weights              |          `[]`           |
+|   `weight`    |        The weight of this entire group when used in template selection         |           `1`           |
+|   `amount`    | Number of entries to select from the group (must not exceed available entries) | Size of `entries` array |
+| `auto_spread` |               Configuration for automatic structure positioning                |         `null`          |
+
+## Nested Groups
+
+Entries within a group can themselves be groups, allowing multi-level weighted selection.
+The `weight` of a nested group controls how likely it is to be chosen by its parent.
+
+  ```json title="Nested Group"
+{
+  "entries": [
+    {
+      "spread": "common_island.nbt",
+      "weight": 5
+    },
+    {
+      "weight": 2,
+      "amount": 1,
+      "entries": [
+        { "spread": "rare_a.nbt", "weight": 1 },
+        { "spread": "rare_b.nbt", "weight": 1 }
+      ]
+    }
+  ],
+  "amount": 1
+}
+```
+
+In this example the parent picks one slot: `common_island.nbt` wins ~71% of the time (weight 5 of 7), and the nested
+group wins ~29% (weight 2 of 7) — then the nested group itself picks one of `rare_a` or `rare_b` with equal probability.
 
 ## Auto-Spread Configuration
 
