@@ -105,3 +105,17 @@ In this example:
 2. Both the Nether and End dimensions are configured as void spaces with empty arrays
 
 The total height of all layers in a dimension cannot exceed 384 blocks.
+
+## Dimensions per Team
+:::warning
+This is experimental and not properly tested yet. Feel free to test it and report anything to me. Bugs and issues on
+GitHub, good working things on CurseForge or Discord. Thank you ❤️
+:::
+
+:::note
+This config requires [Infiniverse](https://www.curseforge.com/minecraft/mc-mods/infiniverse).
+:::
+
+If enabled, each team will be teleported to its own overworld and nether. The End isn't supported because of the Ender
+Dragon doesn't want to be alive in multiple dimensions. And modded dimensions aren't supported because of the amount of
+custom dimensions available out there!
