@@ -4,9 +4,8 @@
 
 ### Current State
 
-This page is currently under development. For wiki pages of my mods, please
-visit [Chaotic Trials Wiki](https://wiki.chaotictrials.de/). You can find the current deployment of the website
-at [Chaotic Trials Staging](https://staging.chaotictrials.de/).
+Visit the [Chaotic Trials Wiki](https://wiki.chaotictrials.de/) for up-to-date information on mod changes and
+development progress.
 
 ### Getting Started
 
