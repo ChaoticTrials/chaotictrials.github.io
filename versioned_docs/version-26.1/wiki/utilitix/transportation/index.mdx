@@ -1,0 +1,101 @@
+---
+sidebar_position: 4
+description: UtilitiX' transportation section
+---
+
+import ResponsiveIframe from '@site/src/components/ResponsiveIframe';
+
+# Transportation
+## More Minecarts
+### Anvil Minecart
+The anvil minecart removes entities obstructing the track, pushing them off to allow other minecarts to pass safely. It
+causes minimal damage (about a quarter of a heart) to entities during the push.
+
+### Ender Chest Minecart
+A minecart equipped with built-in ender chest functionality.
+
+### Piston Minecart
+<div class="two-columns-base">
+    <div class="two-columns-left">
+        This minecart can place and replace rails. It has an inventory where new rails can be placed on the left side and retrieved rails can be collected from the right side. Redstone torches can be added to power the rails; these torches are automatically placed below the track if the rails can be powered.
+        The Piston Cart system has two primary modes: **Place** and **Replace**. Here's how each mode works:
+    </div>
+    <div class="two-columns-right">
+        <ResponsiveIframe videoId="IkzvrCyQhnk" />
+    </div>
+</div>
+
+#### Place Mode
+- **Function**: The `Place` mode is used to lay down new rails where none currently exist.
+- **Usage**:
+- The Piston Cart will automatically detect if there is no rail at its current position and attempt to place a rail
+from its inventory.
+- Useful for laying down tracks in new areas, ensuring a continuous path for the cart to follow.
+
+#### Replace Mode
+- **Function**: The `Replace` mode is designed to replace existing rails with new ones.
+- **Usage**:
+- The Piston Cart will check if there is an existing rail at its current position.
+- If it finds a rail, it will remove the old rail and place a new one from its inventory.
+- Ideal for upgrading or repairing existing tracks without manually removing the old rails first.
+
+:::info[tl;dr]
+- **Place**: Adds new rails where none exist.
+- **Replace**: Replaces existing rails with new ones.
+:::
+
+Choose the appropriate mode based on whether you need to lay new tracks or upgrade existing ones. Understanding these
+modes ensures efficient management of your rail system.
+
+### Stonecutter Minecart
+The Stonecutter Minecart can break blocks. By right-clicking, you can adjust the position of the saw. It will always
+break the block in front of the saw. The cart pauses while breaking a block and resumes its previous speed once done. It
+won't break a block at the same position consecutively, preventing static block breaking. Block drops are placed on the
+track, allowing collect with a hopper minecart.
+
+## More Rails
+### Crossing Rail
+The **Crossing Rail** allows you to create an intersection between two tracks.
+
+### Directional Rail
+The **Directional Rail** moves minecarts in a single direction without external power sources, useful for automated
+pathways with specific directional flows.
+
+### Filter Rail
+The **Filter Rail** sorts minecarts based on their label, set with a [Minecart Tinkerer](#minecart-tinkerer).
+Labeled minecarts go sideways, while others continue straight.
+:::note
+Also exists as a Reinforced Rail.
+:::
+
+### Highspeed Rail
+The **Highspeed Rail** provides a faster alternative to the Powered Rail but cannot be used on slopes. It is ideal for
+creating high-speed minecart tracks on flat surfaces.
+:::note
+Also exists as a Directional Rail.
+:::
+
+### Piston Minecart Controller Rail
+The **Piston Minecart Controller Rail** manages [Piston Minecarts](#piston-minecart). Labels set with
+a [Minecart Tinkerer](#minecart-tinkerer) configure the mode for Piston Minecarts traveling over it. These
+rails are **not replaced** by Piston Minecarts.
+
+### Reinforced Rail
+The **Reinforced Rail** maintains high speed on turns, similar to [Highspeed Rails](#highspeed-rail), but cannot be used
+on slopes.
+:::info
+This rail type exists for the following rails:
+- [Rail](https://minecraft.wiki/w/Rail)
+- [Crossing Rail](#crossing-rail)
+- [Filter Rail](#filter-rail)
+- [Piston Minecart Controller Rail](#piston-minecart-controller-rail)
+:::
+
+### Minecart Tinkerer
+The **Minecart Tinkerer** is used to add labels to minecarts and some types of rails. It can also toggle additional
+options for certain rails when right-clicked. This can be used for the [Filter Rail](#filter-rail)
+or [Piston Minecart Controller Rail](#piston-minecart-controller-rail).
+
+## Shulker Boats and Rafts
+Similar to Chest Boats and Rafts, you can now craft Shulker Boats and Rafts using any wood type. When broken, the items
+inside will be stored.

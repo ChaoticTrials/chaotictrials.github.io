@@ -1,0 +1,62 @@
+
+import ResponsiveIframe from '@site/src/components/ResponsiveIframe';
+
+# In-World Changes
+## Auto Replant
+When a seed item or sapling despawns, it will attempt to replant itself before discarding.
+
+:::info
+Only seeds and saplings for blocks with the tags `#minecraft:saplings` or `#minecraft:crops` are supported.
+:::
+
+## Better Mending
+<div class="two-columns-base">
+    <div class="two-columns-left">
+        When an item with Mending is damaged and lies on the ground with nearby XP orbs, the item will attract the XP orbs. This occurs within a 7-block radius from the item's position. The collected XP is then used to repair the item.
+    </div>
+    <div class="two-columns-right">
+        <ResponsiveIframe videoId="wi2w5wBHBHk" />
+    </div>
+</div>
+
+### Crouching Prevents Waterlogging
+While crouching, waterloggable blocks will no longer get waterlogged. Instead, water will be placed as if waterlogging
+does not exist.
+
+## Double Door Opening
+When two doors are placed next to each other with hinges in the center, both doors will open simultaneously.
+
+:::warning
+If [Quark](https://modrinth.com/mod/quark) is installed, UtilitiX will disable this feature automatically. Use Quarks'
+option to disable it instead.
+:::
+
+## Dynamic Creeper Explosions
+When a Creeper explodes, the size of the explosion will now be adjusted based on the Creeper's current
+health. A healthier Creeper will cause a larger explosion, while a Creeper with low health will result in a smaller
+explosion. A Creeper with full health will cause as much damage as in vanilla.
+
+## Gilding
+The **Gilding Crystal** is used for gilding items, making Piglins friendlier and non-aggressive. It works the same as
+golden armor but is available for *any* armor.
+
+## Glue
+The **Glue Ball** can be attached to the sides of solid blocks, making those blocks sticky. When pushed by a piston,
+these sticky blocks will pull adjacent blocks with them. When sneaking, the glue will be attached to the opposite side
+of the block you are looking at.
+
+The default block limit for adjacent blocks is 12 as vanilla slime blocks. However, you can increase this limit up to
+256 in the common configuration file.
+
+:::warning
+This is incompatible with the Piston Logic Replacement by [Zeta](https://modrinth.com/mod/zeta).
+:::
+
+## Wandering Trader
+### Extra Time for Trades
+For each successful trade, the Wandering Trader will stay for 20s (400 ticks) longer in the world. You may change this
+value in the common configuration file.
+
+## Per Player Wandering Trader
+The game will summon a Wandering Trader for every player, not just a random one. However, the chance will be calculated
+for each player individually.
