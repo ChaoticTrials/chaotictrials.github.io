@@ -74,6 +74,19 @@ The `excavar:forbidden_blocks` tag is used to specify blocks that Excavar will i
 
 If the `invertForbiddenTag` option is enabled, only the blocks with this tag will be mineable.
 
+## Adding compatability
+For adding compatibility with other mods, Excavar adds these item tags:
+- `#excavar:axes` - contains `#minecraft:axes`, `#c:tools/aiots`, and `#c:tools/paxels`
+- `#excavar:hoes` - contains `#minecraft:hoes`, `#c:tools/aiots`
+- `#excavar:pickaxes` - contains `#minecraft:pickaxes`, `#c:tools/aiots`, and `#c:tools/paxels`
+- `#excavar:shovels` - contains `#minecraft:shovels`, `#c:tools/aiots`, and `#c:tools/paxels`
+- `#excavar:swords` - contains `#minecraft:swords`, `#c:tools/aiots`
+
+For adding compatibility as **pack developer**, you can use these Excavar tags to add more tools without breaking recipes
+that rely on the vanilla tool tags.
+
+As **mod developer**, you should add your tools to the vanilla tool tags, or the corresponding `c` (common) tags.
+
 ## Showcase
 <iframe
     width="451"
