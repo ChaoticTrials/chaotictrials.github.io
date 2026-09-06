@@ -32,6 +32,11 @@ The following actions can be individually allowed or restricted:
 |        `teleport_home`           |      Teleporting to home island        |
 |   `teleport_across_dimensions`   |     Cross-dimensional teleportation    |
 
+:::note
+With [dimension per team](../dimension-per-team.md), every team lives in its own dimension, so
+`teleport_across_dimensions` would deny nearly every teleport. The check is skipped while that feature is on.
+:::
+
 ## Spawn Settings
 ### Range
 Defines the maximum distance from the island center (in blocks) where new spawns can be added. Default: 50
@@ -43,6 +48,11 @@ Defines the maximum distance from the island center (in blocks) where new spawns
 
 ### Dimension Restrictions
 Controls which dimensions allow teleportation commands. Uses the [resource list](index.mdx#common-config-types) format.
+
+:::info
+A list built from vanilla dimension names won't match the dimensions created by
+[dimension per team](../dimension-per-team.md), since those aren't vanilla dimensions.
+:::
 
 ### Cooldowns
 Configures the waiting period (in ticks) between teleport commands:

@@ -1,6 +1,6 @@
 ---
 description: A collection of useful commands
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Useful Commands
