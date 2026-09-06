@@ -1,0 +1,155 @@
+---
+description: Details on customizing structure settings like spawn points and offsets
+sidebar_position: 1
+---
+
+# Advanced Structure Settings
+
+In the previous chapter, we exported a file successfully to the config. Now, we want to customize everything a bit more.
+
+---
+
+## The Main Spawn Island
+The `mainSpawnIsland` option is `null` by default. That means, there is no dedicated spawn structure selected. In that
+case, the first entry of `templateList` will be used. Otherwise, you may define it exactly as an entry in that list. For
+more information about the specific options, read [next chapter](#templatelist-entry-options).
+
+## `templateList` Entry Options
+
+At the moment, we're just using the config value `templateList` and only added one entry. In that entry, we didn't even
+use all the available settings. Here is everything you can configure in each entry.
+
+:::info
+Island templates are located in `config/skyblockbuilder/templates/islands/`.
+:::
+
+|           Key           |                                                                                                             Description                                                                                                              | Default Value |
+|:-----------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|
+|         `name`          | The name is either a string or a translation key. For being a translation key, you need to add `{` and `}` around the string. That way, you can translate it in multiple languages by providing a resource pack with language files. |       ❌       |
+|         `desc`          |                        This is the description for the template, shown in the customize screen for single player. By wrapping it with curly brackets, it converts into a translation key, same as the `name`.                        |     `""`      |
+|         `file`          |                                                                           The file name with extension. Look closely if you have a `.nbt` or `.snbt` file.                                                                           |       ❌       |
+|        `spawns`         |                                 Either a string as reference from `spawnPointReferences` or a direct object. For more detailed information, read [Spawn Point Definitions](#spawn-point-definitions)                                 |       ❌       |
+|        `offset`         |                                  The offset is useful if you want your structure to be generated slightly off from your `0 ~ 0`. This is applied on top of the [`defaultOffset`](#default-offset).                                   | `[ 0, 0, 0 ]` |
+|   `surroundingBlocks`   |                        Either a string as reference from `surroundingBlockReferences` or a direct object. For more detailed information, read [Surrounding Block Definitions](#surrounding-block-definitions)                        |     `{}`      |
+|        `spreads`        |                                      Either a string as reference from `spreadReferences` or a direct object. For more detailed information, read [Spread Definitions](spread-definitions.mdx)                                       |     `[]`      |
+| `allowPaletteSelection` |                         This allows the user to select a palette for this template. If there's no second block palette, this will have no effect. Read more about palettes in [Add Palettes](add-palette.mdx)                          |    `true`     |
+
+### Default Offset
+This value is the default offset from 0 ~ 0 to generate the islands. This is applied to all the templates, no matter
+what the template-specific offset is. This may be used to generate the islands in the middle of a `.mca` file. For that,
+you want to use a value of `256`.
+
+## Spawn Point Definitions
+The spawn point definitions are pretty simple. You have a key, and a JSON object. The key may be used as reference in
+the `templateList`. In this example, there are two possible keys where you could use exactly one. Available keys are
+`default` and `definition_2`. Using key `default` will add exactly one spawn point at position X=6, Y=3, and Z=5,
+relative to 0, 0, 0 of the structure. This spawn point was added to `south`, so you would look in south direction.
+Using `definition_2` would add one spawn point at 0, 0, 2 is west direction and one at 2, 4, 6 in north direction. In
+this case, a random spawn point will be used whenever a player will be teleported to that team/island.
+
+```json title="spawnPointReferences"
+{
+  "default": {
+    "south": [
+      [ 6, 3, 5 ]
+    ],
+    "west": [],
+    "north": [],
+    "east": []
+  },
+  "definition_2": {
+    "south": [],
+    "west": [
+      [ 0, 0, 2 ]
+    ],
+    "north": [
+      [ 2, 4, 6 ]
+    ],
+    "east": []
+  }
+}
+```
+
+## Surrounding Block Definitions
+The surrounding block definitions allow you to define blocks that will be placed around your structure. This is useful
+for creating a border or safety barrier around your island. Like spawn points, you can define these either directly in
+the template or reference them from the `surroundingBlockReferences` configuration.
+
+Here's an example of how to define surrounding blocks:
+
+```json title="surroundingBlockReferences"
+{
+  "default": {
+    "margin": 1,
+    "blocks": [
+      {
+        "block": "minecraft:stone",
+        "weight": 1
+      }
+    ]
+  },
+  "varied_border": {
+    "margin": 2,
+    "blocks": [
+      {
+        "block": "minecraft:cobblestone",
+        "weight": 3
+      },
+      {
+        "block": "minecraft:mossy_cobblestone"
+      },
+      {
+        "block": "minecraft:stone_bricks",
+        "weight": 2
+      }
+    ]
+  }
+}
+```
+
+The configuration has two main components:
+
+|   Key    |                                                                                  Description                                                                                   | Default Value |
+|:--------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|
+| `margin` |                                        The amount for how many layers around the structure will be placed. Must be a positive integer.                                         |      `1`      |
+| `blocks` | An array of block definitions, each with a `block` (resource location) and optional `weight`. Blocks with higher weights are more likely to be chosen during random selection. |     `[]`      |
+
+### Block Definition Properties
+
+Each block in the `blocks` array can have the following properties:
+
+|   Key    |                                                   Description                                                    | Default Value |
+|:--------:|:----------------------------------------------------------------------------------------------------------------:|:-------------:|
+| `block`  | The resource location of the block (e.g., `"minecraft:stone"`). Must be a valid block ID registered in the game. |       ❌       |
+| `weight` |               The relative chance of this block being selected. Higher numbers mean higher chance.               |      `1`      |
+
+You can reference these definitions in your template list by using the key as a string:
+
+```json title="Reference and Direct example"
+{
+  "templateList": [
+    {
+      "name": "Basic Island",
+      "file": "basic_island.nbt",
+      "surroundingBlocks": "default"
+    },
+    {
+      "name": "Mountain Island",
+      "file": "mountain.nbt",
+      "surroundingBlocks": {
+        "margin": 3,
+        "blocks": [
+          {
+            "block": "minecraft:stone",
+            "weight": 1
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+As shown in the example above, you can either reference a predefined configuration using a string (like `"default"`), or
+provide the configuration directly in the template entry. If no surrounding blocks are defined, an empty configuration
+will be used (margin: 0, no blocks).

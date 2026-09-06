@@ -1,0 +1,43 @@
+---
+description: The interface for creating your team.
+sidebar_position: 2
+---
+
+import ToggleImage from "@site/src/components/ToggleImage";
+
+# Create Team
+<ToggleImage src="/img/projects/sky-guis/1.20/create_team.png" alt="Create Team GUI" />
+
+Use this interface to create a new team with a custom island template in the game. Here's an overview of each field and
+its purpose:
+
+## Name
+Enter the name of your team in this text box. Keep in mind that **you cannot change the name later!**
+- Choose a unique name to identify your team. This name will be visible to all players in the game.
+- If you don't enter a name, one will be randomly assigned when you press the [Create button](#create).
+
+:::info
+You can edit the random name before finalizing your team.
+:::
+
+:::info
+Team names are restricted to a maximum 64 characters.
+:::
+
+## Template
+Pick a predefined island template using this rotation field.
+- The preview on the left updates to show how the selected island looks.
+- Click to cycle through available templates and find one you like.
+
+## Settings
+You can enable [visiting](../skyblock-builder/player#visit) or [join requests](../skyblock-builder/player#join-requests) for other players on your island by checking the corresponding
+boxes. These options will be ignored if disabled in the config. You can update these settings anytime later, either
+through a command or your [team settings](own-team.mdx).
+
+## Create
+Press the **Create** button to finalize your team creation.
+- Confirms your team name and selected island template.
+- If no name is entered, it will prompt you to either accept the random name or edit it.
+
+## Abort
+Cancels the process and closes the interface, returning you to the game.

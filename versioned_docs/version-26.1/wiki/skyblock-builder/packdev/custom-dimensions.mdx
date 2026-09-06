@@ -1,0 +1,99 @@
+---
+description: Custom Skyblock Builder like dimensions
+sidebar_position: 3
+---
+
+# Custom Dimensions
+
+If you want to add more dimensions or keep default world gen, you may add custom dimensions where the player should play
+in a skyblock like world. This may be achieved by adding new dimensions using the structure shown below. For each of the
+vanilla dimensions, there is one pre-defined json pattern. Use the one you'd like to use.
+
+## Overworld
+
+On the left, you may find the default dimension setting for the overworld. Use this to create overworld-like skyblock
+dimensions. On the right side, there's the custom biome source used for
+[centered biomes](configs/dimensions.md#centered-biomes). This may be used if the parent preset is
+`minecraft:overworld` or `minecraft:nether` only. It may work with some modded biome sources as well, but only if they
+are an instance of `MultiNoiseBiomeSource`. That means, you may also use it in [The Nether](#the-nether).
+
+    <div class="two-columns-base">
+        <div class="two-columns-left">
+
+```json title="data/<namespace>/dimensions/overworld.json"
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "biome_source": {
+      "preset": "minecraft:overworld",
+      "type": "minecraft:multi_noise"
+    },
+    "settings": "minecraft:overworld",
+    "dimension": "minecraft:overworld",
+    "type": "skyblockbuilder:noise_based"
+  }
+}
+```
+
+        </div>
+        <div class="two-columns-right">
+
+```json title="data/<namespace>/dimensions/overworld.json"
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "biome_source": {
+      "center_biome": [
+        {
+          "id": "minecraft:plains",
+          "radius": 64
+        }
+      ],
+      "parent": {
+        "preset": "minecraft:overworld"
+      },
+      "type": "skyblockbuilder:sky"
+    },
+    "settings": "minecraft:overworld",
+    "dimension": "minecraft:overworld",
+    "type": "skyblockbuilder:noise_based"
+  }
+}
+```
+
+        </div>
+    </div>
+
+
+## The Nether
+
+This is the configuration for a voided nether.
+```json title="data/<namespace>/dimensions/the_nether.json"
+{
+  "type": "minecraft:the_nether",
+  "generator": {
+    "biome_source": {
+      "preset": "minecraft:nether",
+      "type": "minecraft:multi_noise"
+    },
+    "settings": "minecraft:nether",
+    "dimension": "minecraft:the_nether",
+    "type": "skyblockbuilder:noise_based"
+  }
+}
+```
+
+## The End
+```json title="data/<namespace>/dimensions/the_end.json"
+{
+  "type": "minecraft:the_end",
+  "generator": {
+    "biome_source": {
+      "type": "minecraft:the_end"
+    },
+    "settings": "minecraft:end",
+    "dimension": "minecraft:the_end",
+    "type": "skyblockbuilder:the_end"
+  }
+}
+```

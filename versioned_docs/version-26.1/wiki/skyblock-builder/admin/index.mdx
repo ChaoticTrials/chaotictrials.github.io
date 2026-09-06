@@ -1,0 +1,82 @@
+---
+description: Important information for admins
+sidebar_position: 2
+---
+
+# Server Admin
+The most important thing first:
+
+```properties title="server.properties"
+level-type=skyblockbuilder\:skyblock
+```
+
+## Managing Teams
+### Create
+To create a team with a specific name, use the command: `/skydev manage teams create <name>`. This will create a team
+without anybody joining the team.
+
+:::info
+If no name is provided, a random name will be generated.
+:::
+
+There's also a command `/skydev manage teams createAndJoin <name>`. This may be used to create a team and instantly
+joining them. This could be used to force a player into a new team using
+`/execute as @p run skydev manage teams createAndJoin`.
+
+### Delete
+To delete a team with a specific name, use the command: `/skydev manage teams delete <name>`
+
+:::warning
+This action is irreversible. The island will remain, but cannot be re-bound to a new team. All users in the team will be
+teleported to spawn after dropping all their items.
+:::
+
+### Clear
+Since teams can be empty, you can "clear" all islands. To delete all empty teams, use:
+`/skydev manage teams clear`
+
+Refer to [Deleting Teams](#delete) for more information.
+
+If you use `/skydev manage teams clear <name>` with a name provided, all players in that team will be removed and
+teleported to spawn island.
+
+## Modify Existing Teams
+### Add Players
+You may add players to a team using `/skydev manage addPlayer <players> <name>` to add one or more players to a team
+with that name. If a player already has a team, you should kick them first, or just ignore that they are not being
+added.
+
+### Kick Players
+In some situations, you may want to kick a player since banning is not enough. Maybe they still have some items from the
+team members, who knows. You that, you may use `/skydev manage kickPlayer <players>`.
+
+### Rename Teams
+In some cases, users are funny and give teams inappropriate names. To change them instead of deleting them, use
+`/sky team rename <new_name> <team_name>`. If you forgot to provide a team name, your team will be renamed.
+
+:::info
+Team names are restricted to a maximum 64 characters.
+:::
+
+### Reset Spawns
+If you feel like someone is abusing the team spawn positions, you may reset their spawns to the default ones using
+`/sky team resetSpawns <team_name>`.
+
+## Change Default Template
+In some cases, you may want to give the players other templates. For changing the template that is used when creating a
+new team, you may want to use `/skydev manage islandShape <name>`. This will change the current template to the other
+one. New teams will use this template.
+
+## Cheatsheet
+| Command                                     | Description                                                       |
+|---------------------------------------------|-------------------------------------------------------------------|
+| `/skydev manage teams create <name>`        | Creates a new team with the specified name (or random if omitted) |
+| `/skydev manage teams createAndJoin <name>` | Creates a new team and joins it immediately                       |
+| `/skydev manage teams delete <name>`        | Deletes a team permanently                                        |
+| `/skydev manage teams clear`                | Removes all empty teams                                           |
+| `/skydev manage teams clear <name>`         | Removes all players from a specific team                          |
+| `/skydev manage addPlayer <players> <name>` | Adds one or more players to a specified team                      |
+| `/skydev manage kickPlayer <players>`       | Kicks specified players from their team                           |
+| `/sky team rename <new_name> <team_name>`   | Renames a team (omit team_name to rename your own team)           |
+| `/sky team resetSpawns <team_name>`         | Resets a team's spawn points to default positions                 |
+| `/skydev manage islandShape <name>`         | Changes the default template for new islands                      |
