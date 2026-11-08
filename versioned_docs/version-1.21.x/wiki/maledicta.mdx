@@ -43,6 +43,19 @@ curse introduces a chaotic and thrilling element to enchanted gear.
 - For each dropped item, there is a 20% chance for it to be unobtainable. You may not pick it up and it will disappear
 after 1.5 s.
 
+**Curse of Doom**
+- Can be applied to armor. While you wear a piece of armor with this curse and your health is at or below 5 hearts, a
+10 second countdown starts. You will hear a heartbeat, the picture slowly loses its color and pulses to the beat. If you
+are still at 5 hearts or less when the countdown ends, you die. Healing above 5 hearts or taking off the cursed armor
+stops the countdown.
+- The visual effects can be disabled in the [client configuration](#client-configuration).
+
+**Curse of Strife**
+- Can be applied to everything that can be enchanted with Unbreaking, as long as it is held in either hand or worn as
+armor. Every now and then, hostile mobs nearby which currently have no target will turn against you. Neutral mobs
+become angry at you. Each additional cursed piece increases the radius by 2 blocks. It has no effect in creative or
+spectator mode.
+
 ### Negative Energy
 :::info
 **Negative Energy** can be disabled in the config file
@@ -60,14 +73,25 @@ Effective management of this energy is crucial to prevent items from succumbing 
 ## Configurations
 You can adjust various settings in the mod via its configuration file. Below is the configuration table:
 
-| **Key**                         | **Default Value** | **Description**                                                              |
-|---------------------------------|-------------------|------------------------------------------------------------------------------|
-| `safeLightnings`                | `true`            | Ensures lightning is purely visual, preventing item burning during a strike. |
-| `karmaChance`                   | `0.2` (20%)       | Probability of the Curse of Karma activating.                                |
-| `kindnessChance`                | `0.4` (40%)       | Probability of the Curse of Kindness activating.                             |
-| `minCurseDelay`                 | `6000`            | Minimum time (ticks) before an item can be cursed again.                     |
-| `maxCurseDelay`                 | `12000`           | Maximum time (ticks) before an item can be cursed again.                     |
-| `onlyTransferCurses`            | `false`           | Ensures curses are only transferred, not just removed from the item.         |
-| `NegativeEnergy.enabled`        | `true`            | Enables or disables the Negative Energy system.                              |
-| `NegativeEnergy.netherAddition` | `0.00001`         | Rate of negative energy accumulation in the Nether (per second).             |
-| `NegativeEnergy.hurtAddition`   | `0.0001`          | Negative energy added when hurting undead mobs (per hit).                    |
+| **Key**                         | **Default Value** | **Description**                                                               |
+|---------------------------------|-------------------|-------------------------------------------------------------------------------|
+| `safeLightnings`                | `true`            | Ensures lightning is purely visual, preventing item burning during a strike.  |
+| `karmaChance`                   | `0.2` (20%)       | Probability of the Curse of Karma activating.                                 |
+| `kindnessChance`                | `0.4` (40%)       | Probability of the Curse of Kindness activating.                              |
+| `minCurseDelay`                 | `6000`            | Minimum time (ticks) before an item can be cursed again.                      |
+| `maxCurseDelay`                 | `12000`           | Maximum time (ticks) before an item can be cursed again.                      |
+| `onlyTransferCurses`            | `false`           | Ensures curses are only transferred, not just removed from the item.          |
+| `NegativeEnergy.enabled`        | `true`            | Enables or disables the Negative Energy system.                               |
+| `NegativeEnergy.netherAddition` | `0.00001`         | Rate of negative energy accumulation in the Nether (per second).              |
+| `NegativeEnergy.hurtAddition`   | `0.0001`          | Negative energy added when hurting undead mobs (per hit).                     |
+| `Strife.chance`                 | `1/1337` (~0.07%) | Chance per tick that the Curse of Strife turns nearby monsters on the wearer. |
+| `Strife.radius`                 | `16`              | Distance in blocks in which monsters are turned against the wearer.           |
+| `Strife.requireLineOfSight`     | `false`           | If `true`, only monsters which can see the wearer are turned against them.    |
+
+### Client Configuration
+These settings are stored in the client configuration file and only affect your own game.
+
+| **Key**           | **Default Value** | **Description**                                                                                                                                   |
+|-------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `heartbeatZoom`   | `true`            | Slightly zooms the view to the beat of the heartbeat while the Curse of Doom is counting down.                                                    |
+| `heartbeatShader` | `true`            | Distorts the picture to the beat of the heartbeat while the Curse of Doom is counting down. Disable it if it does not work with your shader pack. |
